@@ -1,0 +1,41 @@
+---
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="border-b border-[var(--color-line)]">
+  <nav
+    aria-label="Primary"
+    class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8"
+  >
+    <a
+      href="/"
+      class="font-display text-2xl tracking-tight focus-visible:outline-2"
+      aria-label="Lauren Wynne — home"
+    >
+      Lauren Wynne
+    </a>
+    <ul class="flex items-center gap-6 text-sm sm:text-base">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class:list={[
+              'underline-offset-4 hover:underline',
+              isActive(link.href) && 'underline',
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

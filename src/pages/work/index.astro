@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { works } from '../../data/works';
+---
+
+<Layout
+  title="Work — Lauren Wynne"
+  description="Selected case studies in AI product design, no-code ML, and enterprise design systems."
+>
+  <section class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+    <h1>Work</h1>
+    <p class="mt-4 max-w-2xl text-lg text-[var(--color-muted)]">
+      A selection of projects across AI co-pilots, machine learning tools, and
+      cross-product design systems. Some case studies require a password — reach
+      out if you'd like access.
+    </p>
+
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {works.map((work) => (
+        <li><WorkCard work={work} /></li>
+      ))}
+    </ul>
+  </section>
+</Layout>

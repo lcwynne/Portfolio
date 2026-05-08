@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import { works } from '../data/works';
+
+const featured = works.filter((w) => w.featured);
+---
+
+<Layout
+  title="Lauren Wynne — Designer"
+  description="Product designer leading AI design with a data science background."
+>
+  <section class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+    <p class="mb-4 text-sm uppercase tracking-[0.2em] text-[var(--color-muted)]">
+      Lauren Wynne
+    </p>
+    <h1 class="max-w-4xl">
+      Designer leading AI experiences,<br class="hidden sm:block" />
+      grounded in data science.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-[var(--color-muted)]">
+      I design AI products with the rigor of a data scientist and the empathy of
+      a designer. My work spans no-code ML, AI co-pilots, and design systems for
+      complex enterprise tools.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4 text-sm">
+      <a
+        href="/work"
+        class="rounded-full bg-[var(--color-ink)] px-5 py-2.5 text-[var(--color-bg)] hover:opacity-90"
+      >
+        See selected work →
+      </a>
+      <a href="/about" class="rounded-full border border-[var(--color-line)] px-5 py-2.5 hover:border-[var(--color-ink)]">
+        About me
+      </a>
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-6xl px-5 pb-20 sm:px-8"
+    aria-labelledby="featured-work"
+  >
+    <div class="mb-8 flex items-end justify-between">
+      <h2 id="featured-work">Selected work</h2>
+      <a href="/work" class="text-sm underline-offset-4 hover:underline">All work →</a>
+    </div>
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {featured.map((work) => (
+        <li><WorkCard work={work} /></li>
+      ))}
+    </ul>
+  </section>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { works } from '../../data/works';
+
+export async function getStaticPaths() {
+  return works
+    .filter((w) => !w.protected)
+    .map((work) => ({ params: { slug: work.slug }, props: { work } }));
+}
+
+const { work } = Astro.props;
+---
+
+<Layout
+  title={`${work.title} — Lauren Wynne`}
+  description={work.summary}
+>
+  <article class="mx-auto max-w-3xl px-5 py-20 sm:px-8">
+    <p class="mb-4 text-sm uppercase tracking-[0.2em] text-[var(--color-muted)]">
+      Case study
+    </p>
+    <h1>{work.title}</h1>
+    <p class="mt-4 text-xl text-[var(--color-muted)]">{work.summary}</p>
+
+    <ul class="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-wide text-[var(--color-muted)]">
+      {work.tags.map((tag) => <li class="rounded bg-[var(--color-line)]/40 px-2 py-1">{tag}</li>)}
+    </ul>
+
+    <hr class="my-12 border-[var(--color-line)]" />
+
+    <div class="prose-content space-y-6 text-lg leading-relaxed">
+      <p>
+        <em>This case study is being refreshed.</em> Drop me a note if you'd like
+        a walkthrough in the meantime.
+      </p>
+      <h2>The problem</h2>
+      <p>To be added.</p>
+      <h2>My role</h2>
+      <p>To be added.</p>
+      <h2>Approach</h2>
+      <p>To be added.</p>
+      <h2>Outcome</h2>
+      <p>To be added.</p>
+    </div>
+
+    <p class="mt-16">
+      <a href="/work" class="underline-offset-4 hover:underline">← All work</a>
+    </p>
+  </article>
+</Layout>
