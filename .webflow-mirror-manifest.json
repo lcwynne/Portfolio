@@ -1,0 +1,463 @@
+{
+  "pages": [
+    {
+      "url": "/",
+      "file": "index.html",
+      "bytes": 2152
+    },
+    {
+      "url": "/about-me",
+      "file": "about-me/index.html",
+      "bytes": 8665
+    },
+    {
+      "url": "/works",
+      "file": "works/index.html",
+      "bytes": 8189
+    },
+    {
+      "url": "/coming-soon",
+      "file": "coming-soon/index.html",
+      "bytes": 2091
+    },
+    {
+      "url": "/404",
+      "file": "404.html",
+      "bytes": 2366
+    },
+    {
+      "url": "/works/multiproductexperience",
+      "file": "works/multiproductexperience/index.html",
+      "bytes": 13059
+    },
+    {
+      "url": "/works/machine-learning",
+      "file": "works/machine-learning/index.html",
+      "bytes": 15035
+    },
+    {
+      "url": "/works/aidincopilot",
+      "file": "works/aidincopilot/index.html",
+      "bytes": 14137
+    },
+    {
+      "url": "/works/appbuilder",
+      "file": "works/appbuilder/index.html",
+      "bytes": 13852
+    },
+    {
+      "url": "/template-info/changelog",
+      "file": "template-info/changelog/index.html",
+      "bytes": 4101
+    },
+    {
+      "url": "/template-info/licensing",
+      "file": "template-info/licensing/index.html",
+      "bytes": 5188
+    },
+    {
+      "url": "/template-info/style-guide",
+      "file": "template-info/style-guide/index.html",
+      "bytes": 12641
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/css/design-portfolio-2f8d13.webflow.d9c70b216.css",
+      "file": "assets/css/design-portfolio-2f8d13.webflow.d9c70b216.css",
+      "bytes": 89983
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/65e89fa0190699d5ae4884bf_lw_logo%201.png",
+      "file": "assets/65e89fa0190699d5ae4884bf_lw_logo_1.png",
+      "bytes": 983
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/js/webflow.fcc8536c5.js",
+      "file": "assets/js/webflow.fcc8536c5.js",
+      "bytes": 586888
+    },
+    {
+      "url": "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=659566c3e235c696a2875b64",
+      "file": "assets/js/jquery-3.5.1.min.dc5e7f18c8.js",
+      "bytes": 89476
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/65e88c6319801815fa38ea12_lw_logo.png",
+      "file": "assets/65e88c6319801815fa38ea12_lw_logo.png",
+      "bytes": 11962
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875bee_ic-arrow.svg",
+      "file": "assets/659566c3e235c696a2875bee_ic-arrow.svg",
+      "bytes": 256
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c0f_arrow-right.svg",
+      "file": "assets/659566c3e235c696a2875c0f_arrow-right.svg",
+      "bytes": 365
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9c80ee8d8aee61edb035e_AppBuilder.png",
+      "file": "assets/65e9c80ee8d8aee61edb035e_AppBuilder.png",
+      "bytes": 46920
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644f98e2d4ae4df31708d22_Ribbon-p-800.png",
+      "file": "assets/6644f98e2d4ae4df31708d22_Ribbon-p-800.png",
+      "bytes": 41881
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3dfa72e11fd902ff866e_Screenshot%202024-05-23%20at%208.59.41%E2%80%AFAM-p-800.png",
+      "file": "assets/664f3dfa72e11fd902ff866e_Screenshot_2024-05-23_at_8.59.41_AM-p-800.png",
+      "bytes": 33251
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ed14f6fcd301d4b9b13c_Jupyter%20copy-p-800.png",
+      "file": "assets/65e9ed14f6fcd301d4b9b13c_Jupyter_copy-p-800.png",
+      "bytes": 50045
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875be5_arrow-btn.svg",
+      "file": "assets/659566c3e235c696a2875be5_arrow-btn.svg",
+      "bytes": 295
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9d2d9eb583bb6fbc72cbc_AppBuilder%20-%20InApp%20Dropdown%20copy.png",
+      "file": "assets/65e9d2d9eb583bb6fbc72cbc_AppBuilder_-_InApp_Dropdown_copy.png",
+      "bytes": 67507
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9d29952151204e079485c_AppBuilder%20-%20Data%20Tools%20Panel.png",
+      "file": "assets/65e9d29952151204e079485c_AppBuilder_-_Data_Tools_Panel.png",
+      "bytes": 34688
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644aac899b443916fcf7a35_User%20Flow%20-%20High%20Level.png",
+      "file": "assets/6644aac899b443916fcf7a35_User_Flow_-_High_Level.png",
+      "bytes": 20161
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875bed_404.svg",
+      "file": "assets/659566c3e235c696a2875bed_404.svg",
+      "bytes": 2052
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c2c_fonts-icon.svg",
+      "file": "assets/659566c3e235c696a2875c2c_fonts-icon.svg",
+      "bytes": 819
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c2b_images-icon.svg",
+      "file": "assets/659566c3e235c696a2875c2b_images-icon.svg",
+      "bytes": 762
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ece80486572847d8d1e0_Home%20Page-p-500.png",
+      "file": "assets/65e9ece80486572847d8d1e0_Home_Page-p-500.png",
+      "bytes": 8666
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ece80486572847d8d1e0_Home%20Page-p-1600.png",
+      "file": "assets/65e9ece80486572847d8d1e0_Home_Page-p-1600.png",
+      "bytes": 69367
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/65e89dd9ce08e077071d46e9_lw_logo.png",
+      "file": "assets/65e89dd9ce08e077071d46e9_lw_logo.png",
+      "bytes": 11962
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9c80ee8d8aee61edb035e_AppBuilder-p-500.png",
+      "file": "assets/65e9c80ee8d8aee61edb035e_AppBuilder-p-500.png",
+      "bytes": 11524
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3dfa72e11fd902ff866e_Screenshot%202024-05-23%20at%208.59.41%E2%80%AFAM-p-500.png",
+      "file": "assets/664f3dfa72e11fd902ff866e_Screenshot_2024-05-23_at_8.59.41_AM-p-500.png",
+      "bytes": 18573
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9c80ee8d8aee61edb035e_AppBuilder-p-800.png",
+      "file": "assets/65e9c80ee8d8aee61edb035e_AppBuilder-p-800.png",
+      "bytes": 18819
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ece80486572847d8d1e0_Home%20Page-p-800.png",
+      "file": "assets/65e9ece80486572847d8d1e0_Home_Page-p-800.png",
+      "bytes": 19671
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644f98e2d4ae4df31708d22_Ribbon-p-500.png",
+      "file": "assets/6644f98e2d4ae4df31708d22_Ribbon-p-500.png",
+      "bytes": 23895
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ed14f6fcd301d4b9b13c_Jupyter%20copy-p-500.png",
+      "file": "assets/65e9ed14f6fcd301d4b9b13c_Jupyter_copy-p-500.png",
+      "bytes": 25520
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ece80486572847d8d1e0_Home%20Page-p-1080.png",
+      "file": "assets/65e9ece80486572847d8d1e0_Home_Page-p-1080.png",
+      "bytes": 34449
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9c80ee8d8aee61edb035e_AppBuilder-p-1080.png",
+      "file": "assets/65e9c80ee8d8aee61edb035e_AppBuilder-p-1080.png",
+      "bytes": 28139
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644bb855cac48a9cb3a8703_High%20Level%20User%20Flow%20-%20AppBuilder.png",
+      "file": "assets/6644bb855cac48a9cb3a8703_High_Level_User_Flow_-_AppBuilder.png",
+      "bytes": 29590
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644aab42cf668b854507ef5_Personas.png",
+      "file": "assets/6644aab42cf668b854507ef5_Personas.png",
+      "bytes": 46865
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65ea073c4db97037e23dca12_Louisa.png",
+      "file": "assets/65ea073c4db97037e23dca12_Louisa.png",
+      "bytes": 46932
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3dfa72e11fd902ff866e_Screenshot%202024-05-23%20at%208.59.41%E2%80%AFAM-p-1080.png",
+      "file": "assets/664f3dfa72e11fd902ff866e_Screenshot_2024-05-23_at_8.59.41_AM-p-1080.png",
+      "bytes": 49542
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3b5316cb883335a04007_Screenshot%202024-05-23%20at%208.11.17%E2%80%AFAM.png",
+      "file": "assets/664f3b5316cb883335a04007_Screenshot_2024-05-23_at_8.11.17_AM.png",
+      "bytes": 48981
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644bb937414a27076c164e1_Personas%20-%20AppBuilder%20(1).png",
+      "file": "assets/6644bb937414a27076c164e1_Personas_-_AppBuilder_(1).png",
+      "bytes": 50561
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3bcf1d9e96af419e4c8f_Screenshot%202024-05-23%20at%208.11.37%E2%80%AFAM.png",
+      "file": "assets/664f3bcf1d9e96af419e4c8f_Screenshot_2024-05-23_at_8.11.37_AM.png",
+      "bytes": 57632
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644f98e2d4ae4df31708d22_Ribbon-p-1080.png",
+      "file": "assets/6644f98e2d4ae4df31708d22_Ribbon-p-1080.png",
+      "bytes": 63789
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/6644cdd069cc5affac073621_LaurenWynne.pdf",
+      "file": "assets/6644cdd069cc5affac073621_LaurenWynne.pdf",
+      "bytes": 71284
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3b9bd511db6dfebc1d90_Screenshot%202024-05-23%20at%208.12.18%E2%80%AFAM.png",
+      "file": "assets/664f3b9bd511db6dfebc1d90_Screenshot_2024-05-23_at_8.12.18_AM.png",
+      "bytes": 58100
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f385a16cb8833359d7984_Screenshot%202024-05-23%20at%208.36.31%E2%80%AFAM.png",
+      "file": "assets/664f385a16cb8833359d7984_Screenshot_2024-05-23_at_8.36.31_AM.png",
+      "bytes": 74062
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ed14f6fcd301d4b9b13c_Jupyter%20copy-p-1080.png",
+      "file": "assets/65e9ed14f6fcd301d4b9b13c_Jupyter_copy-p-1080.png",
+      "bytes": 72077
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3a1b4694e6595b49aa35_Screenshot%202024-05-23%20at%208.10.49%E2%80%AFAM.png",
+      "file": "assets/664f3a1b4694e6595b49aa35_Screenshot_2024-05-23_at_8.10.49_AM.png",
+      "bytes": 93735
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f36f0ecbbea4cf7825097_Screenshot%202024-05-23%20at%208.12.58%E2%80%AFAM.png",
+      "file": "assets/664f36f0ecbbea4cf7825097_Screenshot_2024-05-23_at_8.12.58_AM.png",
+      "bytes": 100847
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3c8fc2b41757ff0cf97f_Screenshot%202024-05-23%20at%208.12.04%E2%80%AFAM.png",
+      "file": "assets/664f3c8fc2b41757ff0cf97f_Screenshot_2024-05-23_at_8.12.04_AM.png",
+      "bytes": 87535
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9bc50cd9c702b6c127dcb_Non-Linear.png",
+      "file": "assets/65e9bc50cd9c702b6c127dcb_Non-Linear.png",
+      "bytes": 98985
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/6644f98e2d4ae4df31708d22_Ribbon.png",
+      "file": "assets/6644f98e2d4ae4df31708d22_Ribbon.png",
+      "bytes": 114194
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875beb_media-1.jpg",
+      "file": "assets/659566c3e235c696a2875beb_media-1.jpg",
+      "bytes": 111995
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ed14f6fcd301d4b9b13c_Jupyter%20copy-p-1600.png",
+      "file": "assets/65e9ed14f6fcd301d4b9b13c_Jupyter_copy-p-1600.png",
+      "bytes": 126917
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f37848d914e1e48bbe5ee_Screenshot%202024-05-23%20at%208.13.11%E2%80%AFAM.png",
+      "file": "assets/664f37848d914e1e48bbe5ee_Screenshot_2024-05-23_at_8.13.11_AM.png",
+      "bytes": 126755
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875bec_media-2.jpg",
+      "file": "assets/659566c3e235c696a2875bec_media-2.jpg",
+      "bytes": 134596
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9bf564ea365f6642db0a3_Section%201.png",
+      "file": "assets/65e9bf564ea365f6642db0a3_Section_1.png",
+      "bytes": 150452
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65ea086462f87390af97d68f_Jupyter.png",
+      "file": "assets/65ea086462f87390af97d68f_Jupyter.png",
+      "bytes": 166639
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65ea07ac85641033c0e93491_Input1.png",
+      "file": "assets/65ea07ac85641033c0e93491_Input1.png",
+      "bytes": 157330
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ece80486572847d8d1e0_Home%20Page.png",
+      "file": "assets/65e9ece80486572847d8d1e0_Home_Page.png",
+      "bytes": 168569
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65e9ed14f6fcd301d4b9b13c_Jupyter%20copy.png",
+      "file": "assets/65e9ed14f6fcd301d4b9b13c_Jupyter_copy.png",
+      "bytes": 194547
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65ea08015bfcb76cf883ae20_Annie.png",
+      "file": "assets/65ea08015bfcb76cf883ae20_Annie.png",
+      "bytes": 190535
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3dfa72e11fd902ff866e_Screenshot%202024-05-23%20at%208.59.41%E2%80%AFAM.png",
+      "file": "assets/664f3dfa72e11fd902ff866e_Screenshot_2024-05-23_at_8.59.41_AM.png",
+      "bytes": 251761
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/65e88a8532893e5bd3597de6_laurenwynne-p-500.png",
+      "file": "assets/65e88a8532893e5bd3597de6_laurenwynne-p-500.png",
+      "bytes": 278215
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/65ea083afa10947a7aa4fdef_Sam.png",
+      "file": "assets/65ea083afa10947a7aa4fdef_Sam.png",
+      "bytes": 292969
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b9b/664f3996468e7068a0744064_Screenshot%202024-05-23%20at%208.10.08%E2%80%AFAM.png",
+      "file": "assets/664f3996468e7068a0744064_Screenshot_2024-05-23_at_8.10.08_AM.png",
+      "bytes": 840673
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/65e88a8532893e5bd3597de6_laurenwynne.png",
+      "file": "assets/65e88a8532893e5bd3597de6_laurenwynne.png",
+      "bytes": 936776
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c12_ic-slide-arrow.svg",
+      "file": "assets/659566c3e235c696a2875c12_ic-slide-arrow.svg",
+      "bytes": 355
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bdc_GeneralSans-Italic.otf",
+      "file": "assets/659566c3e235c696a2875bdc_GeneralSans-Italic.otf",
+      "bytes": 47952
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c14_ic-arrow-left.svg",
+      "file": "assets/659566c3e235c696a2875c14_ic-arrow-left.svg",
+      "bytes": 353
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875be0_GeneralSans-Medium.otf",
+      "file": "assets/659566c3e235c696a2875be0_GeneralSans-Medium.otf",
+      "bytes": 46424
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875be2_GeneralSans-Regular.otf",
+      "file": "assets/659566c3e235c696a2875be2_GeneralSans-Regular.otf",
+      "bytes": 45948
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bdd_GeneralSans-Bold.otf",
+      "file": "assets/659566c3e235c696a2875bdd_GeneralSans-Bold.otf",
+      "bytes": 43260
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c27_folder-02.svg",
+      "file": "assets/659566c3e235c696a2875c27_folder-02.svg",
+      "bytes": 746
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c13_ic-arrow-white.svg",
+      "file": "assets/659566c3e235c696a2875c13_ic-arrow-white.svg",
+      "bytes": 355
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c15_ic-arrow-left-white.svg",
+      "file": "assets/659566c3e235c696a2875c15_ic-arrow-left-white.svg",
+      "bytes": 353
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/659566c3e235c696a2875b64/659566c3e235c696a2875c26_folder-01.svg",
+      "file": "assets/659566c3e235c696a2875c26_folder-01.svg",
+      "bytes": 746
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bda_GeneralSans-Extralight.otf",
+      "file": "assets/659566c3e235c696a2875bda_GeneralSans-Extralight.otf",
+      "bytes": 42364
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875be3_GeneralSans-Semibold.otf",
+      "file": "assets/659566c3e235c696a2875be3_GeneralSans-Semibold.otf",
+      "bytes": 46640
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bde_GeneralSans-Light.otf",
+      "file": "assets/659566c3e235c696a2875bde_GeneralSans-Light.otf",
+      "bytes": 46020
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bdb_GeneralSans-LightItalic.otf",
+      "file": "assets/659566c3e235c696a2875bdb_GeneralSans-LightItalic.otf",
+      "bytes": 47584
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bd8_GeneralSans-BoldItalic.otf",
+      "file": "assets/659566c3e235c696a2875bd8_GeneralSans-BoldItalic.otf",
+      "bytes": 45060
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bdf_GeneralSans-MediumItalic.otf",
+      "file": "assets/659566c3e235c696a2875bdf_GeneralSans-MediumItalic.otf",
+      "bytes": 48504
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875be1_GeneralSans-SemiboldItalic.otf",
+      "file": "assets/659566c3e235c696a2875be1_GeneralSans-SemiboldItalic.otf",
+      "bytes": 48236
+    },
+    {
+      "url": "https://uploads-ssl.webflow.com/659566c3e235c696a2875b64/659566c3e235c696a2875bd9_GeneralSans-ExtralightItalic.otf",
+      "file": "assets/659566c3e235c696a2875bd9_GeneralSans-ExtralightItalic.otf",
+      "bytes": 43232
+    }
+  ],
+  "generated": "2026-09-15T13:21:56.907Z",
+  "source": "https://www.laurenwynne.com"
+}

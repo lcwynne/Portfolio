@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.laurenwynne.com)",
+      "Bash(npm --version)",
+      "WebSearch",
+      "Bash(whois laurenwynne.com)",
+      "Bash(npm create *)",
+      "Bash(git config *)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(gh auth *)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/659566c3e235c696a2875b64/6644cdd069cc5affac073621_LaurenWynne.pdf\" -o /tmp/lauren-resume.pdf)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
