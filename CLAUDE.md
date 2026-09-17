@@ -42,14 +42,40 @@ fingerprinted and cache hard.
 python3 -m http.server 8000
 ```
 
-## Case study gate
+## Case studies are ENCRYPTED — read this before touching them
 
-`assets/js/gate.js` hides the four case studies behind a password prompt,
-comparing a SHA-256 hash. If the password changes, update the hash in that file —
-the plaintext is never stored. This is a soft gate; anyone reading the page
-source can see the content. If real protection is ever needed, the site has to
-move to a host with server-side auth (Cloudflare Pages + Access, Netlify,
-Vercel).
+**`works/<slug>/index.html` for the four case studies is ciphertext, not HTML.**
+Editing those files directly destroys the page. There is no warning; it will
+just stop decrypting.
+
+The real content lives in `_source/works/<slug>/index.html`, which is
+gitignored and never published. The workflow is:
+
+```bash
+node scripts/protect.mjs unlock <password>   # ciphertext -> _source/
+# edit _source/works/<slug>/index.html
+node scripts/protect.mjs lock <password>     # _source/ -> ciphertext
+git add -A && git commit -m "..." && git push
+```
+
+If `_source/` is missing (fresh clone), run `unlock` first — the ciphertext
+contains the complete original page, so it round-trips. The encrypted page in
+the repo IS the backup; `_source/` is only a convenience.
+
+How it works: AES-256-GCM, key derived by PBKDF2-SHA256 at 250,000 iterations
+with a random per-page salt. Without the password the page contains nothing
+readable — this is real encryption, not the hide-with-CSS gate it replaced.
+
+Two limits worth knowing:
+- It needs HTTPS. `crypto.subtle` does not exist in a non-secure context, so the
+  page shows "needs a secure connection" over plain HTTP.
+- Only the HTML is encrypted. The case-study images under `/assets/` are still
+  fetchable by direct URL by anyone who knows the URL. Protecting those needs a
+  server, which GitHub Pages is not.
+
+`assets/css/gate.css` styles the password prompt. `assets/js/gate.js` is the old
+soft gate — no longer referenced by the case studies, kept only in case a
+non-encrypted page ever needs a light gate.
 
 ## Known follow-ups
 

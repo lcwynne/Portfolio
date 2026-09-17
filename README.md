@@ -43,12 +43,15 @@ python3 -m http.server 8000
 - `astro-rebuild` — an in-progress Astro rebuild from an earlier session, parked
   here so nothing is lost. Not deployed.
 
-## Password-gated case studies
+## Encrypted case studies
 
-The four case studies under `works/` carry a client-side password gate
-(`assets/js/gate.js`) that reproduces the behavior they had on Webflow. It is a
-soft gate: the page markup is still in the HTML source, so it deters casual
-browsing but is not real access control.
+The four case studies under `works/` are encrypted at rest with AES-256-GCM
+(PBKDF2-SHA256, 250k iterations). The published file contains only ciphertext
+and a decryptor — without the password there is nothing to read, even in the
+page source.
+
+Editing them goes through `scripts/protect.mjs`; see CLAUDE.md. **Do not edit
+`works/<slug>/index.html` directly** — those files are ciphertext.
 
 ## Backup
 
