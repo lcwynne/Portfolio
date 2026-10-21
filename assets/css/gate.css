@@ -1,26 +1,404 @@
-html.lw-gated body > *:not(#lw-gate) { display: none !important; }
-#lw-gate {
-  position: fixed; inset: 0; z-index: 99999;
-  display: flex; align-items: center; justify-content: center;
-  background: #fff; padding: 24px;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  color: #111;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gate-page-bg:    #f5f5f3;
+  --gate-card-bg:    #ffffff;
+  --gate-border:     #e4e4e0;
+  --gate-text:       #333;
+  --gate-text-dim:   #999;
+  --gate-agent-bg:   #f0f0ec;
+  --gate-agent-text: #333;
+  --gate-user-bg:    #222;
+  --gate-user-text:  #f5f5f3;
+  --gate-input-bg:   #f7f7f5;
+  --gate-input-border: #ddddd9;
+  --gate-send-bg:    #222;
+  --gate-send-color: #f5f5f3;
+  --gate-dot:        #aaa;
+  --gate-avatar-bg:  #ebebeb;
+  --gate-avatar-border: #ddddd9;
 }
-.lw-gate-card { width: 100%; max-width: 380px; text-align: left; }
-.lw-gate-card h1 { font-size: 28px; line-height: 1.2; margin: 0 0 10px; font-weight: 600; }
-.lw-gate-card p { font-size: 15px; line-height: 1.6; color: #555; margin: 0 0 20px; }
-.lw-gate-card form { display: flex; flex-direction: column; gap: 10px; }
-.lw-gate-card input {
-  font: inherit; font-size: 15px; padding: 12px 14px;
-  border: 1px solid #d5d5d5; border-radius: 6px; background: #fff; color: #111;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gate-page-bg:    #111110;
+    --gate-card-bg:    #1a1a19;
+    --gate-border:     #2a2a28;
+    --gate-text:       #d8d8d4;
+    --gate-text-dim:   #555;
+    --gate-agent-bg:   #222221;
+    --gate-agent-text: #d0d0cc;
+    --gate-user-bg:    #f5f5f3;
+    --gate-user-text:  #111110;
+    --gate-input-bg:   #1e1e1d;
+    --gate-input-border: #2e2e2c;
+    --gate-send-bg:    #f5f5f3;
+    --gate-send-color: #111110;
+    --gate-dot:        #555;
+    --gate-avatar-bg:  #222221;
+    --gate-avatar-border: #2e2e2c;
+  }
 }
-.lw-gate-card input:focus { outline: none; border-color: #111; }
-.lw-gate-card button {
-  font: inherit; font-size: 15px; padding: 12px 14px; cursor: pointer;
-  border: 1px solid #111; border-radius: 6px; background: #111; color: #fff;
+
+html, body {
+  height: 100%;
+  background: var(--gate-page-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--gate-text);
+  -webkit-font-smoothing: antialiased;
 }
-.lw-gate-card button:hover { background: #333; border-color: #333; }
-.lw-gate-err { color: #b00020; font-size: 14px; margin: 14px 0 0; }
-.lw-gate-back { margin: 24px 0 0; font-size: 14px; }
-.lw-gate-back a { color: #555; text-decoration: none; }
-.lw-gate-back a:hover { color: #111; text-decoration: underline; }
+
+.gate-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.gate-wrap.fade-out {
+  opacity: 0;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 520px;
+  height: min(540px, calc(100vh - 32px));
+  background: var(--gate-card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--gate-border);
+  overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gate-border);
+  flex-shrink: 0;
+}
+
+.chat-header-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gate-avatar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--gate-avatar-border);
+  flex-shrink: 0;
+}
+
+.chat-header-avatar img {
+  width: 20px;
+  height: auto;
+  display: block;
+}
+
+.chat-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gate-text);
+  line-height: 1.2;
+}
+
+.chat-header-status {
+  font-size: 11px;
+  color: var(--gate-text-dim);
+}
+
+/* Messages */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--gate-border); border-radius: 2px; }
+
+/* Message rows */
+.msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+
+.msg.agent { align-self: flex-start; }
+.msg.user  { align-self: flex-end; flex-direction: row-reverse; }
+
+/* Avatar */
+.agent-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gate-avatar-bg);
+  border: 1px solid var(--gate-avatar-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.agent-avatar img {
+  width: 16px;
+  height: auto;
+  display: block;
+}
+
+/* Bubbles */
+.bubble {
+  padding: 9px 13px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.msg.agent .bubble {
+  background: var(--gate-agent-bg);
+  color: var(--gate-agent-text);
+  border-bottom-left-radius: 4px;
+}
+
+.msg.user .bubble {
+  background: var(--gate-user-bg);
+  color: var(--gate-user-text);
+  border-bottom-right-radius: 4px;
+}
+
+/* Typing indicator */
+.bubble.typing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 14px;
+}
+
+.bubble.typing span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gate-dot);
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.bubble.typing span:nth-child(1) { animation-delay: 0s; }
+.bubble.typing span:nth-child(2) { animation-delay: 0.2s; }
+.bubble.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%            { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Input area */
+.chat-input-wrap {
+  padding: 10px 14px 14px;
+  border-top: 1px solid var(--gate-border);
+  flex-shrink: 0;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gate-input-bg);
+  border: 1px solid var(--gate-input-border);
+  border-radius: 10px;
+  padding: 7px 7px 7px 13px;
+  transition: border-color 0.15s;
+}
+
+.chat-input-row:focus-within {
+  border-color: var(--gate-text-dim);
+}
+
+#gate-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  color: var(--gate-text);
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+#gate-input::placeholder { color: var(--gate-text-dim); }
+#gate-input:disabled     { opacity: 0.5; }
+
+#gate-send {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: var(--gate-send-bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+  color: var(--gate-send-color);
+}
+
+#gate-send:hover   { opacity: 0.8; }
+#gate-send:disabled { opacity: 0.3; cursor: default; }
+#gate-send svg     { display: block; }
+
+/* ── Works page additions ─────────────────────────────────────────────────── */
+
+/* Chat icon trigger on each tile */
+.work-item { position: relative; }
+
+.lw-ask-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--gate-text, #333);
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+  line-height: 0;
+}
+
+.work-item:hover .lw-ask-btn { opacity: 0.6; }
+.lw-ask-btn:hover             { opacity: 1 !important; }
+
+/* Transparent backdrop (closes popup on outside click) */
+.lw-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+/* Floating chat popup */
+.lw-popup {
+  position: fixed;
+  z-index: 1000;
+  width: 320px;
+  max-height: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--gate-card-bg, #fff);
+  border: 1px solid var(--gate-border, #e4e4e0);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  animation: popup-in 0.18s ease;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lw-popup { box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+}
+
+@keyframes popup-in {
+  from { transform: scale(0.95) translateY(6px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);   opacity: 1; }
+}
+
+.lw-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--gate-border, #e4e4e0);
+  flex-shrink: 0;
+}
+
+.lw-panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lw-panel-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gate-text, #333);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.lw-panel-close {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--gate-text-dim, #999);
+  transition: background 0.12s;
+}
+.lw-panel-close:hover { background: var(--gate-agent-bg, #f0f0ec); }
+
+.lw-popup .chat-messages {
+  padding: 14px 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.lw-popup .chat-input-wrap {
+  padding: 8px 10px 12px;
+  border-top: 1px solid var(--gate-border, #e4e4e0);
+}
+
+.lw-popup .agent-avatar { width: 22px; height: 22px; }
+.lw-popup .agent-avatar img { width: 13px; }
+.lw-popup .bubble { font-size: 12.5px; }
+
+/* Personalisation reorder note */
+.lw-reorder-note {
+  margin-bottom: 20px;
+}
+
+.lw-reorder-bubble {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--gate-agent-bg, #f0f0ec);
+  border: 1px solid var(--gate-border, #e4e4e0);
+  border-radius: 12px;
+  padding: 9px 13px;
+  font-size: 12.5px;
+  color: var(--gate-text, #333);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.lw-reorder-bubble .agent-avatar { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+.lw-reorder-bubble .agent-avatar img { width: 12px; }
+
+@media (prefers-color-scheme: dark) {
+  .lw-reorder-bubble { background: var(--gate-agent-bg); border-color: var(--gate-border); color: var(--gate-text); }
+}

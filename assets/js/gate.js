@@ -1,112 +1,158 @@
-/* Client-side password gate for protected case studies.
-   NOTE: this deters casual browsing only. The page markup is still present in
-   the HTML source, so treat it as a soft gate, not real security. */
-(function () {
-  var KEY = 'lw-gate-ok';
-  var HASH = 'fda2d99ab3517f1e04606c70da1ea89008a7aca9e9afb31ea357b99995eb4bbe'; // sha-256 of the password
-
-  function unlock() {
-    document.documentElement.classList.remove('lw-gated');
-    var g = document.getElementById('lw-gate');
-    if (g) g.remove();
+(async () => {
+  if (sessionStorage.getItem('lw_unlocked') === '1') {
+    location.replace('/home/');
+    return;
   }
 
-  // crypto.subtle only exists in secure contexts. GitHub Pages serves plain HTTP
-  // until its certificate is issued, so fall back to a self-contained SHA-256
-  // rather than throwing and refusing every password.
-  function sha256Fallback(ascii) {
-    function rrot(v, a) { return (v >>> a) | (v << (32 - a)); }
-    var maxWord = Math.pow(2, 32), i, j, result = '';
-    var words = [], asciiBitLength = ascii.length * 8;
-    var hash = sha256Fallback.h = sha256Fallback.h || [];
-    var k = sha256Fallback.k = sha256Fallback.k || [];
-    var primeCounter = k.length, isComposite = {};
-    for (var candidate = 2; primeCounter < 64; candidate++) {
-      if (!isComposite[candidate]) {
-        for (i = 0; i < 313; i += candidate) isComposite[i] = candidate;
-        hash[primeCounter] = (Math.pow(candidate, 0.5) * maxWord) | 0;
-        k[primeCounter++] = (Math.pow(candidate, 1 / 3) * maxWord) | 0;
-      }
-    }
-    hash = hash.slice(0);
-    ascii += '\x80';
-    while (ascii.length % 64 - 56) ascii += '\x00';
-    for (i = 0; i < ascii.length; i++) {
-      j = ascii.charCodeAt(i);
-      if (j >> 8) return null;
-      words[i >> 2] |= j << ((3 - i) % 4) * 8;
-    }
-    words[words.length] = (asciiBitLength / maxWord) | 0;
-    words[words.length] = asciiBitLength;
-    for (j = 0; j < words.length;) {
-      var w = words.slice(j, j += 16), oldHash = hash;
-      hash = hash.slice(0, 8);
-      for (i = 0; i < 64; i++) {
-        var w15 = w[i - 15], w2 = w[i - 2];
-        var a = hash[0], e = hash[4];
-        var temp1 = hash[7] + (rrot(e, 6) ^ rrot(e, 11) ^ rrot(e, 25)) +
-          ((e & hash[5]) ^ (~e & hash[6])) + k[i] +
-          (w[i] = i < 16 ? w[i] : (w[i - 16] +
-            (rrot(w15, 7) ^ rrot(w15, 18) ^ (w15 >>> 3)) + w[i - 7] +
-            (rrot(w2, 17) ^ rrot(w2, 19) ^ (w2 >>> 10))) | 0);
-        var temp2 = (rrot(a, 2) ^ rrot(a, 13) ^ rrot(a, 22)) +
-          ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
-        hash = [(temp1 + temp2) | 0].concat(hash);
-        hash[4] = (hash[4] + temp1) | 0;
-      }
-      for (i = 0; i < 8; i++) hash[i] = (hash[i] + oldHash[i]) | 0;
-    }
-    for (i = 0; i < 8; i++) {
-      for (j = 3; j + 1; j--) {
-        var b = (hash[i] >> (j * 8)) & 255;
-        result += ((b < 16) ? 0 : '') + b.toString(16);
-      }
-    }
-    return result;
+  const HASH = '98a4513df16a6585b1bcd6c3c71e7be85f5eca0f50bbbed1ab0fdf4552147fbd';
+
+  const closeResponses = [
+    "So close, check your spelling.",
+    "Almost, try that again.",
+    "You're right there, just not quite.",
+    "Ooh, so close I could taste it."
+  ];
+
+  const wrongResponses = [
+    "Not quite, give it another shot.",
+    "That's not it, try again.",
+    "Close, but no, one more try.",
+    "Hmm, not the one, try again."
+  ];
+
+  const intentAck = {
+    ai:             "AI and ML it is — I'll make sure the most relevant work is front and center.",
+    design_systems: "Design systems work, noted — I'll highlight what fits best.",
+    analytics:      "Analytics focus, got it — surfacing the most relevant projects for you.",
+    enterprise:     "Enterprise product work — I'll lead with what fits.",
+    general:        "Good to know. Heading in now.",
+    skip:           "No worries at all, come on in :)"
+  };
+
+  let closeIdx = 0, wrongIdx = 0;
+  let state = 'password';
+
+  async function sha256(text) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  async function sha256(s) {
-    if (window.crypto && crypto.subtle && crypto.subtle.digest) {
-      var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-      return Array.from(new Uint8Array(buf)).map(function (b) {
-        return b.toString(16).padStart(2, '0');
-      }).join('');
-    }
-    return sha256Fallback(unescape(encodeURIComponent(s)));
+  function isClose(text) {
+    const t = text.toLowerCase();
+    return t.startsWith('/') || t.includes('build') || t.includes('wynne');
   }
 
-  try { if (sessionStorage.getItem(KEY) === HASH) { return; } } catch (e) {}
+  async function checkPassword(input) {
+    const tokens = input.trim().split(/\s+/);
+    for (const token of tokens) {
+      if ((await sha256(token.toLowerCase())) === HASH) return true;
+    }
+    return false;
+  }
 
-  document.documentElement.classList.add('lw-gated');
+  function parseIntent(text) {
+    const t = text.toLowerCase();
+    if (/\b(ai\b|ml\b|machine.?learn|artificial intel|data.?sci|llm|model|copilot|intelligence)\b/.test(t)) return 'ai';
+    if (/\b(design.?system|component|token|design.?ops)\b/.test(t)) return 'design_systems';
+    if (/\b(analytic|data|insight|dashboard|bi\b)\b/.test(t)) return 'analytics';
+    if (/\b(enterprise|platform|suite|b2b|saas|multi.?product)\b/.test(t)) return 'enterprise';
+    if (/\b(just|curious|browsing|look.{0,10}around|no\s+reason|no\s+specific|general|not\s+sure)\b/.test(t)) return 'skip';
+    return 'general';
+  }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var wrap = document.createElement('div');
-    wrap.id = 'lw-gate';
-    wrap.innerHTML =
-      '<div class="lw-gate-card">' +
-        '<h1>Protected page</h1>' +
-        '<p>If you have access to this page, please type the password below.</p>' +
-        '<form><input type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />' +
-        '<button type="submit">Submit</button></form>' +
-        '<p class="lw-gate-err" hidden>Incorrect password. Please try again.</p>' +
-        '<p class="lw-gate-back"><a href="/">&larr; Back to laurenwynne.com</a></p>' +
-      '</div>';
-    document.body.appendChild(wrap);
-    var form = wrap.querySelector('form');
-    var input = wrap.querySelector('input');
-    var err = wrap.querySelector('.lw-gate-err');
-    input.focus();
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      var h = await sha256(input.value);
-      if (h === HASH) {
-        try { sessionStorage.setItem(KEY, HASH); } catch (e2) {}
-        unlock();
-      } else {
-        err.hidden = false;
-        input.value = '';
-        input.focus();
+  function addBubble(text, role) {
+    const messages = document.getElementById('messages');
+    const row = document.createElement('div');
+    row.className = 'msg ' + role;
+    if (role === 'agent') {
+      row.innerHTML = `
+        <div class="agent-avatar">
+          <img src="/assets/65e88c6319801815fa38ea12_lw_logo.png" alt="LW" width="28"/>
+        </div>
+        <div class="bubble">${text}</div>`;
+    } else {
+      row.innerHTML = `<div class="bubble">${escapeHtml(text)}</div>`;
+    }
+    messages.appendChild(row);
+    row.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    return row;
+  }
+
+  function addTypingIndicator() {
+    const messages = document.getElementById('messages');
+    const row = document.createElement('div');
+    row.className = 'msg agent';
+    row.innerHTML = `
+      <div class="agent-avatar">
+        <img src="/assets/65e88c6319801815fa38ea12_lw_logo.png" alt="LW" width="28"/>
+      </div>
+      <div class="bubble typing"><span></span><span></span><span></span></div>`;
+    messages.appendChild(row);
+    row.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    return row;
+  }
+
+  function setInputEnabled(on) {
+    document.getElementById('gate-input').disabled = !on;
+    document.getElementById('gate-send').disabled = !on;
+    if (on) document.getElementById('gate-input').focus();
+  }
+
+  async function handleSubmit() {
+    const input = document.getElementById('gate-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    setInputEnabled(false);
+    addBubble(text, 'user');
+
+    if (state === 'password') {
+      const typing = addTypingIndicator();
+      await delay(600);
+      const correct = await checkPassword(text);
+      typing.remove();
+
+      if (correct) {
+        addBubble("Yes! Welcome in, glad you're here.", 'agent');
+        sessionStorage.setItem('lw_unlocked', '1');
+        await delay(900);
+        addBubble("One quick thing — what brings you here today? Are you looking for anything specific? (Or just say \"just looking\" and I'll get out of your way.)", 'agent');
+        state = 'intent';
+        setInputEnabled(true);
+        return;
       }
-    });
+
+      const response = isClose(text)
+        ? closeResponses[closeIdx++ % closeResponses.length]
+        : wrongResponses[wrongIdx++ % wrongResponses.length];
+      addBubble(response, 'agent');
+      setInputEnabled(true);
+
+    } else if (state === 'intent') {
+      const typing = addTypingIndicator();
+      await delay(500);
+      typing.remove();
+
+      const intent = parseIntent(text);
+      sessionStorage.setItem('lw_intent', intent);
+      addBubble(intentAck[intent] || intentAck.general, 'agent');
+
+      await delay(900);
+      document.querySelector('.gate-wrap').classList.add('fade-out');
+      await delay(500);
+      location.replace('/home/');
+    }
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  document.getElementById('gate-send').addEventListener('click', handleSubmit);
+  document.getElementById('gate-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); }
   });
 })();

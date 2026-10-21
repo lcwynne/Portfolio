@@ -1,0 +1,4 @@
+name = "lw-portfolio-proxy"
+main = "index.js"
+compatibility_date = "2024-01-01"
+account_id = "48f61d0fe051e778d9e23c03dd75690b"
