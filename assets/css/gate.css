@@ -54,6 +54,7 @@ html, body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 16px;
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -69,6 +70,7 @@ html, body {
   width: 100%;
   max-width: 520px;
   height: min(540px, calc(100vh - 32px));
+  height: min(540px, calc(100dvh - 32px)); /* dvh = the visible height on phones, minus browser bars */
   background: var(--gate-card-bg);
   border-radius: 16px;
   border: 1px solid var(--gate-border);
@@ -352,4 +354,19 @@ html, body {
 
 @media (prefers-color-scheme: dark) {
   .lw-reorder-bubble { background: var(--gate-agent-bg); border-color: var(--gate-border); color: var(--gate-text); }
+}
+
+/* ── Phones: the password chat fills the screen like a messaging app ── */
+@media (max-width: 600px) {
+  .gate-wrap      { padding: 0; justify-content: stretch; }
+  .chat-container { max-width: none; height: 100vh; height: 100dvh; border: none; border-radius: 0; }
+  .chat-messages  { padding: 16px 14px; }
+  .msg            { max-width: 90%; }
+  .bubble         { font-size: 15px; }
+  .chip           { font-size: 14px; padding: 10px 14px; }
+
+  /* 16px stops iPhones zooming the page when the field is tapped */
+  #gate-input { font-size: 16px; }
+  #gate-send  { width: 40px; height: 40px; border-radius: 10px; }
+  .chat-input-wrap { padding: 10px 12px calc(12px + env(safe-area-inset-bottom)); }
 }

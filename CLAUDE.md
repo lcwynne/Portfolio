@@ -30,6 +30,17 @@ and one large generated stylesheet at
 6. `.nojekyll` and `CNAME` at the root are load-bearing for GitHub Pages. Leave
    them alone.
 
+## Mobile comes first
+
+Lauren's top priority is that the site, and especially every chat
+interaction, works well on phones. Check every change at 390px wide.
+- Text inputs are 16px on phones, or iPhones zoom the page when they're tapped.
+- Tap targets are at least 40px.
+- Don't disable a chat input while waiting for a reply, because that drops the
+  phone keyboard. Don't auto-focus inputs on touch screens.
+- On phones the gate and the side panel go full screen (`100dvh`), and the
+  chat tab becomes a floating button at the bottom right.
+
 ## Deploying
 
 Push to `main`. GitHub Pages picks it up in a minute or two. Verify at

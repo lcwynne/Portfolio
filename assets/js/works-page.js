@@ -47,6 +47,17 @@
       if (e.key === 'ArrowLeft')  show(index - 1);
     });
 
+    // Swipe left or right on a phone; mostly-vertical drags are left to page scrolling
+    let startX = null, startY = null;
+    const list = kudos.querySelector('.lw-kudos-list');
+    list.addEventListener('touchstart', e => { startX = e.touches[0].clientX; startY = e.touches[0].clientY; }, { passive: true });
+    list.addEventListener('touchend', e => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(index + (dx < 0 ? 1 : -1));
+      startX = null;
+    }, { passive: true });
+
     show(0);
     kudos.classList.add('is-ready');
   }

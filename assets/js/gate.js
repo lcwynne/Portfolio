@@ -112,16 +112,20 @@
     return row;
   }
 
+  // The field itself stays enabled while the agent "thinks": disabling it
+  // would drop a phone's keyboard and pop it back up after every message.
+  let busy = false;
+  const touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   function setInputEnabled(on) {
-    document.getElementById('gate-input').disabled = !on;
+    busy = !on;
     document.getElementById('gate-send').disabled = !on;
-    if (on) document.getElementById('gate-input').focus();
+    if (on && !touch) document.getElementById('gate-input').focus();
   }
 
   async function handleSubmit() {
     const input = document.getElementById('gate-input');
     const text = input.value.trim();
-    if (!text) return;
+    if (!text || busy) return;
 
     input.value = '';
     setInputEnabled(false);

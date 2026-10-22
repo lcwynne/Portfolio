@@ -331,7 +331,37 @@
   .lwc-tab, .lwc-tab.has-note { transition: none; }
 }
 
+/* ── Phones ─────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   :root { --lwc-width: 100vw; }
-  .lwc-panel { border-left: none; }
+
+  /* Full screen at the visible height, and the page behind it stays put */
+  .lwc-panel { border-left: none; bottom: auto; height: 100vh; height: 100dvh; box-shadow: none; }
+  .lwc-open body { overflow: hidden; }
+
+  .lwc-close  { width: 44px; height: 44px; margin-right: -6px; }
+  .lwc-msg    { max-width: 92%; }
+  .lwc-bubble { font-size: 15px; }
+
+  /* 16px stops iPhones zooming the page when the field is tapped */
+  .lwc-input { font-size: 16px; }
+  .lwc-send  { width: 40px; height: 40px; border-radius: 10px; }
+  .lwc-form  { margin: 10px 12px calc(12px + env(safe-area-inset-bottom)); }
+
+  /* Tab becomes a floating button in the thumb zone, bottom right */
+  .lwc-tab,
+  .lwc-tab:hover,
+  .lwc-tab:focus-visible {
+    top: auto;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    transform: none;
+    border-radius: 999px;
+    padding: 14px 20px 14px 18px;
+  }
+
+  /* No hover on touch screens, so the note label shows in full */
+  .lwc-tab.has-note,
+  .lwc-tab.has-note:hover,
+  .lwc-tab.has-note:focus-visible { transform: none; padding: 6px 18px 6px 6px; }
 }

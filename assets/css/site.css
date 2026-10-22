@@ -449,6 +449,11 @@
   .work-list.lw-strips { flex-direction: column; height: auto; gap: 10px; }
   .lw-strips .work-item { flex: none; height: 92px; transition: height 0.5s cubic-bezier(.2, .8, .2, 1); }
   .lw-strips .work-item.is-active { height: 340px; }
+
+  /* Thumb-sized targets */
+  .lw-strips .lw-ask-btn { padding: 11px; bottom: 8px; right: 8px; }
+  .lw-kudos-btn { width: 40px; height: 40px; }
+  .lw-kudos-nav { gap: 8px; }
 }
 
 /* ── Offline page ── */

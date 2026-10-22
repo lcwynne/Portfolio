@@ -33,6 +33,7 @@
 
   // ── DOM ──────────────────────────────────────────────────────────────────
   const root = document.documentElement;
+  const touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
   // A page can leave Lauren a note for the chat: <template id="lw-chat-note" data-id="...">…</template>.
   // Until it's read, the tab shows her photo with an unread dot.
@@ -124,7 +125,8 @@
     if (open) {
       deliverNote();
       scrollToEnd();
-      if (focus) input.focus({ preventScroll: true });
+      // On touch screens, focusing would throw the keyboard up over the conversation
+      if (focus && !touch) input.focus({ preventScroll: true });
     } else if (focus) {
       tab.focus({ preventScroll: true });
     }
@@ -171,12 +173,16 @@
     }
   }
 
+  let busy = false;
+
   async function handleSubmit(e) {
     e.preventDefault();
     const text = input.value.trim();
-    if (!text) return;
+    if (!text || busy) return;
+    // The field stays enabled so a phone keyboard doesn't drop and pop back up
+    busy = true;
+    sendBtn.disabled = true;
     input.value = '';
-    input.disabled = sendBtn.disabled = true;
     say('user', text);
 
     const typing = document.createElement('div');
@@ -196,8 +202,9 @@
 
     typing.remove();
     say('agent', reply);
-    input.disabled = sendBtn.disabled = false;
-    input.focus({ preventScroll: true });
+    busy = false;
+    sendBtn.disabled = false;
+    if (!touch) input.focus({ preventScroll: true });
   }
 
   // ── Wiring ───────────────────────────────────────────────────────────────
