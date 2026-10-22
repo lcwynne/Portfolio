@@ -98,51 +98,24 @@
 
 .lw-main { padding-bottom: 100px; }
 
-/* ── Homepage ── */
+/* ── Homepage (original Webflow hero, plus title and note) ── */
 
-.lw-hero { padding: 72px 0 48px; }
-.lw-hero h1 { margin-bottom: 18px; }
+/* Title sits in Webflow's right-aligned .text-block slot; the note shares its right edge. */
+.lw-home-title { font-size: 18px; color: #000; }
 
-.lw-hero-links {
-  display: flex;
-  gap: 24px;
-  margin-top: 20px;
-  font-size: 15px;
-  font-weight: 500;
+.lw-home-note {
+  max-width: 420px;
+  margin: 0 140px 30px auto;
+  text-align: right;
+  font-size: 17px;
+  line-height: 160%;
 }
 
-.lw-featured {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
+.lw-home-note .lw-todo { margin: 0; text-align: left; font-size: 14px; }
 
-.lw-card {
-  border-top: 1px solid #000;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.lw-card h3 { margin: 0 0 10px; font-size: 24px; }
-.lw-card .lw-draft,
-.lw-card .lw-todo { margin: 10px 0; }
-
-.lw-card-link {
-  margin-top: auto;
-  padding-top: 14px;
-  font-weight: 500;
-  color: #000;
-}
-
-.lw-prose .lw-more {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 32px;
-  font-size: 18px;
+@media screen and (max-width: 991px) {
+  .lw-home-title { text-align: center; padding-right: 0; }
+  .lw-home-note  { margin: 0 auto 30px; text-align: center; }
 }
 
 /* ── Case studies ── */
@@ -297,8 +270,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .lw-featured { grid-template-columns: 1fr; gap: 24px; }
   .lw-meta     { grid-template-columns: 1fr 1fr; }
   .lw-hook     { font-size: 19px; }
-  .lw-hero     { padding: 48px 0 32px; }
 }
