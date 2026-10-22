@@ -305,59 +305,6 @@
 
 /* ── Offline page ── */
 
-/* A note from Lauren, styled like a notification */
-.lw-note-card {
-  position: relative;
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  max-width: 520px;
-  margin-top: 18px;
-  padding: 16px 20px 16px 16px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-/* Unread dot */
-.lw-note-card::after {
-  content: "";
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--lw-accent);
-}
-
-.lw-note-avatar {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 22%;
-  background: #eee;
-}
-
-.lw-note-body p { margin: 0; font-size: 15px; line-height: 150%; max-width: none; }
-
-.lw-note-head {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 4px;
-  font-size: 13px;
-  line-height: 1.3;
-}
-
-.lw-note-head strong { color: #000; font-weight: 600; }
-.lw-note-head span   { color: #8a8a84; }
-
-.lw-prose .lw-note-body .lw-note-title { color: #000; font-weight: 500; margin-bottom: 2px; }
-
 .lw-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

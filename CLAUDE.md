@@ -80,6 +80,11 @@ X and reopen it with the tab on the right edge, or with a project tile's chat
 icon (`.lw-ask-btn` on `/works`). There is deliberately no way to start a new
 chat; asking for one gets an "out of scope for now" reply.
 
+A page can leave a note from Lauren in the chat with
+`<template id="lw-chat-note" data-id="unique-id">…</template>`. Until it's
+read, the tab shows her photo with an unread dot. The note arrives once, the
+first time the chat is open on that page (see `/offline`).
+
 The AI isn't connected (`WORKER_URL` in `site-chat.js` is empty), so typed
 questions get pointed to the relevant page. **New pages need both
 `chat.css` and `site-chat.js`**, alongside the session-check line.

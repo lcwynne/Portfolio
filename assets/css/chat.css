@@ -4,6 +4,7 @@
   --lwc-width: 380px;
   --lwc-header-h: 69px;          /* overwritten by site-chat.js with the page's real nav height */
   --lwc-rule: rgba(0, 0, 0, 0.2); /* same line color as the Webflow nav's bottom border */
+  --lwc-accent: #d9714e;         /* matches the homepage squiggle */
   --lwc-bg: #ffffff;
   --lwc-border: #e4e4e0;
   --lwc-text: #333;
@@ -253,6 +254,80 @@
 .lwc-tab svg { flex-shrink: 0; }
 
 .lwc-open .lwc-tab { display: none; }
+
+/* Tab when Lauren has left a note on this page: her photo peeks out with an unread dot,
+   and the whole "A note from Lauren" label pops out on hover. */
+.lwc-tab.has-note {
+  padding: 9px 16px 9px 10px;
+  gap: 10px;
+  transform: translate(calc(100% - 52px), -50%);
+  transition: transform 0.25s cubic-bezier(.34, 1.4, .64, 1);
+}
+
+.lwc-tab.has-note:hover,
+.lwc-tab.has-note:focus-visible { transform: translate(0, -50%); }
+
+.lwc-tab-avatar {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.lwc-tab-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+.lwc-dot {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--lwc-accent);
+  border: 2px solid var(--lwc-bg);
+  animation: lwc-ping 1.6s ease-out 0.6s 3;
+}
+
+@keyframes lwc-ping {
+  0%   { box-shadow: 0 0 0 0 rgba(217, 113, 78, 0.55); }
+  100% { box-shadow: 0 0 0 9px rgba(217, 113, 78, 0); }
+}
+
+/* The note itself, inside the conversation */
+.lwc-note .lwc-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+.lwc-msg.agent.lwc-note .lwc-bubble {
+  background: var(--lwc-bg);
+  border: 1px solid var(--lwc-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.lwc-note-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lwc-accent);
+  margin-bottom: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lwc-dot { animation: none; }
+  .lwc-tab, .lwc-tab.has-note { transition: none; }
+}
 
 @media (max-width: 600px) {
   :root { --lwc-width: 100vw; }
