@@ -61,6 +61,21 @@ Pages that load `gate.css` or the works-page scripts reference them with a
 `?v=N` query string. Bump it when you change those files, or browsers keep
 serving the old copy.
 
+## Side chat panel
+
+After the gate, every page carries the same conversation in a side panel
+(`assets/js/site-chat.js`, styled by `assets/css/chat.css`). `gate.js` saves
+each message to `sessionStorage.lw_chat`, and the panel replays it, so the
+password exchange continues on whatever page the visitor lands on.
+`lw_chat_open` remembers whether the panel is open. Visitors close it with the
+X and reopen it with the tab on the right edge, or with a project tile's chat
+icon (`.lw-ask-btn` on `/works`). There is deliberately no way to start a new
+chat; asking for one gets an "out of scope for now" reply.
+
+The AI isn't connected (`WORKER_URL` in `site-chat.js` is empty), so typed
+questions get pointed to the relevant page. **New pages need both
+`chat.css` and `site-chat.js`**, alongside the session-check line.
+
 ## Known follow-ups
 
 See `ROADMAP.md`.

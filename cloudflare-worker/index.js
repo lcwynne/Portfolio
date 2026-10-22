@@ -7,7 +7,7 @@
 // 4. Add your Anthropic key as a secret:
 //    wrangler secret put ANTHROPIC_API_KEY
 //    (paste your key when prompted — it's stored securely, never in code)
-// 5. Copy the deployed URL into project-chat.js → WORKER_URL
+// 5. Copy the deployed URL into assets/js/site-chat.js → WORKER_URL
 
 export default {
   async fetch(request, env) {

@@ -6,6 +6,18 @@
 
   const HASH = 'f448260594387705a220d8fa9759c0e5a8ba1781f6c55ef7262d30ac400f7487';
 
+  // The site's side chat panel (site-chat.js) picks this conversation up after unlock.
+  const LOG_KEY = 'lw_chat';
+  const greeting = document.querySelector('#messages .msg.agent .bubble');
+  sessionStorage.setItem(LOG_KEY, JSON.stringify(greeting ? [{ role: 'agent', html: greeting.innerHTML }] : []));
+
+  function record(role, content) {
+    let log;
+    try { log = JSON.parse(sessionStorage.getItem(LOG_KEY)) || []; } catch { log = []; }
+    log.push(role === 'agent' ? { role, html: content } : { role, text: content });
+    sessionStorage.setItem(LOG_KEY, JSON.stringify(log));
+  }
+
   const closeResponses = [
     "So close, check your spelling.",
     "Almost, try that again.",
@@ -82,6 +94,7 @@
     }
     messages.appendChild(row);
     row.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    record(role, text);
     return row;
   }
 
@@ -171,6 +184,7 @@
     setInputEnabled(false);
     document.getElementById('gate-chips')?.remove();
     sessionStorage.setItem('lw_intent', intent);
+    sessionStorage.setItem('lw_chat_open', '1');
 
     const typing = addTypingIndicator();
     await delay(500);
