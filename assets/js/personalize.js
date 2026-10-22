@@ -6,28 +6,40 @@
   // Keyword sets that earn score points per project
   const SCORES = {
     ai: {
+      composer:           4,
+      'marketing-agent':  4,
       'machine-learning': 3,
-      aidincopilot:       2,
+      aidincopilot:       3,
+      'prototyping-hub':  2,
       appbuilder:         1,
       multiproductexperience: 0
     },
     design_systems: {
       multiproductexperience: 3,
+      'prototyping-hub':      2,
+      composer:               2,
       aidincopilot:           1,
       appbuilder:             1,
+      'marketing-agent':      1,
       'machine-learning':     0
     },
     analytics: {
       'machine-learning': 3,
       aidincopilot:       2,
       appbuilder:         2,
+      composer:           1,
+      'marketing-agent':  1,
+      'prototyping-hub':  0,
       multiproductexperience: 0
     },
     enterprise: {
       multiproductexperience: 3,
+      composer:               2,
       appbuilder:             2,
+      'marketing-agent':      1,
       'machine-learning':     1,
-      aidincopilot:           1
+      aidincopilot:           1,
+      'prototyping-hub':      1
     }
   };
 

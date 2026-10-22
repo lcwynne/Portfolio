@@ -319,6 +319,27 @@
 
 .lw-strips .is-active .work-image { filter: none; opacity: 1; }
 
+/* Projects still waiting on a recreated visual */
+.lw-strips .lw-ph-img {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 26%;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(217, 113, 78, 0.14), transparent 45%),
+    repeating-linear-gradient(135deg, #efefea 0 14px, #e7e7e1 14px 28px);
+}
+
+.lw-strips .lw-ph-img span {
+  font-size: 13px;
+  color: #8a8a84;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lw-strips .is-active .lw-ph-img span { opacity: 1; }
+
 .lw-strips .work-data {
   position: absolute;
   left: 0;
