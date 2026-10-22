@@ -134,10 +134,8 @@
       typing.remove();
 
       if (correct) {
-        addBubble("Yes! Welcome in, glad you're here.", 'agent');
+        addBubble("Yes! Welcome to my site. Where would you like to start?", 'agent');
         sessionStorage.setItem('lw_unlocked', '1');
-        await delay(700);
-        addBubble("Where would you like to start?", 'agent');
         addChips();
         state = 'intent';
         setInputEnabled(true);
