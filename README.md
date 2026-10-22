@@ -11,10 +11,10 @@ Migrated off Webflow on 2026-09-15 as a byte-faithful mirror of the live Webflow
 ```
 index.html                      password gate (chat)
 home/index.html                 /home   (homepage after the gate)
-works/index.html                /works  "Online": how I work, case study listing, background
+works/index.html                /works  "Case studies": how I work, case study listing, background
 works/<slug>/index.html         individual case studies
 offline/index.html              /offline  personal projects (in progress)
-about-me/index.html             redirect to /works/#how-i-work (About was split into Online and Offline)
+about-me/index.html             redirect to /works/#how-i-work (About was split into Case studies and Offline)
 coming-soon/index.html          /coming-soon
 404.html                        custom 404 (GitHub Pages serves this automatically)
 template-info/                  pages inherited from the original Webflow template
