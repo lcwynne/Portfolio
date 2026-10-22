@@ -42,6 +42,13 @@ fingerprinted and cache hard.
 python3 -m http.server 8000
 ```
 
+## Site sections
+
+The nav has two items: **Online** (`/works`: a "How I work" intro, the case
+studies, and background) and **Offline** (`/offline`: personal projects, still
+in progress). There is no About page any more. Its content was split between
+the two, and `/about-me` just redirects to `/works/#how-i-work`.
+
 ## Site-wide password gate
 
 The root `index.html` is a chat-style password gate (`assets/js/gate.js`,

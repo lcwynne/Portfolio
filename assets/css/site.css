@@ -203,6 +203,99 @@
   color: #85857c;
 }
 
+/* ── Online page: "How I work" intro and background ── */
+
+.lw-intro { padding: 8px 0 72px; }
+
+.lw-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.lw-intro-title { font-size: 30px; line-height: 130%; margin-bottom: 14px; }
+
+.lw-resume-link { font-weight: 500; color: #000; }
+
+.lw-photo-slot { margin: 0; width: 100%; max-width: 340px; justify-self: end; }
+.lw-photo-slot .lw-media-box { aspect-ratio: 4 / 5; min-height: 0; }
+.lw-photo-slot figcaption { text-align: left; }
+.lw-photo-slot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+
+.lw-background { padding-bottom: 80px; }
+
+.lw-prose .lw-timeline { list-style: none; padding: 0; margin: 20px 0 0; }
+
+.lw-timeline li {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+
+.lw-timeline strong { display: block; color: #000; font-weight: 500; font-size: 18px; }
+.lw-when { font-size: 14px; color: #000; padding-top: 3px; }
+
+.lw-awards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.lw-awards h3 { font-size: 19px; line-height: 140%; margin: 0 0 10px; }
+.lw-awards p  { font-size: 15px; }
+.lw-award-meta { font-size: 13px; color: #000; font-weight: 500; }
+
+/* ── Offline page ── */
+
+.lw-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 28px;
+}
+
+.lw-notice::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d9a700;
+}
+
+.lw-lede { font-size: 22px; line-height: 150%; color: #000; max-width: 760px; }
+
+.lw-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.lw-gallery .lw-media { margin: 0; max-width: none; }
+.lw-gallery .lw-media-box { aspect-ratio: 4 / 5; min-height: 0; }
+
+@media screen and (max-width: 991px) {
+  .lw-intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .lw-photo-slot { justify-self: start; }
+  .lw-awards     { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 767px) {
+  .lw-gallery  { grid-template-columns: 1fr; }
+  .lw-timeline li { grid-template-columns: 1fr; gap: 4px; }
+  .lw-lede     { font-size: 19px; }
+}
+
 @media screen and (max-width: 767px) {
   .lw-featured { grid-template-columns: 1fr; gap: 24px; }
   .lw-meta     { grid-template-columns: 1fr 1fr; }

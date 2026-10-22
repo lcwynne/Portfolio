@@ -44,7 +44,7 @@
   const suggestions = [
     { label: 'See AI case studies',             intent: 'ai',      to: '/works/',                  ack: "Great — AI work is up first." },
     { label: 'How UX influences model behavior', intent: 'ai',      to: '/works/machine-learning/', ack: "Good pick. Taking you to the Machine Learning case study." },
-    { label: 'Learn about Lauren personally',   intent: 'general', to: '/about-me/',               ack: "Let me introduce you." },
+    { label: 'Learn about Lauren personally',   intent: 'general', to: '/offline/',                ack: "Let me introduce you." },
     { label: 'Browse all work',                 intent: 'skip',    to: '/works/',                  ack: "Come on in :)" }
   ];
 
