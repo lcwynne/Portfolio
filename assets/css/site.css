@@ -12,17 +12,44 @@
 
 .lw-prose li { margin-bottom: 6px; }
 
-/* Site name in the nav, in place of the old LW logo image. Same serif as the
-   homepage name; 40px line height keeps the nav at its original height. */
+/* gate.css (also loaded on /works) sets a system font on body; keep the site's own font */
+body { font-family: Generalsans, sans-serif; }
+
+/* Site name in the nav: the nav's own font, signed with a small terracotta
+   squiggle that echoes the homepage. 40px line height keeps the nav at 69px. */
 .lw-wordmark {
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 23px;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: Generalsans, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
   line-height: 40px;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.01em;
   color: #000;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.lw-wordmark-mark {
+  width: 22px;
+  height: 10px;
+  flex-shrink: 0;
+  color: var(--lw-accent);
+  overflow: visible;
+}
+
+.lw-wordmark:hover .lw-wordmark-mark,
+.lw-wordmark:focus-visible .lw-wordmark-mark { animation: lw-wiggle 0.6s ease-in-out; }
+
+@keyframes lw-wiggle {
+  0%, 100% { transform: translateX(0) scaleX(1); }
+  30%      { transform: translateX(-2px) scaleX(1.12); }
+  60%      { transform: translateX(2px) scaleX(0.92); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lw-wordmark:hover .lw-wordmark-mark { animation: none; }
 }
 
 /* ── Placeholders: deliberately loud so nothing unfinished slips through ── */
