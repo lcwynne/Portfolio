@@ -1,0 +1,210 @@
+/* Styles for hand-built pages (homepage, rebuilt case studies).
+   Loaded after the Webflow stylesheet so it wins on ties. */
+
+.lw-prose a,
+.lw-inline-link { display: inline; }
+
+.lw-prose p,
+.lw-prose li { max-width: 760px; }
+
+.lw-prose ul,
+.lw-prose ol { padding-left: 22px; margin: 0 0 12px; }
+
+.lw-prose li { margin-bottom: 6px; }
+
+/* ── Placeholders: deliberately loud so nothing unfinished slips through ── */
+
+.lw-todo {
+  background: #fff4c2;
+  border: 1px solid #efcf4c;
+  border-left: 5px solid #d9a700;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  max-width: 760px;
+  color: #3a2f00;
+  font-size: 15px;
+  line-height: 160%;
+}
+
+.lw-todo p { margin-top: 6px; }
+
+.lw-todo p:last-child,
+.lw-todo ul:last-child { margin-bottom: 0; }
+
+.lw-todo-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #d9a700;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin: 0 8px 6px 0;
+}
+
+.lw-flag {
+  background: #ffe36b;
+  color: #3a2f00;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-weight: 500;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lw-draft {
+  border: 1px dashed #a9a9a0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  max-width: 760px;
+  background: #fff;
+}
+
+.lw-draft p:last-child,
+.lw-draft ul:last-child { margin-bottom: 0; }
+
+.lw-draft-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #85857c;
+  margin-bottom: 6px;
+}
+
+/* ── Shared layout ── */
+
+.lw-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 14px;
+}
+
+.lw-section {
+  border-top: 1px solid #000;
+  padding: 40px 0 48px;
+}
+
+.lw-section > h2 { font-size: 30px; line-height: 130%; margin-bottom: 16px; }
+.lw-section h3   { font-size: 22px; line-height: 140%; margin: 28px 0 8px; }
+
+.lw-main { padding-bottom: 100px; }
+
+/* ── Homepage ── */
+
+.lw-hero { padding: 72px 0 48px; }
+.lw-hero h1 { margin-bottom: 18px; }
+
+.lw-hero-links {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.lw-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.lw-card {
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lw-card h3 { margin: 0 0 10px; font-size: 24px; }
+.lw-card .lw-draft,
+.lw-card .lw-todo { margin: 10px 0; }
+
+.lw-card-link {
+  margin-top: auto;
+  padding-top: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.lw-prose .lw-more {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 18px;
+}
+
+/* ── Case studies ── */
+
+.lw-hook {
+  font-size: 22px;
+  line-height: 150%;
+  color: #000;
+  max-width: 820px;
+}
+
+.lw-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 32px;
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  margin: 32px 0 8px;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.lw-meta dt { font-weight: 500; color: #000; margin-bottom: 4px; }
+.lw-meta dd { margin: 0; }
+
+.lw-decision {
+  border-left: 2px solid #000;
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.lw-decision h3 { margin-top: 0; }
+
+.lw-media {
+  margin: 20px 0;
+  max-width: 760px;
+}
+
+.lw-media-box {
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: 1px dashed #b5b5ab;
+  background: repeating-linear-gradient(135deg, #f0f0ec 0 12px, #e8e8e3 12px 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #5c5c55;
+  font-size: 14px;
+}
+
+.lw-media figcaption { font-size: 14px; margin-top: 8px; }
+
+.lw-not-for-page {
+  font-size: 13px;
+  color: #85857c;
+}
+
+@media screen and (max-width: 767px) {
+  .lw-featured { grid-template-columns: 1fr; gap: 24px; }
+  .lw-meta     { grid-template-columns: 1fr 1fr; }
+  .lw-hook     { font-size: 19px; }
+  .lw-hero     { padding: 48px 0 32px; }
+}
