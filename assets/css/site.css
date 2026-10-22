@@ -182,7 +182,7 @@
 }
 
 .lw-media-box {
-  aspect-ratio: 16 / 9;
+  min-height: 200px;
   border-radius: 10px;
   border: 1px dashed #b5b5ab;
   background: repeating-linear-gradient(135deg, #f0f0ec 0 12px, #e8e8e3 12px 24px);
@@ -195,7 +195,8 @@
   font-size: 14px;
 }
 
-.lw-media figcaption { font-size: 14px; margin-top: 8px; }
+.lw-media figcaption { font-size: 14px; margin-top: 8px; text-align: left; }
+.lw-media figcaption .lw-todo { margin-top: 8px; }
 
 .lw-not-for-page {
   font-size: 13px;
