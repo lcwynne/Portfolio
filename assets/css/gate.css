@@ -214,6 +214,41 @@ html, body {
   30%            { transform: translateY(-4px); opacity: 1; }
 }
 
+/* Suggestion chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-left: 34px;
+  animation: chips-in 0.25s ease both;
+}
+
+.chip {
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--gate-input-border);
+  background: var(--gate-card-bg);
+  color: var(--gate-text);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.chip:hover,
+.chip:focus-visible {
+  background: var(--gate-user-bg);
+  border-color: var(--gate-user-bg);
+  color: var(--gate-user-text);
+  outline: none;
+}
+
+@keyframes chips-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* Input area */
 .chat-input-wrap {
   padding: 10px 14px 14px;
@@ -301,10 +336,11 @@ html, body {
 
 /* Floating chat popup */
 .lw-popup {
-  position: fixed;
+  position: absolute;
   z-index: 1000;
-  width: 320px;
-  max-height: 420px;
+  width: min(360px, calc(100vw - 32px));
+  height: min(460px, calc(100vh - 32px));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   display: flex;
   flex-direction: column;
   background: var(--gate-card-bg, #fff);
@@ -374,7 +410,36 @@ html, body {
 
 .lw-popup .agent-avatar { width: 22px; height: 22px; }
 .lw-popup .agent-avatar img { width: 13px; }
-.lw-popup .bubble { font-size: 12.5px; }
+.lw-popup .bubble { font-size: 13px; }
+
+#lw-panel-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--gate-text);
+  font-family: inherit;
+  line-height: 1.4;
+}
+#lw-panel-input::placeholder { color: var(--gate-text-dim); }
+
+#lw-panel-send {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--gate-send-bg);
+  color: var(--gate-send-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+#lw-panel-send:hover    { opacity: 0.8; }
+#lw-panel-send:disabled { opacity: 0.3; cursor: default; }
 
 /* Personalisation reorder note */
 .lw-reorder-note {

@@ -56,11 +56,9 @@ const FORMSPREE_ENDPOINT = ''; // TODO: paste your Formspree endpoint here
     messages.innerHTML = '';
     titleEl.textContent = title;
 
-    // Position popup near the trigger tile
-    positionPopup(triggerEl);
-
     backdrop.style.display = 'block';
     popup.style.display    = 'flex';
+    positionPopup(triggerEl);
     input.focus();
 
     addBubble(`Hi! I can answer questions about the <strong>${escapeHtml(title)}</strong> case study. What would you like to know?`, 'agent');
@@ -69,21 +67,21 @@ const FORMSPREE_ENDPOINT = ''; // TODO: paste your Formspree endpoint here
 
   function positionPopup(triggerEl) {
     const tile = triggerEl.closest('.work-item');
-    const rect = tile.getBoundingClientRect();
-    const PW = 320, PH = 420, GAP = 12;
+    const img  = tile.querySelector('.work-img') || tile;
+    const rect = img.getBoundingClientRect();
+    const PW = popup.offsetWidth || 360, PH = popup.offsetHeight || 460, GAP = 16;
+    const vw = document.documentElement.clientWidth, vh = window.innerHeight;
 
-    let top  = rect.top  - PH - GAP;
-    let left = rect.left + rect.width / 2 - PW / 2;
+    let left;
+    if (rect.right + GAP + PW <= vw - GAP)  left = rect.right + GAP;
+    else if (rect.left - GAP - PW >= GAP)   left = rect.left - GAP - PW;
+    else                                     left = Math.max(GAP, (vw - PW) / 2);
 
-    // Flip below if not enough room above
-    if (top < GAP) top = rect.bottom + GAP;
-    // Clamp horizontal
-    left = Math.max(GAP, Math.min(left, window.innerWidth - PW - GAP));
-    // Clamp vertical
-    top  = Math.max(GAP, Math.min(top,  window.innerHeight - PH - GAP));
+    const top = Math.max(GAP, Math.min(rect.top, vh - PH - GAP));
 
-    popup.style.top  = top  + 'px';
-    popup.style.left = left + 'px';
+    // Document coordinates, so the popup scrolls with the tile it belongs to
+    popup.style.top  = (top  + window.scrollY) + 'px';
+    popup.style.left = (left + window.scrollX) + 'px';
   }
 
   function closePanel() {

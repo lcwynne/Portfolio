@@ -42,40 +42,24 @@ fingerprinted and cache hard.
 python3 -m http.server 8000
 ```
 
-## Case studies are ENCRYPTED — read this before touching them
+## Site-wide password gate
 
-**`works/<slug>/index.html` for the four case studies is ciphertext, not HTML.**
-Editing those files directly destroys the page. There is no warning; it will
-just stop decrypting.
+The root `index.html` is a chat-style password gate (`assets/js/gate.js`,
+styled by `assets/css/gate.css`). On success it sets
+`sessionStorage.lw_unlocked = '1'` and sends the visitor to `/home/`.
 
-The real content lives in `_source/works/<slug>/index.html`, which is
-gitignored and never published. The workflow is:
+Every other page — including the four case studies in `works/<slug>/` — starts
+its `<head>` with a one-line check that redirects to `/` if that flag is
+missing. **New pages need that same line.**
 
-```bash
-node scripts/protect.mjs unlock <password>   # ciphertext -> _source/
-# edit _source/works/<slug>/index.html
-node scripts/protect.mjs lock <password>     # _source/ -> ciphertext
-git add -A && git commit -m "..." && git push
-```
+This is a client-side gate only. The repo is public and the case-study HTML is
+plain text, so anyone reading the repo or disabling JS can see the content.
+The case studies used to be individually AES-encrypted (`scripts/protect.mjs`);
+that was removed so visitors only enter one password. `protect.mjs` is unused.
 
-If `_source/` is missing (fresh clone), run `unlock` first — the ciphertext
-contains the complete original page, so it round-trips. The encrypted page in
-the repo IS the backup; `_source/` is only a convenience.
-
-How it works: AES-256-GCM, key derived by PBKDF2-SHA256 at 250,000 iterations
-with a random per-page salt. Without the password the page contains nothing
-readable — this is real encryption, not the hide-with-CSS gate it replaced.
-
-Two limits worth knowing:
-- It needs HTTPS. `crypto.subtle` does not exist in a non-secure context, so the
-  page shows "needs a secure connection" over plain HTTP.
-- Only the HTML is encrypted. The case-study images under `/assets/` are still
-  fetchable by direct URL by anyone who knows the URL. Protecting those needs a
-  server, which GitHub Pages is not.
-
-`assets/css/gate.css` styles the password prompt. `assets/js/gate.js` is the old
-soft gate — no longer referenced by the case studies, kept only in case a
-non-encrypted page ever needs a light gate.
+Pages that load `gate.css` or the works-page scripts reference them with a
+`?v=N` query string. Bump it when you change those files, or browsers keep
+serving the old copy.
 
 ## Known follow-ups
 
