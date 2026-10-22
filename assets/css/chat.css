@@ -225,7 +225,8 @@
 
 .lwc-send:disabled { opacity: 0.3; cursor: default; }
 
-/* Pull tab, shown on the right edge while the panel is closed */
+/* Pull tab on the right edge while the panel is closed. Dark and fully visible
+   so it stands out on the light pages; it stretches out a little on hover. */
 .lwc-tab {
   position: fixed;
   right: 0;
@@ -234,22 +235,24 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 12px 12px 14px;
-  border: 1px solid var(--lwc-border);
-  border-right: none;
-  border-radius: 12px 0 0 12px;
-  background: var(--lwc-bg);
-  color: var(--lwc-text);
-  box-shadow: var(--lwc-shadow);
-  font-size: 13px;
-  font-weight: 500;
+  padding: 13px 16px 13px 15px;
+  border: none;
+  border-radius: 14px 0 0 14px;
+  background: var(--lwc-user-bg);
+  color: var(--lwc-user-text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 10px 28px rgba(0, 0, 0, 0.18);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transform: translate(calc(100% - 46px), -50%);
-  transition: transform 0.2s ease;
+  transform: translate(0, -50%);
+  transition: padding-right 0.25s cubic-bezier(.34, 1.4, .64, 1), transform 0.25s cubic-bezier(.34, 1.4, .64, 1);
 }
 
 .lwc-tab:hover,
-.lwc-tab:focus-visible { transform: translate(0, -50%); outline: none; }
+.lwc-tab:focus-visible { padding-right: 22px; outline: none; }
+
+.lwc-tab:focus-visible { box-shadow: 0 0 0 3px var(--lwc-accent), 0 10px 28px rgba(0, 0, 0, 0.18); }
 
 .lwc-tab svg { flex-shrink: 0; }
 
@@ -258,19 +261,18 @@
 /* Tab when Lauren has left a note on this page: her photo peeks out with an unread dot,
    and the whole "A note from Lauren" label pops out on hover. */
 .lwc-tab.has-note {
-  padding: 9px 16px 9px 10px;
+  padding: 9px 18px 9px 10px;
   gap: 10px;
-  transform: translate(calc(100% - 52px), -50%);
-  transition: transform 0.25s cubic-bezier(.34, 1.4, .64, 1);
+  transform: translate(calc(100% - 56px), -50%);
 }
 
 .lwc-tab.has-note:hover,
-.lwc-tab.has-note:focus-visible { transform: translate(0, -50%); }
+.lwc-tab.has-note:focus-visible { padding-right: 18px; transform: translate(0, -50%); }
 
 .lwc-tab-avatar {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
 }
 
@@ -291,7 +293,7 @@
   height: 9px;
   border-radius: 50%;
   background: var(--lwc-accent);
-  border: 2px solid var(--lwc-bg);
+  border: 2px solid var(--lwc-user-bg);
   animation: lwc-ping 1.6s ease-out 0.6s 3;
 }
 
