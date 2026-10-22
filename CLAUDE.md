@@ -44,9 +44,10 @@ python3 -m http.server 8000
 
 ## Site sections
 
-The nav has two items: **Online** (`/works`: a "How I work" intro, the case
-studies, and background) and **Offline** (`/offline`: personal projects, still
-in progress). There is no About page any more. Its content was split between
+The nav has two items: **Online (use cases)** (`/works`: a "How I work" intro,
+the case studies, and background) and **Offline** (`/offline`: personal
+projects, still in progress). The homepage (`/home/`) is deliberately minimal:
+name, title, one personal note, and links to those two plus the resume. There is no About page any more. Its content was split between
 the two, and `/about-me` just redirects to `/works/#how-i-work`.
 
 ## Site-wide password gate

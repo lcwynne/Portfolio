@@ -111,7 +111,7 @@
     if (project) {
       return `I can't answer questions in my own words yet, so the <a href="/works/${esc(project.slug)}/">${esc(project.title)} case study</a> is the best place to look.`;
     }
-    return `I can't answer questions in my own words yet. The <a href="/works">Online</a> and <a href="/offline">Offline</a> pages are the best places to look.`;
+    return `I can't answer questions in my own words yet. The <a href="/works">Online (use cases)</a> and <a href="/offline">Offline</a> pages are the best places to look.`;
   }
 
   async function askWorker(question) {
