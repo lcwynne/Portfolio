@@ -4,7 +4,7 @@
     return;
   }
 
-  const HASH = '98a4513df16a6585b1bcd6c3c71e7be85f5eca0f50bbbed1ab0fdf4552147fbd';
+  const HASH = 'f448260594387705a220d8fa9759c0e5a8ba1781f6c55ef7262d30ac400f7487';
 
   const closeResponses = [
     "So close, check your spelling.",
@@ -46,7 +46,7 @@
 
   function isClose(text) {
     const t = text.toLowerCase();
-    return t.startsWith('/') || t.includes('build') || t.includes('wynne');
+    return t.includes('build') || t.includes('wynne');
   }
 
   async function checkPassword(input) {
