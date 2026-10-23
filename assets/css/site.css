@@ -269,6 +269,18 @@ body { font-family: Generalsans, sans-serif; }
 }
 
 .lw-media figcaption { font-size: 14px; margin-top: 8px; text-align: left; }
+
+/* Real screenshots in case studies: a bit wider than the text column */
+.lw-shot { margin: 24px 0 28px; max-width: 900px; }
+.lw-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+.lw-shot figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: #6b6b66; text-align: left; }
 .lw-media figcaption .lw-todo { margin-top: 8px; }
 
 .lw-not-for-page {
