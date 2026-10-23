@@ -566,139 +566,144 @@ body { font-family: Generalsans, sans-serif; }
   .lw-hook     { font-size: 19px; }
 }
 
-/* ── Story mode (assets/js/story.js): case studies told as clickable steps ── */
+/* ── Story mode (assets/js/story.js): case studies told as steps ── */
 
-.lw-step[hidden] { display: none; }
+/* Hero: title, one-line summary, and the project's screenshot */
+.lw-story-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  grid-template-areas: "eyebrow shot" "title shot" "lede shot";
+  grid-template-rows: auto auto 1fr;
+  column-gap: 56px;
+  align-items: start;
+  padding: 56px 0 8px;
+}
+.lw-story-hero > .lw-eyebrow { grid-area: eyebrow; align-self: end; }
+.lw-story-hero .main-title { grid-area: title; margin-bottom: 12px; }
+.lw-story-hero .lw-hook { grid-area: lede; margin-bottom: 0; }
+.lw-hero-shot { grid-area: shot; margin: 0; max-width: none; align-self: center; }
+.lw-hero-shot img { border-radius: 16px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 18px 40px -20px rgba(0, 0, 0, 0.25); }
 
-/* Small centered stepper, pinned near the top while reading */
-.lw-stepper-wrap {
-  position: sticky;
-  top: 12px;
-  z-index: 5;
+/* Two columns: every step listed by name on the left, the step on the right */
+.lw-story-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.lw-story-aside { position: sticky; top: 28px; }
+
+.lw-steps-title {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+
+.lw-prose .lw-steps ol { list-style: none; margin: 0; padding: 0; }
+
+.lw-prose .lw-steps li { position: relative; margin: 0; max-width: none; }
+
+/* Progress line joining each step's number to the next */
+.lw-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 32px;
+  bottom: -4px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.lw-steps li.is-done::after { background: var(--lw-accent); }
+
+.lw-prose .lw-steps-link {
   display: flex;
-  justify-content: center;
-  margin: 18px 0 4px;
-  pointer-events: none;
-}
-
-.lw-stepper {
-  pointer-events: auto;
-  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  max-width: 100%;
-  padding: 5px 6px 5px 5px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 999px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px -10px rgba(0, 0, 0, 0.18);
+  gap: 12px;
+  padding: 6px 8px 6px 0;
+  border-radius: 8px;
+  color: #6b6b66;
+  text-decoration: none;
+  font-size: 14.5px;
+  line-height: 1.35;
+  transition: color 0.15s ease;
 }
 
-.lw-stepper-arrow {
-  width: 32px;
-  height: 32px;
+.lw-steps-num {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
   border-radius: 50%;
-  background: transparent;
-  color: #000;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b6b66;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.lw-stepper-arrow:hover:not(:disabled),
-.lw-stepper-arrow:focus-visible { background: rgba(0, 0, 0, 0.06); outline: none; }
-.lw-stepper-arrow:disabled { color: rgba(0, 0, 0, 0.25); cursor: default; }
+.lw-prose .lw-steps-link:hover { color: #000; }
+.lw-steps-link:hover .lw-steps-num { border-color: #000; color: #000; }
 
-.lw-prose .lw-stepper-dots {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  margin: 0 2px;
-  padding: 0;
-  list-style: none;
-}
+.lw-steps li.is-done .lw-steps-num { border-color: var(--lw-accent); color: var(--lw-accent); }
 
-.lw-prose .lw-stepper-dots li { margin: 0; max-width: none; line-height: 0; }
+.lw-prose .lw-steps li.is-current .lw-steps-link { color: #000; font-weight: 600; }
+.lw-steps li.is-current .lw-steps-num { background: #000; border-color: #000; color: #fff; }
 
-/* Each dot is a 24px tap target with a small visible mark inside */
-.lw-stepper-dot {
-  width: 22px;
-  height: 24px;
+.lw-steps-link:focus-visible { outline: 2px solid var(--lw-accent); outline-offset: 2px; }
+
+.lw-story-toggle {
+  margin: 14px 0 0 36px;
   padding: 0;
   border: none;
   background: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.25s ease;
-}
-
-.lw-stepper-dot::before {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.18);
-  transition: width 0.25s cubic-bezier(.34, 1.4, .64, 1), background 0.2s ease;
-}
-
-.lw-stepper-dot:hover::before { background: rgba(0, 0, 0, 0.45); }
-.lw-stepper-dot.is-done::before { background: rgba(217, 113, 78, 0.55); }
-.lw-stepper-dot.is-current { width: 32px; }
-.lw-stepper-dot.is-current::before { width: 22px; background: var(--lw-accent); }
-.lw-stepper-dot:focus-visible { outline: none; }
-.lw-stepper-dot:focus-visible::before { box-shadow: 0 0 0 3px rgba(217, 113, 78, 0.35); }
-
-.lw-stepper-label {
-  min-width: 0;
-  padding: 0 6px 0 8px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #000;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 220px;
-}
-
-.lw-stepper-count { color: #8a8a84; font-variant-numeric: tabular-nums; margin-right: 2px; }
-
-.lw-stepper-sep {
-  width: 1px;
-  height: 20px;
-  margin: 0 4px;
-  background: rgba(0, 0, 0, 0.12);
-  flex-shrink: 0;
-}
-
-.lw-story-toggle {
-  flex-shrink: 0;
-  padding: 7px 12px;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  color: #000;
   font: inherit;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
-  white-space: nowrap;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.25);
+  text-underline-offset: 4px;
   cursor: pointer;
-  transition: background 0.15s ease;
 }
 
 .lw-story-toggle:hover,
-.lw-story-toggle:focus-visible { background: rgba(0, 0, 0, 0.06); outline: none; }
+.lw-story-toggle:focus-visible { text-decoration-color: #000; outline: none; }
 
-/* Each step */
-.lw-step { padding: 32px 0 8px; scroll-margin-top: 80px; }
-.lw-step > h2 { font-size: 30px; line-height: 130%; margin-bottom: 16px; }
-.lw-story.is-expanded .lw-step + .lw-step { border-top: 1px solid #000; margin-top: 32px; }
+/* Project details, stacked in the sidebar */
+.lw-meta.lw-meta--stack {
+  display: block;
+  margin: 32px 0 0;
+  padding: 20px 0 0;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+}
+
+.lw-meta--stack > div { display: block; padding: 0; margin-bottom: 14px; }
+.lw-meta--stack > div + div { border-left: none; }
+.lw-meta--stack dt { margin-bottom: 2px; }
+.lw-meta--stack dd { font-size: 14px; }
+
+/* Step content: a comfortable reading width */
+.lw-story { min-width: 0; max-width: 760px; }
+.lw-step[hidden] { display: none; }
+.lw-step { scroll-margin-top: 28px; }
+.lw-step > h2 { font-size: 32px; line-height: 125%; margin-bottom: 18px; }
+.lw-step .lw-shot { max-width: 100%; }
+.is-expanded .lw-step + .lw-step { border-top: 1px solid rgba(0, 0, 0, 0.12); margin-top: 48px; padding-top: 48px; }
 
 .lw-step.is-entering { animation: lw-step-in 0.35s ease both; }
 
@@ -712,14 +717,13 @@ body { font-family: Generalsans, sans-serif; }
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  max-width: 900px;
-  margin-top: 36px;
-  padding-top: 20px;
+  margin-top: 40px;
+  padding-top: 24px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.lw-story.is-expanded .lw-step-nav,
-.lw-story:not(.is-ready) .lw-step-nav { display: none; }
+.is-expanded .lw-step-nav,
+.lw-story-layout:not(.is-ready) .lw-step-nav { display: none; }
 
 .lw-step-btn {
   display: inline-flex;
@@ -746,17 +750,42 @@ body { font-family: Generalsans, sans-serif; }
 
 @media (prefers-reduced-motion: reduce) {
   .lw-step.is-entering { animation: none; }
-  .lw-stepper-dot, .lw-stepper-dot::before { transition: none; }
 }
 
-@media screen and (max-width: 767px) {
-  .lw-stepper-wrap { top: 8px; }
-  .lw-stepper { gap: 2px; }
-  .lw-stepper-label { display: none; } /* the step heading right below says it */
-  .lw-stepper-arrow { width: 40px; height: 40px; }
-  .lw-stepper-dot { width: 20px; height: 40px; }
-  .lw-stepper-dot.is-current { width: 30px; }
-  .lw-story-toggle { padding: 11px 12px; }
+/* Tablets and phones: one column. Details first, then the steps as a row of named chips. */
+@media screen and (max-width: 991px) {
+  .lw-story-hero { display: block; padding-top: 40px; }
+  .lw-hero-shot { margin-top: 28px; }
+  /* minmax(0, 1fr) + min-width: 0 keep the wide chip row from stretching the page */
+  .lw-story-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 36px; padding-top: 28px; }
+  .lw-story-aside { position: static; display: flex; flex-direction: column; min-width: 0; }
+  .lw-steps { min-width: 0; }
+  .lw-meta.lw-meta--stack { order: -1; margin: 0 0 24px; padding: 0; border-top: none; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+  .lw-meta--stack > div { margin: 0; }
+
+  .lw-prose .lw-steps ol {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 -20px;
+    padding: 2px 20px 4px;
+  }
+  .lw-steps ol::-webkit-scrollbar { display: none; }
+  .lw-steps li:not(:last-child)::after { display: none; }
+  .lw-prose .lw-steps li { flex-shrink: 0; }
+  .lw-prose .lw-steps-link {
+    gap: 8px;
+    min-height: 40px;
+    padding: 6px 14px 6px 6px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 999px;
+    background: #fff;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .lw-prose .lw-steps li.is-current .lw-steps-link { border-color: #000; }
+  .lw-story-toggle { margin: 12px 0 0; min-height: 40px; }
   .lw-step > h2 { font-size: 26px; }
   .lw-step-nav { flex-direction: column-reverse; }
   .lw-step-btn { width: 100%; justify-content: center; padding: 13px 18px; }

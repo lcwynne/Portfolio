@@ -63,11 +63,13 @@ name, title, one personal note, and links to those two plus the resume. There is
 the two, and `/about-me` just redirects to `/works/#how-i-work`.
 
 The two older Alteryx case studies (AiDIN Co-Pilot, Machine Learning) use
-**story mode** (`assets/js/story.js`): their content is split into
-`<section class="lw-step" data-title="…">` steps inside `[data-story]`. A
-clickable timeline shows one step at a time with Previous and Next, and an
-Expand toggle shows them all with the timeline tracking the step in view.
-Without JavaScript, every step shows in order.
+**story mode** (`assets/js/story.js`). A hero has the title, summary and
+screenshot side by side. Below it, a sticky sidebar lists every step by name
+(plain `#step-N` links, plus the project details), beside
+`<section class="lw-step">` content. One step shows at a time with Previous
+and Next, and "Show all steps" switches to a long scroll where the sidebar
+follows along. On phones, the steps become a row of named chips. Without
+JavaScript, every step shows in order.
 
 ## Site-wide password gate
 
