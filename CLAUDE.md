@@ -62,6 +62,13 @@ projects, still in progress). The homepage (`/home/`) is deliberately minimal:
 name, title, one personal note, and links to those two plus the resume. There is no About page any more. Its content was split between
 the two, and `/about-me` just redirects to `/works/#how-i-work`.
 
+The two older Alteryx case studies (AiDIN Co-Pilot, Machine Learning) use
+**story mode** (`assets/js/story.js`): their content is split into
+`<section class="lw-step" data-title="…">` steps inside `[data-story]`. A
+clickable timeline shows one step at a time with Previous and Next, and an
+Expand toggle shows them all with the timeline tracking the step in view.
+Without JavaScript, every step shows in order.
+
 ## Site-wide password gate
 
 The root `index.html` is a chat-style password gate (`assets/js/gate.js`,
