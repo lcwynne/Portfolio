@@ -1,38 +1,21 @@
-// Story mode for case studies. The sidebar lists every step by name (plain #step
-// links, so the page works without JavaScript). With JavaScript, one step shows at
-// a time with Previous/Next, and "Show all steps" switches to one long scroll
-// where the sidebar follows the step being read.
+// Story mode for case studies: every step is on the page, and the sidebar lists
+// them by name. The sidebar links are plain #step-N anchors (they scroll without
+// JavaScript); this script highlights the step being read and marks earlier ones.
 
 (function () {
   const layout = document.querySelector('[data-story]');
   if (!layout) return;
 
-  const story  = layout.querySelector('.lw-story');
-  const steps  = [...story.querySelectorAll('.lw-step')];
-  const links  = [...layout.querySelectorAll('.lw-steps-link')];
-  const toggle = layout.querySelector('.lw-story-toggle');
+  const steps = [...layout.querySelectorAll('.lw-step')];
+  const links = [...layout.querySelectorAll('.lw-steps-link')];
   if (!steps.length || steps.length !== links.length) return;
 
-  const MODE_KEY = 'lw_story_mode';
   const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-  let index = 0;
-  let expanded = false;
-  try { expanded = localStorage.getItem(MODE_KEY) === 'expanded'; } catch { /* storage blocked */ }
+  let current = -1;
 
-  // Previous / Next under each step
-  steps.forEach((step, i) => {
-    const nav = document.createElement('div');
-    nav.className = 'lw-step-nav';
-    const title = n => steps[n].dataset.title;
-    nav.innerHTML =
-      (i > 0 ? `<button type="button" class="lw-step-btn" data-go="${i - 1}"><span aria-hidden="true">←</span> ${title(i - 1)}</button>` : '<span></span>') +
-      (i < steps.length - 1
-        ? `<button type="button" class="lw-step-btn is-next" data-go="${i + 1}">Next: ${title(i + 1)} <span aria-hidden="true">→</span></button>`
-        : `<button type="button" class="lw-step-btn is-next" data-go="0">Back to the start <span aria-hidden="true">↺</span></button>`);
-    step.append(nav);
-  });
-
-  function markCurrent(i) {
+  function mark(i) {
+    if (i === current) return;
+    current = i;
     links.forEach((a, n) => {
       a.parentElement.classList.toggle('is-current', n === i);
       a.parentElement.classList.toggle('is-done', n < i);
@@ -45,61 +28,28 @@
     }
   }
 
-  function bringStoryIntoView() {
-    const top = layout.getBoundingClientRect().top + window.scrollY - 24;
-    if (window.scrollY > top) window.scrollTo({ top, behavior: smooth });
+  // Highlight the step whose top has most recently passed the upper third of the screen
+  function update() {
+    const line = window.innerHeight * 0.33;
+    let i = 0;
+    steps.forEach((s, n) => { if (s.getBoundingClientRect().top <= line) i = n; });
+    mark(i);
   }
 
-  function go(i, fromUser) {
-    index = Math.max(0, Math.min(steps.length - 1, i));
-    if (expanded) {
-      steps[index].scrollIntoView({ behavior: smooth, block: 'start' });
-    } else {
-      steps.forEach((s, n) => {
-        s.hidden = n !== index;
-        s.classList.toggle('is-entering', n === index && fromUser);
-      });
-      if (fromUser) bringStoryIntoView();
-    }
-    markCurrent(index);
-    history.replaceState(null, '', `#step-${index + 1}`);
-  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { update(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', update);
 
-  function setExpanded(on) {
-    expanded = on;
-    layout.classList.toggle('is-expanded', on);
-    toggle.textContent = on ? 'Show one step at a time' : 'Show all steps';
-    toggle.setAttribute('aria-pressed', String(on));
-    steps.forEach((s, n) => { s.hidden = !on && n !== index; });
-    try { localStorage.setItem(MODE_KEY, on ? 'expanded' : 'collapsed'); } catch { /* storage blocked */ }
-  }
+  links.forEach((a, n) => a.addEventListener('click', e => {
+    e.preventDefault();
+    steps[n].scrollIntoView({ behavior: smooth, block: 'start' });
+    history.replaceState(null, '', `#step-${n + 1}`);
+    mark(n);
+  }));
 
-  // While scrolling through every step, the sidebar follows the one being read
-  const watcher = new IntersectionObserver(entries => {
-    if (!expanded) return;
-    const seen = entries.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-    if (seen.length) { index = steps.indexOf(seen[0].target); markCurrent(index); }
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  steps.forEach(s => watcher.observe(s));
-
-  layout.addEventListener('click', e => {
-    const link = e.target.closest('.lw-steps-link');
-    if (link) { e.preventDefault(); go(Number(link.dataset.i), true); return; }
-    const btn = e.target.closest('.lw-step-btn');
-    if (btn) go(Number(btn.dataset.go), true);
-  });
-
-  toggle.addEventListener('click', () => {
-    setExpanded(!expanded);
-    go(index, true);
-  });
-
-  // Start: honour a #step-N link, otherwise begin at step 1
-  const m = location.hash.match(/^#step-(\d+)$/);
-  if (m) index = Math.min(steps.length, Math.max(1, Number(m[1]))) - 1;
-  toggle.hidden = false;
-  layout.classList.add('is-ready');
-  setExpanded(expanded);
-  markCurrent(index);
-  if (m) go(index, true);
+  update();
 })();
