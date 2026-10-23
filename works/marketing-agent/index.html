@@ -55,8 +55,6 @@
 <h3>Placement</h3>
 <p>Marketing Agent had two entry points for existing customers: the top nav header, and recommendations in line, inside the tables where customers already work. We didn't set out to test them against each other, but usage told the story: in-line recommendations got far more adoption than the header <span class="lw-flag">[FILL IN: in-line lift over the header, as a percentage]</span>. That's why Composer appears where the work happens.</p>
 <figure class="lw-media"><div class="lw-media-box">Media placeholder · A recreated side-by-side of the two placements you tested (header versus in-line in the users table), with the adoption difference if you can share it.</div><figcaption><div class="lw-todo"><span class="lw-todo-label">TODO</span>Caption and alt text <span class="lw-flag">[FILL IN]</span>. Recreate or blur all UI.</div></figcaption></figure>
-<h3>Content quality</h3>
-<div class="lw-draft"><span class="lw-draft-label">Draft · not confirmed</span><p>Draft, content quality: customers who wanted to edit found that fixing the generated content took longer than cloning one of their own emails. <span class="lw-flag">[verify public wording]</span></p></div>
 </section>
 
 <section class="lw-section" id="constraints">
@@ -85,8 +83,10 @@
 
 <section class="lw-section" id="ai-wrong">
 <h2>When the AI was wrong</h2>
-<div class="lw-draft"><span class="lw-draft-label">Draft · not confirmed</span><p>Draft: This is the project's core lesson. The generated content was not good enough, so editing it cost customers more time than starting from their own email, and that is where adoption failed. The bar for AI-generated content is not "good"; it is faster than doing it myself.</p></div>
-<div class="lw-todo"><p><span class="lw-todo-label">TODO</span><span class="lw-flag">[FILL IN: one concrete example of weak output and what the user saw next.]</span></p></div>
+<p>AI-generated content should be able to learn from a customer's past campaigns and see what they're actually sending. Instead, Marketing Agent pulled from Klaviyo's brand settings, and that's where it went wrong.</p>
+<h3>The two-year-old logo</h3>
+<p>Customers would get a generated campaign with their logo from two years ago, which was stressful to see. They had updated their logo on their campaign and email templates, but never in Klaviyo's brand settings, because whenever they created a campaign they cloned an existing one instead of visiting the brand section. Brand settings were exactly where we were pulling from. That's why the interface pointed customers back to the source, so they could update it.</p>
+<p>The bar for AI-generated content isn't "good." It's faster than doing it myself, and that means working from what the customer is actually sending today.</p>
 </section>
 
 <section class="lw-section" id="quality">
