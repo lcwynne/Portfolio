@@ -442,9 +442,6 @@ body { font-family: Generalsans, sans-serif; }
 .lw-strips .is-active .work-data .body-small { max-height: 60px; opacity: 1; margin-top: 4px; }
 
 /* "Ask about this project" icon: only on the open panel */
-.lw-strips .lw-ask-btn { opacity: 0; pointer-events: none; bottom: 18px; right: 18px; }
-.lw-strips .is-active .lw-ask-btn { opacity: 0.6; pointer-events: auto; }
-.lw-strips .is-active .lw-ask-btn:hover { opacity: 1; }
 
 .lw-strips .work-link:focus-visible { outline: 2px solid var(--lw-accent); outline-offset: -4px; border-radius: 20px; }
 
@@ -535,7 +532,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-strips .work-item.is-active { height: 340px; }
 
   /* Thumb-sized targets */
-  .lw-strips .lw-ask-btn { padding: 11px; bottom: 8px; right: 8px; }
   .lw-kudos-btn { width: 40px; height: 40px; }
   .lw-kudos-nav { gap: 8px; }
 }

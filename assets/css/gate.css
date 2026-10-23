@@ -311,23 +311,7 @@ html, body {
 /* Chat icon trigger on each tile */
 .work-item { position: relative; }
 
-.lw-ask-btn {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  color: var(--gate-text, #333);
-  opacity: 0;
-  transition: opacity 0.15s;
-  z-index: 10;
-  line-height: 0;
-}
 
-.work-item:hover .lw-ask-btn { opacity: 0.6; }
-.lw-ask-btn:hover             { opacity: 1 !important; }
 
 /* ── Phones: the password chat fills the screen like a messaging app ── */
 @media (max-width: 600px) {

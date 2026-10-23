@@ -56,7 +56,7 @@ python3 -m http.server 8000
 ## Site sections
 
 The nav has two items: **Case studies** (`/works`: the case studies as
-expanding panels, then a "How I work" section with a one-at-a-time "Awards,
+expanding panels, Composer always first, then a "How I work" section with a one-at-a-time "Awards,
 honors, and kudos" card, all driven by `assets/js/works-page.js`) and **Offline** (`/offline`: personal
 projects, still in progress). The homepage (`/home/`) is deliberately minimal:
 name, title, one personal note, and links to those two plus the resume. There is no About page any more. Its content was split between
@@ -75,7 +75,7 @@ JavaScript, every step shows in order.
 
 The root `index.html` is a chat-style password gate (`assets/js/gate.js`,
 styled by `assets/css/gate.css`). On success it sets
-`sessionStorage.lw_unlocked = '1'` and sends the visitor to `/home/`.
+`sessionStorage.lw_unlocked = '1'` and always sends the visitor to `/home/`.
 
 Every other page — including the four case studies in `works/<slug>/` — starts
 its `<head>` with a one-line check that redirects to `/` if that flag is
@@ -90,25 +90,24 @@ Pages that load `gate.css` or the works-page scripts reference them with a
 `?v=N` query string. Bump it when you change those files, or browsers keep
 serving the old copy.
 
-## Side chat panel
+## Notes panel
 
-After the gate, every page carries the same conversation in a side panel
-(`assets/js/site-chat.js`, styled by `assets/css/chat.css`). `gate.js` saves
-each message to `sessionStorage.lw_chat`, and the panel replays it, so the
-password exchange continues on whatever page the visitor lands on.
-`lw_chat_open` remembers whether the panel is open. Visitors close it with the
-X and reopen it with the tab on the right edge, or with a project tile's chat
-icon (`.lw-ask-btn` on `/works`). There is deliberately no way to start a new
-chat; asking for one gets an "out of scope for now" reply.
+After the gate, every page has a read-only **Notes** panel
+(`assets/js/site-chat.js`, styled by `assets/css/chat.css`). There's no typing
+box: the AI isn't connected yet. Visitors open it with the Notes tab on the
+right edge (a floating button on phones) and close it with the X.
 
-A page can leave a note from Lauren in the chat with
+A page leaves a note from Lauren with
 `<template id="lw-chat-note" data-id="unique-id">…</template>`. Until it's
 read, the tab shows her photo with an unread dot. The note arrives once, the
-first time the chat is open on that page (see `/offline`).
+first time the panel is opened on that page, and stays in the panel for the
+rest of the visit (`sessionStorage.lw_chat`; `lw_chat_open` remembers whether
+the panel is open). Change a note's text → change its `data-id` too, or
+visitors who already read the old one won't get it. The homepage note
+(maternity leave, and why you can't reply) is the first thing visitors see.
 
-The AI isn't connected (`WORKER_URL` in `site-chat.js` is empty), so typed
-questions get pointed to the relevant page. **New pages need both
-`chat.css` and `site-chat.js`**, alongside the session-check line.
+**New pages need both `chat.css` and `site-chat.js`**, alongside the
+session-check line.
 
 ## Known follow-ups
 

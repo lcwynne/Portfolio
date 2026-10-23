@@ -12,8 +12,6 @@
   --lwc-agent-bg: #f0f0ec;
   --lwc-user-bg: #222;
   --lwc-user-text: #f5f5f3;
-  --lwc-input-bg: #f7f7f5;
-  --lwc-input-border: #ddddd9;
   --lwc-shadow: -8px 0 32px rgba(0, 0, 0, 0.08);
 }
 
@@ -27,8 +25,6 @@
     --lwc-agent-bg: #262625;
     --lwc-user-bg: #f5f5f3;
     --lwc-user-text: #111110;
-    --lwc-input-bg: #1e1e1d;
-    --lwc-input-border: #34342f;
     --lwc-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
   }
 }
@@ -147,7 +143,6 @@
 }
 
 .lwc-msg.agent { align-self: flex-start; }
-.lwc-msg.user  { align-self: flex-end; flex-direction: row-reverse; }
 
 .lwc-bubble {
   padding: 9px 13px;
@@ -158,72 +153,16 @@
 }
 
 .lwc-msg.agent .lwc-bubble { background: var(--lwc-agent-bg); border-bottom-left-radius: 4px; }
-.lwc-msg.user  .lwc-bubble { background: var(--lwc-user-bg); color: var(--lwc-user-text); border-bottom-right-radius: 4px; }
 
 .lwc-bubble a { display: inline; color: inherit; text-decoration: underline; }
 
-.lwc-typing { display: flex; gap: 5px; padding: 12px 14px; }
-.lwc-typing span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--lwc-dim);
-  animation: lwc-bounce 1.2s infinite ease-in-out;
-}
-.lwc-typing span:nth-child(2) { animation-delay: 0.2s; }
-.lwc-typing span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes lwc-bounce {
-  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-  30%           { transform: translateY(-4px); opacity: 1; }
-}
-
-/* Input */
-.lwc-form {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 14px 14px;
-  padding: 7px 7px 7px 13px;
-  border: 1px solid var(--lwc-input-border);
-  border-radius: 10px;
-  background: var(--lwc-input-bg);
-  flex-shrink: 0;
-}
-
-.lwc-form:focus-within { border-color: var(--lwc-dim); }
-
-.lwc-input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--lwc-text);
-  font: inherit;
+/* Shown when the panel is opened on a page before any note has arrived */
+.lwc-messages:empty::before {
+  content: "No notes yet.";
+  margin: auto;
+  color: var(--lwc-dim);
   font-size: 13.5px;
-  line-height: 1.4;
-  padding: 0;
-  margin: 0;
 }
-
-.lwc-input::placeholder { color: var(--lwc-dim); }
-
-.lwc-send {
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 7px;
-  background: var(--lwc-user-bg);
-  color: var(--lwc-user-text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.lwc-send:disabled { opacity: 0.3; cursor: default; }
 
 /* Pull tab on the right edge while the panel is closed. Dark and fully visible
    so it stands out on the light pages; it stretches out a little on hover. */
@@ -342,11 +281,8 @@
   .lwc-close  { width: 44px; height: 44px; margin-right: -6px; }
   .lwc-msg    { max-width: 92%; }
   .lwc-bubble { font-size: 15px; }
+  .lwc-messages { padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
 
-  /* 16px stops iPhones zooming the page when the field is tapped */
-  .lwc-input { font-size: 16px; }
-  .lwc-send  { width: 40px; height: 40px; border-radius: 10px; }
-  .lwc-form  { margin: 10px 12px calc(12px + env(safe-area-inset-bottom)); }
 
   /* Tab becomes a floating button in the thumb zone, bottom right */
   .lwc-tab,
@@ -365,3 +301,6 @@
   .lwc-tab.has-note:hover,
   .lwc-tab.has-note:focus-visible { transform: none; padding: 6px 18px 6px 6px; }
 }
+
+.lwc-bubble p { margin: 0; }
+.lwc-bubble p + p { margin-top: 8px; }

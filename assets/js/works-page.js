@@ -9,7 +9,7 @@
     const items = () => [...list.querySelectorAll('.work-item')];
     const open = el => items().forEach(i => i.classList.toggle('is-active', i === el));
 
-    open(items()[0]); // personalize.js has already moved the most relevant project first
+    open(items()[0]); // Composer, always first
 
     items().forEach(item => {
       item.addEventListener('mouseenter', () => open(item));
