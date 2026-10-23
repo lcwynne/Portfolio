@@ -293,7 +293,8 @@ body { font-family: Generalsans, sans-serif; }
 
 /* Real screenshots in case studies: a bit wider than the text column */
 .lw-shot { margin: 24px 0 28px; max-width: 900px; }
-.lw-shot img {
+.lw-shot img,
+.lw-shot video {
   display: block;
   width: 100%;
   height: auto;
@@ -846,3 +847,6 @@ body { font-family: Generalsans, sans-serif; }
 .lw-kudos.is-ready .lw-kudos-list { display: grid; }
 .lw-kudos.is-ready .lw-kudo { grid-area: 1 / 1; margin: 0; }
 .lw-kudos.is-ready .lw-kudo:not(.is-active) { visibility: hidden; }
+
+/* Looping screen recordings keep their frame size while loading */
+.lw-loop video { aspect-ratio: 1708 / 892; }

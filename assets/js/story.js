@@ -10,7 +10,14 @@
   const links = [...layout.querySelectorAll('.lw-steps-link')];
   if (!steps.length || steps.length !== links.length) return;
 
-  const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const smooth = reduceMotion ? 'auto' : 'smooth';
+
+  // Looping screen recordings play like GIFs; with reduced motion they wait
+  // for the visitor to press play instead
+  if (reduceMotion) {
+    layout.querySelectorAll('video[autoplay]').forEach(v => { v.pause(); v.removeAttribute('autoplay'); v.controls = true; });
+  }
   let current = -1;
 
   function mark(i) {
