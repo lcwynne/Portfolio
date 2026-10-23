@@ -889,3 +889,9 @@ body { font-family: Generalsans, sans-serif; }
 
 /* Story hero before the real image arrives */
 .lw-hero-shot .lw-media-box { aspect-ratio: 16 / 10; min-height: 0; }
+
+/* Kudos: every slide sits in the same grid cell, so the card keeps the
+   height of the longest quote and the page doesn't jump between slides */
+.lw-kudos.is-ready .lw-kudos-list { display: grid; }
+.lw-kudos.is-ready .lw-kudo { grid-area: 1 / 1; margin: 0; }
+.lw-kudos.is-ready .lw-kudo:not(.is-active) { visibility: hidden; }

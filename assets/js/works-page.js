@@ -33,7 +33,6 @@
       slides.forEach((s, n) => {
         const on = n === index;
         s.classList.toggle('is-active', on);
-        s.hidden = !on;
         s.setAttribute('aria-label', `${n + 1} of ${slides.length}`);
       });
       count.textContent = `${index + 1} / ${slides.length}`;
