@@ -750,10 +750,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-prose .lw-statement p { font-size: 20px; }
 }
 
-/* How I work: second heading in the intro column */
-.lw-intro-title--sub { margin-top: 40px; }
-.lw-intro-title--sub ~ .lw-statement { margin-top: 24px; }
-
 /* How I work: work personality traits. Each squiggle draws in, one after
    another, when the list scrolls into view (works-page.js adds the classes;
    without JavaScript or with reduced motion the list just shows). */
@@ -810,3 +806,81 @@ body { font-family: Generalsans, sans-serif; }
 @media screen and (max-width: 479px) {
   .lw-prose .lw-traits { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
+
+/* How I work (/works): story and photo, then work personality, then kudos
+   beside the AI statement and the resume link. Each block after the story
+   sits under a light rule with the same small label. */
+.lw-hiw-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.lw-hiw .lw-photo-slot { max-width: 440px; }
+.lw-hiw .lw-photo-slot figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #6b6b66;
+}
+
+.lw-hiw-block {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.lw-hiw .lw-hiw-label,
+.lw-hiw .lw-statement figcaption {
+  margin: 0 0 18px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.lw-hiw .lw-traits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 32px; margin: 0; }
+.lw-hiw .lw-traits li { max-width: none; }
+
+.lw-hiw-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.lw-hiw .lw-kudos { margin: 0; max-width: none; }
+.lw-hiw .lw-kudos-head { margin-bottom: 18px; min-height: 28px; }
+.lw-hiw .lw-statement { margin: 0; padding-left: 22px; }
+.lw-hiw .lw-statement figcaption { margin-bottom: 12px; }
+
+.lw-hiw .lw-resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  margin-top: 22px;
+  padding-left: 25px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lw-hiw .lw-resume-link span { transition: transform 0.2s ease; }
+.lw-hiw .lw-resume-link:hover span { transform: translateX(3px); }
+
+@media screen and (max-width: 991px) {
+  .lw-hiw-story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .lw-hiw .lw-photo-slot { justify-self: start; }
+  .lw-hiw .lw-traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lw-hiw-pair { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+}
+
+@media screen and (max-width: 479px) {
+  .lw-hiw-block { margin-top: 44px; padding-top: 28px; }
+  .lw-hiw .lw-traits { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .lw-hiw .lw-photo-slot { max-width: none; }
+}
+.lw-prose .lw-hiw .lw-statement p { font-size: 21px; }
