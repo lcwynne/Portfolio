@@ -749,3 +749,7 @@ body { font-family: Generalsans, sans-serif; }
 @media screen and (max-width: 767px) {
   .lw-prose .lw-statement p { font-size: 20px; }
 }
+
+/* How I work: second heading in the intro column */
+.lw-intro-title--sub { margin-top: 40px; }
+.lw-intro-title--sub ~ .lw-statement { margin-top: 24px; }
