@@ -884,3 +884,9 @@ body { font-family: Generalsans, sans-serif; }
   .lw-hiw .lw-photo-slot { max-width: none; }
 }
 .lw-prose .lw-hiw .lw-statement p { font-size: 21px; }
+
+/* Homepage title: on phones the two roles stack instead of wrapping mid-phrase */
+@media screen and (max-width: 479px) {
+  .lw-home-title span { display: block; }
+  .lw-home-title .lw-title-sep { display: none; }
+}
