@@ -737,3 +737,39 @@ body { font-family: Generalsans, sans-serif; }
   .lw-step-nav { flex-direction: column-reverse; }
   .lw-step-btn { width: 100%; justify-content: center; padding: 13px 18px; }
 }
+
+/* How I work: Lauren's statement on AI and product design */
+.lw-statement {
+  margin: 4px 0 36px;
+  padding: 2px 0 2px 22px;
+  border-left: 3px solid var(--lw-accent);
+  max-width: 680px;
+  text-align: left; /* Webflow centers figures */
+}
+
+.lw-statement figcaption,
+.lw-prose .lw-statement p { text-align: left; }
+
+.lw-statement figcaption {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lw-accent);
+  margin-bottom: 8px;
+}
+
+.lw-statement blockquote { margin: 0; padding: 0; border: none; }
+
+.lw-prose .lw-statement p {
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.45;
+  color: #000;
+}
+
+@media screen and (max-width: 767px) {
+  .lw-prose .lw-statement p { font-size: 20px; }
+}
