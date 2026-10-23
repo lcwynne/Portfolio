@@ -13,10 +13,8 @@ Ordered by leverage, not by effort.
 The mirror is faithful, which means it is also four years out of date. Before any
 new feature work, the content has to stop contradicting the pitch.
 
-- [ ] **Replace the resume PDF.** `assets/6644cdd069cc5affac073621_LaurenWynne.pdf`
-      is the Alteryx-era resume and does not mention Klaviyo. This is linked from
-      the home page and the About page — it is the single most-downloaded thing
-      on the site and currently the most wrong.
+- [x] **Replace the resume PDF.** Every resume link now points to
+      `assets/LaurenWynne-Resume.pdf`, the Klaviyo-era resume.
 - [ ] **Rewrite the home-page line.** "a product designer in greater Boston" is
       generic. The positioning work already done says AI/agentic product design —
       the home page should say that in one sentence.
