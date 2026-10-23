@@ -72,17 +72,14 @@
 
 <section class="lw-section lw-decision-list" id="decisions">
 <h2>Decisions</h2>
-<div class="lw-draft"><span class="lw-draft-label">Pre-filled · confirm wording</span><p>Agentic editing flows: the AI proposes changes and the user previews, revises, accepts, or rolls back <span class="lw-flag">[verify public wording]</span>.</p></div>
 <figure class="lw-media"><div class="lw-media-box">Media placeholder · A decision diagram or sketch, if you drew one.</div><figcaption><div class="lw-todo"><span class="lw-todo-label">TODO</span>Caption and alt text <span class="lw-flag">[FILL IN]</span>. Recreate or blur all UI.</div></figcaption></figure>
 <h3>Decision 1: the agent proposes, the customer decides</h3>
 <p>The agent never acted on its own. It proposed content, and nothing was created in the customer's account until they chose what to do with it: clicking Edit created a draft, and clicking Send created a full campaign. Since customers wanted control almost every time, the customer always made the call.</p>
-<h3>Decision 2: preview before accept</h3>
-<div class="lw-draft"><span class="lw-draft-label">Draft · not confirmed</span><p>Draft: Users see the proposed change before it applies and can revise, accept, or roll back.</p></div>
-<div class="lw-todo"><p><span class="lw-todo-label">TODO</span><span class="lw-flag">[FILL IN: what you tested and what made you commit.]</span></p></div>
-<figure class="lw-media"><div class="lw-media-box">Media placeholder · A recreated click-through GIF of preview, revise, accept, and roll back.</div><figcaption><div class="lw-todo"><span class="lw-todo-label">TODO</span>Caption and alt text <span class="lw-flag">[FILL IN]</span>. Recreate or blur all UI.</div></figcaption></figure>
+<h3>Decision 2: an intermediate screen instead of the editor</h3>
+<p>Customers wanted to go straight into their Klaviyo editor, but the backend architecture couldn't open it directly, and we needed to ship for K:BOS. So instead of a full preview with options to revise or roll back, we built an intermediate screen showing what the agent had generated, with two choices: send it right away, or click Edit to open it in the editor. What we gave up was a seamless edit.</p>
+<figure class="lw-media"><div class="lw-media-box">Media placeholder · A recreated click-through of the intermediate screen: send now, or edit in the Klaviyo editor.</div><figcaption><div class="lw-todo"><span class="lw-todo-label">TODO</span>Caption and alt text <span class="lw-flag">[FILL IN]</span>. Recreate or blur all UI.</div></figcaption></figure>
 <h3>Engineering partnership</h3>
 <div class="lw-draft"><span class="lw-draft-label">Draft · not confirmed</span><p>Draft: Your brief says you pushed for the leanest viable release scope and proposed simpler alternatives to expensive engineering work, such as "update versus create."</p></div>
-<div class="lw-draft"><span class="lw-draft-label">Draft · not confirmed</span><p>Draft, the hardest call: Customers told me they would not send a generated email as-is; they always wanted to edit it in Klaviyo's editor. Because of how the backend worked, we could not open the real editor directly, and we wanted to ship fast. We built an intermediate review step where users could change everything that was not content, such as the audience, and sent content edits through to the editor. What we gave up: a seamless edit. The direct path was never built because the product was sunset first.</p></div>
 <div class="lw-todo"><p><span class="lw-todo-label">TODO</span><span class="lw-flag">[FILL IN: what the engineers said, and what else was cut.]</span></p></div>
 </section>
 
