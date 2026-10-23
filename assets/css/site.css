@@ -292,6 +292,11 @@ body { font-family: Generalsans, sans-serif; }
 .lw-resume-link { font-weight: 500; color: #000; }
 
 .lw-photo-slot { margin: 0; width: 100%; max-width: 340px; justify-self: end; }
+
+/* How I work: the photo with the kudos card tucked underneath */
+.lw-intro-aside { width: 100%; max-width: 340px; justify-self: end; }
+.lw-intro-aside .lw-photo-slot { max-width: none; }
+.lw-intro-aside .lw-kudos { max-width: none; margin: 24px 0 0; }
 .lw-photo-slot .lw-media-box { aspect-ratio: 4 / 5; min-height: 0; }
 .lw-photo-slot figcaption { text-align: left; }
 .lw-photo-slot img { display: block; width: 100%; height: auto; border-radius: 10px; }
@@ -403,6 +408,9 @@ body { font-family: Generalsans, sans-serif; }
 }
 
 .lw-strips .is-active .work-title { font-size: 24px; }
+
+/* Narrow slivers: break long words like "Prototyping" instead of clipping them */
+.lw-strips .work-item:not(.is-active) .work-title { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; }
 .lw-strips .is-active .work-data .body-small { max-height: 60px; opacity: 1; margin-top: 4px; }
 
 /* "Ask about this project" icon: only on the open panel */
@@ -518,6 +526,7 @@ body { font-family: Generalsans, sans-serif; }
 @media screen and (max-width: 991px) {
   .lw-intro-grid { grid-template-columns: 1fr; gap: 32px; }
   .lw-photo-slot { justify-self: start; }
+  .lw-intro-aside { justify-self: start; max-width: 460px; }
 }
 
 @media screen and (max-width: 767px) {

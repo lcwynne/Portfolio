@@ -329,33 +329,6 @@ html, body {
 .work-item:hover .lw-ask-btn { opacity: 0.6; }
 .lw-ask-btn:hover             { opacity: 1 !important; }
 
-/* Personalisation reorder note */
-.lw-reorder-note {
-  margin-bottom: 20px;
-}
-
-.lw-reorder-bubble {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 8px;
-  background: var(--gate-agent-bg, #f0f0ec);
-  border: 1px solid var(--gate-border, #e4e4e0);
-  border-radius: 12px;
-  padding: 9px 13px;
-  font-size: 12.5px;
-  color: var(--gate-text, #333);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-  max-width: 480px;
-}
-
-.lw-reorder-bubble .agent-avatar { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
-.lw-reorder-bubble .agent-avatar img { width: 12px; }
-
-@media (prefers-color-scheme: dark) {
-  .lw-reorder-bubble { background: var(--gate-agent-bg); border-color: var(--gate-border); color: var(--gate-text); }
-}
-
 /* ── Phones: the password chat fills the screen like a messaging app ── */
 @media (max-width: 600px) {
   .gate-wrap      { padding: 0; justify-content: stretch; }

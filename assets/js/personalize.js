@@ -57,7 +57,8 @@
   // Re-append in new order
   items.forEach(item => list.appendChild(item));
 
-  // Transparent chat-style context note
+  // Tell the visitor why the order changed, in the side chat rather than on the page.
+  // site-chat.js (loaded after this script) renders it and opens the chat. Said once per visit.
   const intentLabels = {
     ai:             'AI and ML work',
     design_systems: 'design systems work',
@@ -66,14 +67,15 @@
   };
   const label = intentLabels[intent] || 'your interests';
 
-  const note = document.createElement('div');
-  note.className = 'lw-reorder-note';
-  note.innerHTML = `
-    <div class="lw-reorder-bubble">
-      <div class="agent-avatar">
-        <img src="/assets/65e88c6319801815fa38ea12_lw_logo.png" alt="LW" width="16"/>
-      </div>
-      <span>I've sorted these by relevance to <strong>${label}</strong>. The order is mine, not Lauren's — tap any project to dig in.</span>
-    </div>`;
-  list.parentElement.insertBefore(note, list);
+  if (sessionStorage.getItem('lw_sort_told') !== intent) {
+    let log;
+    try { log = JSON.parse(sessionStorage.getItem('lw_chat')) || []; } catch { log = []; }
+    log.push({
+      role: 'agent',
+      html: `I've sorted these by relevance to <strong>${label}</strong>. The order is mine, not Lauren's — tap any project to dig in.`
+    });
+    sessionStorage.setItem('lw_chat', JSON.stringify(log));
+    sessionStorage.setItem('lw_chat_open', '1');
+    sessionStorage.setItem('lw_sort_told', intent);
+  }
 })();
