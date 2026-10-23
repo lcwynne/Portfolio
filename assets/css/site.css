@@ -542,14 +542,7 @@ body { font-family: Generalsans, sans-serif; }
 
 /* ── Offline page ── */
 
-.lw-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
 
-.lw-gallery .lw-media { margin: 0; max-width: none; }
-.lw-gallery .lw-media-box { aspect-ratio: 4 / 5; min-height: 0; }
 
 @media screen and (max-width: 991px) {
   .lw-intro-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -557,7 +550,6 @@ body { font-family: Generalsans, sans-serif; }
 }
 
 @media screen and (max-width: 767px) {
-  .lw-gallery  { grid-template-columns: 1fr; }
 }
 
 @media screen and (max-width: 767px) {
