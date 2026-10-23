@@ -890,3 +890,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-home-title span { display: block; }
   .lw-home-title .lw-title-sep { display: none; }
 }
+
+/* Story hero before the real image arrives */
+.lw-hero-shot .lw-media-box { aspect-ratio: 16 / 10; min-height: 0; }
