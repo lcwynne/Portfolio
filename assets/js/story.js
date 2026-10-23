@@ -1,6 +1,6 @@
-// Story mode for case studies: a clickable timeline of the steps Lauren took.
+// Story mode for case studies: a small stepper through the steps Lauren took.
 // Collapsed (default) shows one step at a time with Previous/Next; Expanded shows
-// every step for scrolling, and the timeline then tracks the step in view.
+// every step for scrolling, and the stepper then tracks the step in view.
 // Without JavaScript every step simply shows, in order.
 
 (function () {
@@ -15,22 +15,26 @@
   let expanded = false;
   try { expanded = localStorage.getItem(MODE_KEY) === 'expanded'; } catch { /* storage blocked */ }
 
-  // ── Timeline ─────────────────────────────────────────────────────────────
-  const bar = document.createElement('nav');
-  bar.className = 'lw-timeline-bar';
-  bar.setAttribute('aria-label', 'Case study steps');
+  // ── Stepper: a small centered control pinned above the story ─────────────
+  const esc = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  const chev = d => `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="${d}" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const bar = document.createElement('div');
+  bar.className = 'lw-stepper-wrap';
   bar.innerHTML = `
-    <ol class="lw-timeline">${steps.map((s, i) => `
-      <li><button type="button" class="lw-timeline-step" data-i="${i}">
-        <span class="lw-timeline-dot" aria-hidden="true">${i + 1}</span>
-        <span class="lw-timeline-label">${s.dataset.title}</span>
-      </button></li>`).join('')}
-    </ol>
-    <button type="button" class="lw-story-toggle" aria-pressed="false"></button>`;
+    <nav class="lw-stepper" aria-label="Case study steps">
+      <button type="button" class="lw-stepper-arrow" data-dir="-1" aria-label="Previous step">${chev('M8.5 3 4.5 7l4 4')}</button>
+      <ol class="lw-stepper-dots">${steps.map((s, i) => `<li><button type="button" class="lw-stepper-dot" data-i="${i}" aria-label="Step ${i + 1}: ${esc(s.dataset.title)}" title="${esc(s.dataset.title)}"></button></li>`).join('')}</ol>
+      <span class="lw-stepper-label" aria-live="polite"></span>
+      <button type="button" class="lw-stepper-arrow" data-dir="1" aria-label="Next step">${chev('M5.5 3l4 4-4 4')}</button>
+      <span class="lw-stepper-sep" aria-hidden="true"></span>
+      <button type="button" class="lw-story-toggle" aria-pressed="false"></button>
+    </nav>`;
   story.prepend(bar);
 
-  const buttons = [...bar.querySelectorAll('.lw-timeline-step')];
+  const buttons = [...bar.querySelectorAll('.lw-stepper-dot')];
   const toggle  = bar.querySelector('.lw-story-toggle');
+  const label   = bar.querySelector('.lw-stepper-label');
+  const [prevArrow, nextArrow] = bar.querySelectorAll('.lw-stepper-arrow');
 
   // ── Previous / Next under each step ──────────────────────────────────────
   steps.forEach((step, i) => {
@@ -55,9 +59,9 @@
       b.classList.toggle('is-done', n < i);
       if (n === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
     });
-    const cur = buttons[i];
-    // keep the current step visible in the (scrollable, on phones) timeline
-    cur.parentElement.parentElement.scrollTo({ left: cur.parentElement.offsetLeft - 16, behavior: 'smooth' });
+    label.innerHTML = `<span class="lw-stepper-count">${i + 1}/${steps.length}</span> ${esc(steps[i].dataset.title)}`;
+    prevArrow.disabled = i === 0;
+    nextArrow.disabled = i === steps.length - 1;
   }
 
   function go(i, fromUser) {
@@ -78,9 +82,7 @@
     story.classList.toggle('is-expanded', on);
     story.classList.toggle('is-collapsed', !on);
     toggle.setAttribute('aria-pressed', String(on));
-    toggle.innerHTML = on
-      ? '<span class="lw-long">Show one step at a time</span><span class="lw-short">Collapse</span>'
-      : '<span class="lw-long">Expand all steps</span><span class="lw-short">Expand</span>';
+    toggle.textContent = on ? 'One at a time' : 'Show all';
     steps.forEach((s, n) => { s.hidden = !on && n !== index; });
     try { localStorage.setItem(MODE_KEY, on ? 'expanded' : 'collapsed'); } catch { /* storage blocked */ }
   }
@@ -95,8 +97,10 @@
 
   // ── Wiring ───────────────────────────────────────────────────────────────
   bar.addEventListener('click', e => {
-    const b = e.target.closest('.lw-timeline-step');
-    if (b) go(Number(b.dataset.i), true);
+    const dot = e.target.closest('.lw-stepper-dot');
+    if (dot) return go(Number(dot.dataset.i), true);
+    const arrow = e.target.closest('.lw-stepper-arrow');
+    if (arrow) go(index + Number(arrow.dataset.dir), true);
   });
   story.addEventListener('click', e => {
     const b = e.target.closest('.lw-step-btn');
@@ -106,9 +110,9 @@
     setExpanded(!expanded);
     go(index, true);
   });
-  // Left/right arrows move between steps while focus is in the timeline
+  // Left/right arrow keys move between steps while focus is on a dot
   bar.addEventListener('keydown', e => {
-    if (!e.target.closest('.lw-timeline-step')) return;
+    if (!e.target.closest('.lw-stepper-dot')) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       e.preventDefault();
       go(index + (e.key === 'ArrowRight' ? 1 : -1), true);
