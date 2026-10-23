@@ -710,42 +710,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-step > h2 { font-size: 26px; }
 }
 
-/* How I work: Lauren's statement on AI and product design */
-.lw-statement {
-  margin: 4px 0 36px;
-  padding: 2px 0 2px 22px;
-  border-left: 3px solid var(--lw-accent);
-  max-width: 680px;
-  text-align: left; /* Webflow centers figures */
-}
-
-.lw-statement figcaption,
-.lw-prose .lw-statement p { text-align: left; }
-
-.lw-statement figcaption {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--lw-accent);
-  margin-bottom: 8px;
-}
-
-.lw-statement blockquote { margin: 0; padding: 0; border: none; }
-
-.lw-prose .lw-statement p {
-  margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-style: italic;
-  font-size: 24px;
-  line-height: 1.45;
-  color: #000;
-}
-
-@media screen and (max-width: 767px) {
-  .lw-prose .lw-statement p { font-size: 20px; }
-}
-
 /* How I work: work personality traits. Each squiggle draws in, one after
    another, when the list scrolls into view (works-page.js adds the classes;
    without JavaScript or with reduced motion the list just shows). */
@@ -803,9 +767,9 @@ body { font-family: Generalsans, sans-serif; }
   .lw-prose .lw-traits { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
 
-/* How I work (/works): story and photo, then work personality, then kudos
-   beside the AI statement and the resume link. Each block after the story
-   sits under a light rule with the same small label. */
+/* How I work (/works): story, resume link, and photo, then work personality,
+   then kudos. Each block after the story sits under a light rule with the
+   same small label. */
 .lw-hiw-story {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -827,8 +791,7 @@ body { font-family: Generalsans, sans-serif; }
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.lw-hiw .lw-hiw-label,
-.lw-hiw .lw-statement figcaption {
+.lw-hiw .lw-hiw-label {
   margin: 0 0 18px;
   font-size: 13px;
   font-weight: 500;
@@ -841,25 +804,15 @@ body { font-family: Generalsans, sans-serif; }
 .lw-hiw .lw-traits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 32px; margin: 0; }
 .lw-hiw .lw-traits li { max-width: none; }
 
-.lw-hiw-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
-}
-
-.lw-hiw .lw-kudos { margin: 0; max-width: none; }
+.lw-hiw .lw-kudos { margin: 0; max-width: 620px; }
 .lw-hiw .lw-kudos-head { margin-bottom: 18px; min-height: 28px; }
-.lw-hiw .lw-statement { margin: 0; padding-left: 22px; }
-.lw-hiw .lw-statement figcaption { margin-bottom: 12px; }
 
 .lw-hiw .lw-resume-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   min-height: 40px;
-  margin-top: 22px;
-  padding-left: 25px;
+  margin-top: 8px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -871,7 +824,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-hiw-story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .lw-hiw .lw-photo-slot { justify-self: start; }
   .lw-hiw .lw-traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lw-hiw-pair { grid-template-columns: minmax(0, 1fr); gap: 44px; }
 }
 
 @media screen and (max-width: 479px) {
@@ -879,7 +831,6 @@ body { font-family: Generalsans, sans-serif; }
   .lw-hiw .lw-traits { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .lw-hiw .lw-photo-slot { max-width: none; }
 }
-.lw-prose .lw-hiw .lw-statement p { font-size: 21px; }
 
 /* Homepage title: on phones the two roles stack instead of wrapping mid-phrase */
 @media screen and (max-width: 479px) {
