@@ -753,3 +753,60 @@ body { font-family: Generalsans, sans-serif; }
 /* How I work: second heading in the intro column */
 .lw-intro-title--sub { margin-top: 40px; }
 .lw-intro-title--sub ~ .lw-statement { margin-top: 24px; }
+
+/* How I work: work personality traits. Each squiggle draws in, one after
+   another, when the list scrolls into view (works-page.js adds the classes;
+   without JavaScript or with reduced motion the list just shows). */
+.lw-prose .lw-traits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 28px;
+  margin: 4px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.lw-prose .lw-traits li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #555;
+}
+
+.lw-traits li::before { display: none; }
+
+.lw-traits strong { display: block; color: #000; font-size: 16px; font-weight: 600; }
+
+.lw-trait-mark {
+  flex: none;
+  width: 22px;
+  height: 10px;
+  color: var(--lw-accent);
+  overflow: visible;
+  transform: translateY(-1px);
+}
+
+.lw-trait-mark path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+.lw-traits.is-armed li > span { opacity: 0; transform: translateY(6px); }
+.lw-traits.is-armed .lw-trait-mark path { stroke-dashoffset: 1; opacity: 0; }
+
+.lw-traits.is-in li > span {
+  opacity: 1;
+  transform: none;
+  transition: opacity .45s ease, transform .45s ease;
+  transition-delay: calc(var(--i) * 90ms + 250ms);
+}
+
+.lw-traits.is-in .lw-trait-mark path {
+  animation: lw-draw .6s cubic-bezier(.65, 0, .35, 1) both;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+@media screen and (max-width: 479px) {
+  .lw-prose .lw-traits { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}

@@ -62,3 +62,18 @@
     kudos.classList.add('is-ready');
   }
 })();
+
+// Work personality: draw each trait's squiggle in turn the first time the
+// list scrolls into view
+(function () {
+  const list = document.querySelector('.lw-traits');
+  if (!list || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  list.classList.add('is-armed');
+  const io = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    list.classList.add('is-in');
+    io.disconnect();
+  }, { threshold: 0.25 });
+  io.observe(list);
+})();
