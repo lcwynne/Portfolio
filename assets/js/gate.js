@@ -6,9 +6,9 @@
 
   const HASH = 'f448260594387705a220d8fa9759c0e5a8ba1781f6c55ef7262d30ac400f7487';
 
-  // Typing "StackAdapt" exactly (case-sensitive) opens Lauren's interview
-  // presentation instead of the homepage.
-  const DECK_HASH = '1713e65663c55c5c845c0023409a82672e806f443de6ff67e51bc0a04a2924da';
+  // Typing "stackadapt" (any capitalization) opens Lauren's StackAdapt
+  // interview deck instead of the homepage.
+  const DECK_HASH = 'b326ea8bf4f0e51c2b93fac42386f7bb2a96550ab69db875de17400fa1f5d0ec';
 
   const closeResponses = [
     "So close, check your spelling.",
@@ -39,7 +39,7 @@
 
   async function checkDeck(input) {
     for (const token of input.trim().split(/\s+/)) {
-      if ((await sha256(token)) === DECK_HASH) return true;
+      if ((await sha256(token.toLowerCase())) === DECK_HASH) return true;
     }
     return false;
   }
@@ -111,7 +111,7 @@
 
     if (correct) {
       sessionStorage.setItem('lw_unlocked', '1');
-      await (deck ? finish('/stackadapt/', 'Hi, StackAdapt! Opening my presentation.') : finish());
+      await (deck ? finish('/stackadapt/', 'Hi, StackAdapt! Opening my case study.') : finish());
       return;
     }
 
