@@ -1,15 +1,22 @@
 // Keeps the StackAdapt deck working with no connection: everything it needs is
 // cached on first load, and served cache-first afterwards. Bump VERSION when
 // any of these files change.
-const VERSION = 'stackadapt-v7';
+const VERSION = 'stackadapt-v9';
 const FILES = [
   '/stackadapt/',
-  '/assets/css/deck.css?v=7',
-  '/assets/js/deck.js?v=6',
+  '/assets/css/deck.css?v=9',
+  '/assets/js/deck.js?v=8',
   '/assets/659566c3e235c696a2875be2_GeneralSans-Regular.otf',
   '/assets/659566c3e235c696a2875be0_GeneralSans-Medium.otf',
   '/assets/659566c3e235c696a2875be3_GeneralSans-Semibold.otf',
-  '/assets/65e89fa0190699d5ae4884bf_lw_logo_1.png'
+  '/assets/65e89fa0190699d5ae4884bf_lw_logo_1.png',
+  '/assets/composer-sidebar.png',
+  '/assets/composer-full-page.png',
+  '/assets/composer-klaviyo-brain.png',
+  '/assets/composer-versioning.png',
+  '/assets/composer-sms.png',
+  '/assets/composer-changelog.mp4',
+  '/assets/composer-changelog-poster.jpg'
 ];
 
 self.addEventListener('install', e => {

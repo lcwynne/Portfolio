@@ -308,3 +308,29 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-intro .slot { min-height: 440px; }
 .slide:has(.s-intro) { padding-top: 96px; }
 .s-hits { margin-top: 52px; }
+
+/* Screenshots and recordings from the Composer case study */
+.s-fig { margin: 0; }
+.s-fig img,
+.s-fig video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.s-fig figcaption { margin-top: 16px; font-size: 24px; line-height: 1.4; color: var(--dim); }
+.s-fig--wide { max-width: 1480px; }
+.s-fig--wide img { max-height: 620px; width: auto; max-width: 100%; }
+
+.s-cols--figs h3 { font-size: 40px; margin-bottom: 24px; }
+.s-cols--figs .s-fig img { max-height: 470px; object-fit: cover; object-position: top left; }
+
+.s-split--fig { grid-template-columns: 1fr 960px; gap: 80px; }
+.s-split--fig .s-body p { font-size: 30px; }
+.s-note { margin: 28px 0 0; font-size: 26px; line-height: 1.45; color: var(--dim); }
+.s-note--lead { margin: 0 0 40px; font-size: 30px; color: var(--body); }
+.s-fig--wide img { max-height: 540px; }
+.s-head--compact { font-size: 60px; margin-bottom: 32px; }
+.s-split--fig .s-fig img, .s-split--fig .s-fig video { max-height: 560px; width: auto; max-width: 100%; }
