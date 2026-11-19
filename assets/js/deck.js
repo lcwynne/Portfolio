@@ -3,7 +3,7 @@
 //   Arrows, space, Page Up/Down, Home/End: move     F: full screen
 //   O or G: overview of every slide, grouped by section
 //   A number, then Enter: jump to that slide
-//   T: presenter timer (elapsed against the 45-minute plan)
+//   T: presenter timer (elapsed against the 45-minute plan)    R: restart the timer
 //   N: speaker notes        Esc: close the overview, leave full screen, or leave the deck
 // Moving the mouse shows a nav bar with Previous/Next and a chip per section.
 // The URL hash (#slide-N) keeps your place on refresh.
@@ -146,7 +146,6 @@
     overview.querySelectorAll('[data-slide]').forEach(b => b.classList.toggle('is-current', Number(b.dataset.slide) === i));
     renderNotes();
     tick();
-    if (i > 0 && !startedAt) startedAt = Date.now();
   }
 
   // ── Speaker notes (N) ──
@@ -156,19 +155,26 @@
     if (!notesPanel.hidden) fit();
   }
 
-  // ── Timer (T): starts when you leave the title slide ──
-  let startedAt = 0;
+  // ── Timer (T): starts the moment the deck opens. A refresh keeps the clock
+  // running; R restarts it, and going back through the gate starts it fresh.
+  const START_KEY = 'lw_deck_started';
+  let startedAt = Number(sessionStorage.getItem(START_KEY)) || Date.now();
+  sessionStorage.setItem(START_KEY, String(startedAt));
+  function restartTimer() {
+    startedAt = Date.now();
+    sessionStorage.setItem(START_KEY, String(startedAt));
+    tick();
+  }
   const mmss = ms => {
     const s = Math.max(0, Math.round(ms / 1000));
     return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
   };
   function tick() {
     if (timer.hidden) return;
-    const elapsed = startedAt ? Date.now() - startedAt : 0;
+    const elapsed = Date.now() - startedAt;
     const target = Number(slides[index].dataset.at || 0) * 60000;
     const diff = elapsed - target;
-    const pace = !startedAt ? 'Starts when you leave the title slide'
-      : Math.abs(diff) < 30000 ? 'On pace'
+    const pace = Math.abs(diff) < 30000 ? 'On pace'
       : diff > 0 ? `<span class="behind">${mmss(diff)} behind</span>` : `<span class="ahead">${mmss(-diff)} ahead</span>`;
     timer.innerHTML = `<strong>${mmss(elapsed)}</strong> / ${PLAN_MIN}:00<br/>Plan for this slide: ${mmss(target)} · ${pace}`;
   }
@@ -196,6 +202,7 @@
     else if (k === 'Home') { e.preventDefault(); show(0); }
     else if (k === 'End') { e.preventDefault(); show(slides.length - 1); }
     else if (k === 't' || k === 'T') toggle(timer);
+    else if (k === 'r' || k === 'R') restartTimer();
     else if (k === 'n' || k === 'N') toggle(notesPanel);
     else if (k === 'f' || k === 'F') {
       if (document.fullscreenElement) document.exitFullscreen();
