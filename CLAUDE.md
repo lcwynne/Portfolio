@@ -101,7 +101,7 @@ hash, like the password. It's `noindex` and nothing links to it.
 Keys: arrows/space to move, **O** (or G) an overview of every slide by section, a number then Enter to jump, **T** timer (starts when the deck opens and survives a refresh; **R**
 restarts it; elapsed vs. the 45-minute plan, where each slide's `data-at` is
 the minute it should start), **N** speaker notes (each
-slide's `<aside class="notes">`), **F** full screen, **Esc** back to the site.
+slide's `<aside class="notes">`), **F** full screen, **Z** (or a click) zooms a `.s-zoom` image to fill the window, **Esc** closes the zoom or overview, then goes back to the site. Elements with `data-once` animate the first time their slide shows.
 Moving the mouse shows a nav bar with Previous/Next and a chip per section. Dashed terracotta `.slot` boxes are placeholders for Lauren's material.
 
 `stackadapt/sw.js` caches the deck for offline use and serves the CSS and JS

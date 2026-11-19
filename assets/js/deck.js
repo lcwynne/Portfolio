@@ -4,7 +4,8 @@
 //   O or G: overview of every slide, grouped by section
 //   A number, then Enter: jump to that slide
 //   T: presenter timer (elapsed against the 45-minute plan)    R: restart the timer
-//   N: speaker notes        Esc: close the overview, leave full screen, or leave the deck
+//   N: speaker notes        Z: zoom the slide's diagram to fill the window
+//   Esc: close the zoom or overview, leave full screen, or leave the deck
 // Moving the mouse shows a nav bar with Previous/Next and a chip per section.
 // The URL hash (#slide-N) keeps your place on refresh.
 
@@ -105,6 +106,21 @@
   }
   function closeOverview() { overview.hidden = true; }
 
+  // ── Zoom: a diagram fills the window (click it, or Z on its slide) ──
+  const zoom = document.createElement('div');
+  zoom.className = 'deck-zoom';
+  zoom.hidden = true;
+  zoom.setAttribute('role', 'dialog');
+  zoom.setAttribute('aria-label', 'Zoomed image');
+  document.body.append(zoom);
+  function openZoom(img) {
+    zoom.innerHTML = `<img src="${img.getAttribute('src')}" alt="${img.getAttribute('alt') || ''}"/>`;
+    zoom.hidden = false;
+  }
+  function closeZoom() { zoom.hidden = true; zoom.innerHTML = ''; }
+  zoom.addEventListener('click', closeZoom);
+  deck.addEventListener('click', e => { const img = e.target.closest('.s-zoom'); if (img) openZoom(img); });
+
   // ── Jump: type a slide number, then Enter ──
   const jump = document.createElement('div');
   jump.className = 'tool deck-jump';
@@ -192,6 +208,11 @@
   document.addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
+    if (!zoom.hidden) {
+      if (k === 'Escape' || k === 'z' || k === 'Z') { e.preventDefault(); closeZoom(); }
+      return;
+    }
+    if (k === 'z' || k === 'Z') { const img = slides[index].querySelector('.s-zoom'); if (img) openZoom(img); return; }
     if (/^[0-9]$/.test(k)) { typeDigit(k); return; }
     if (k === 'Enter' && digits) { e.preventDefault(); show(Number(digits) - 1); clearJump(); closeOverview(); return; }
     if (k === 'o' || k === 'O' || k === 'g' || k === 'G') { overview.hidden ? openOverview() : closeOverview(); return; }

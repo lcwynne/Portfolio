@@ -561,3 +561,59 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @media (prefers-reduced-motion: reduce) {
   .is-deck .s-teams .s-link { transform: none; animation: none !important; }
 }
+
+/* The discussion: two ways to build it, side by side. Left plays first
+   (agents appear, report up, and get a check from the brain), then right
+   (one brain reaches out and does every task). Plays once (data-once). */
+.s-options { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; max-width: 1600px; }
+.s-options .s-col-label { margin-bottom: 28px; }
+.s-option { max-height: 400px; }
+.s-options .s-note { margin-top: 24px; }
+
+.s-option g { transform-box: fill-box; transform-origin: center; }
+
+.is-deck .s-option .opt-agent,
+.is-deck .s-option .opt-task { opacity: 0; transform: translateY(12px); }
+.is-deck .s-option .opt-check { opacity: 0; transform: scale(0.3); }
+.is-deck .s-option .opt-link,
+.is-deck .s-option .opt-reach { stroke-dasharray: 1; stroke-dashoffset: 1; }
+
+.is-deck .s-option.is-played .opt-agent { animation: opt-in 0.4s ease-out calc(0.3s + var(--n) * 0.12s) forwards; }
+.is-deck .s-option.is-played .opt-link  { animation: opt-draw 0.5s ease-in-out calc(1s + var(--n) * 0.18s) forwards; }
+.is-deck .s-option.is-played .opt-check { animation: opt-pop 0.4s cubic-bezier(.34, 1.56, .64, 1) calc(1.9s + var(--n) * 0.18s) forwards; }
+
+.is-deck .s-option--one.is-played .opt-brain { animation: opt-pulse 0.6s ease-in-out 3s; }
+.is-deck .s-option--one.is-played .opt-reach { animation: opt-draw 0.45s ease-out calc(3.3s + var(--n) * 0.15s) forwards; }
+.is-deck .s-option--one.is-played .opt-task  { animation: opt-in 0.4s ease-out calc(3.55s + var(--n) * 0.15s) forwards; }
+
+@keyframes opt-in    { to { opacity: 1; transform: none; } }
+@keyframes opt-draw  { to { stroke-dashoffset: 0; } }
+@keyframes opt-pop   { to { opacity: 1; transform: scale(1); } }
+@keyframes opt-pulse { 50% { transform: scale(1.06); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-option .opt-agent, .is-deck .s-option .opt-task, .is-deck .s-option .opt-check { opacity: 1; transform: none; animation: none !important; }
+  .is-deck .s-option .opt-link, .is-deck .s-option .opt-reach { stroke-dashoffset: 0; animation: none !important; }
+}
+
+/* Working diagram: the image takes the slide; a slim label sits above it */
+.slide:has(.s-fig--full) { padding: 72px 110px 120px; justify-content: flex-start; }
+.s-eyebrow--row { display: flex; gap: 24px; align-items: baseline; margin-bottom: 22px; }
+.s-eyebrow-dim { color: var(--dim); letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
+.s-fig--full { flex: 1; min-height: 0; display: flex; justify-content: center; }
+.s-fig--full img { width: auto; max-width: 100%; height: 100%; max-height: 860px; object-fit: contain; cursor: zoom-in; }
+
+/* Zoom: any .s-zoom image fills the window (click it, or press Z on its slide) */
+.deck-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(244, 244, 242, 0.98);
+  cursor: zoom-out;
+}
+.deck-zoom[hidden] { display: none; }
+.deck-zoom img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); }
