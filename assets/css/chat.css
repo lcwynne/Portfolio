@@ -281,7 +281,6 @@
   .lwc-close  { width: 44px; height: 44px; margin-right: -6px; }
   .lwc-msg    { max-width: 92%; }
   .lwc-bubble { font-size: 15px; }
-  .lwc-messages { padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
 
 
   /* Tab becomes a floating button in the thumb zone, bottom right */
@@ -304,3 +303,21 @@
 
 .lwc-bubble p { margin: 0; }
 .lwc-bubble p + p { margin-top: 8px; }
+
+/* "Back to the start": a quiet way back to the welcome chat, under the notes */
+.lwc-foot {
+  flex-shrink: 0;
+  padding: 6px 14px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--lwc-rule);
+}
+.lwc-restart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  font-size: 12.5px;
+  color: var(--lwc-dim);
+  text-decoration: none;
+}
+.lwc-restart:hover,
+.lwc-restart:focus-visible { color: var(--lwc-text); text-decoration: underline; text-underline-offset: 3px; outline: none; }

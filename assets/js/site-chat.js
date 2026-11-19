@@ -52,7 +52,11 @@
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <div class="lwc-messages" role="log" aria-live="polite"></div>`;
+    <div class="lwc-messages" role="log" aria-live="polite"></div>
+    <div class="lwc-foot"><a class="lwc-restart" href="/">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7a4.5 4.5 0 1 0 1.4-3.3M2.5 1.8v2.4h2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to the start
+    </a></div>`;
 
   document.body.append(tab, panel);
 
@@ -90,6 +94,14 @@
       tab.focus({ preventScroll: true });
     }
   }
+
+  // "Back to the start" locks the site again and returns to the welcome chat,
+  // where a visitor can enter the password or a keyword like StackAdapt.
+  panel.querySelector('.lwc-restart').addEventListener('click', e => {
+    e.preventDefault();
+    Object.keys(sessionStorage).filter(k => k.startsWith('lw_')).forEach(k => sessionStorage.removeItem(k));
+    location.href = '/';
+  });
 
   // ── Wiring ───────────────────────────────────────────────────────────────
   tab.addEventListener('click', () => setOpen(true, true));

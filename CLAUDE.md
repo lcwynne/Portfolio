@@ -113,7 +113,10 @@ cache-first, so when you change them, bump their `?v=` in the page **and** in
 After the gate, every page has a read-only **Notes** panel
 (`assets/js/site-chat.js`, styled by `assets/css/chat.css`). There's no typing
 box: the AI isn't connected yet. Visitors open it with the Notes tab on the
-right edge (a floating button on phones) and close it with the X.
+right edge (a floating button on phones) and close it with the X. A quiet
+"Back to the start" link at the bottom clears the visit's `lw_` session keys
+and returns to the welcome chat, so a visitor can enter a different keyword
+(like stackadapt).
 
 A page leaves a note from Lauren with
 `<template id="lw-chat-note" data-id="unique-id">…</template>`. Until it's
