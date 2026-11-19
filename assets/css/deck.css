@@ -479,3 +479,26 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 
 /* "What Composer is": one readable statement, upright and smaller than a quote */
 .s-head--statement { font-size: 60px; line-height: 1.25; max-width: 1480px; }
+
+/* A second role in the same path stop (NSA, then teaching) */
+.s-path li span + strong { margin-top: 18px; }
+
+/* Fun facts: an even two-column grid; every row the same height, bullets
+   centred on the first line */
+.s-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 18px 56px;
+  max-width: 1000px;
+}
+.s-facts li { display: flex; align-items: flex-start; padding-left: 46px; font-size: 26px; line-height: 1.35; }
+.s-facts li::before { top: calc(0.675em - 6px); width: 28px; height: 12px; }
+.s-facts { grid-auto-rows: auto; align-items: start; gap: 16px 56px; }
+.s-facts-label { margin: 32px 0 14px; }
+.s-intro .s-family img { height: 500px; }
+.s-intro + .s-path { margin-top: 34px; }
+.s-path li { padding-top: 30px; }
+.s-path li strong { font-size: 26px; line-height: 1.25; }
+.s-path li em { font-size: 23px; }
+.s-path li span { font-size: 21px; margin-top: 4px; }
+.s-path li span + strong { margin-top: 14px; }
