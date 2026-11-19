@@ -92,7 +92,7 @@ serving the old copy.
 
 ## StackAdapt presentation
 
-`/stackadapt/` is Lauren's case-study deck for her StackAdapt interview: 27
+`/stackadapt/` is Lauren's case-study deck for her StackAdapt interview: 26
 slides on a fixed 1920x1080 stage that `assets/js/deck.js` scales to the
 window (`assets/css/deck.css`). Typing **stackadapt** at the gate (any
 capitalization) unlocks the site and opens it; `gate.js` checks it against a
