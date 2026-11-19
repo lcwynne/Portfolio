@@ -276,3 +276,35 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 
 /* Headlines beside a visual get less room, so they run smaller */
 .s-split .s-head { font-size: 60px; }
+
+/* Intro slide: who I am beside the family photo, then three things to remember */
+.s-intro { display: grid; grid-template-columns: 1fr 680px; gap: 96px; align-items: center; }
+.s-intro .s-head { margin-bottom: 28px; }
+.s-intro .s-squiggle { margin-bottom: 32px; }
+.s-intro .slot { min-height: 500px; }
+
+.s-path { margin: 48px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); }
+.s-path li { position: relative; padding: 36px 20px 0 0; font-size: 24px; line-height: 1.3; color: var(--body); }
+.s-path li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg);
+  z-index: 1;
+}
+.s-path li:not(:last-child)::after { content: ""; position: absolute; top: 10px; left: 18px; right: 0; height: 2px; background: var(--line); }
+.s-path li:last-child { font-weight: 600; color: var(--ink); }
+.s-path li:last-child::before { background: var(--accent); }
+
+.s-hits { margin: 64px 0 0; padding: 40px 0 0; list-style: none; border-top: 2px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+.s-hits li { font-size: 26px; line-height: 1.45; color: var(--body); }
+.s-hits strong { display: block; margin-bottom: 8px; font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1.15; color: var(--ink); }
+.s-intro .s-head--xl { font-size: 88px; white-space: nowrap; }
+.s-intro .slot { min-height: 440px; }
+.slide:has(.s-intro) { padding-top: 96px; }
+.s-hits { margin-top: 52px; }

@@ -7,98 +7,122 @@
 <meta name="robots" content="noindex, nofollow"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/assets/65e89fa0190699d5ae4884bf_lw_logo_1.png" rel="shortcut icon" type="image/x-icon"/>
-<link href="/assets/css/deck.css?v=5" rel="stylesheet"/>
+<link href="/assets/css/deck.css?v=7" rel="stylesheet"/>
 </head>
 <body>
 <!-- StackAdapt case-study deck. Typing "stackadapt" at the gate opens it; nothing links here.
      Generated from a slide list; keys: arrows/space, T timer, N notes, F full screen, Esc to leave. -->
 <main class="deck" aria-roledescription="presentation" aria-label="Composer: designing Klaviyo's AI assistant, and what I'd sequence differently">
 <section class="slide" id="slide-1" data-at="0" aria-roledescription="slide" aria-label="Slide 1">
+<div class="s-intro">
+<div class="s-intro-text">
+<p class="s-eyebrow">Hello, StackAdapt</p>
+<h1 class="s-head s-head--xl">I'm Lauren Wynne.</h1>
+<svg class="s-squiggle" viewBox="0 0 200 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 10.5c10-7 20-7 30 0s20 7 30 0 20-7 30 0 20 7 30 0 20-7 30 0 20 7 30 0 10-4.5 14-4.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<p class="s-sub">Lead designer for Klaviyo's AI. I live in the Boston area with my husband, son, and daughter.</p>
+<ol class="s-path" aria-label="My path">
+<li>Cybersecurity + HCI</li>
+<li>NSA data scientist</li>
+<li>Alteryx product designer</li>
+<li>Klaviyo AI lead designer</li>
+</ol>
+</div>
+<div class="slot "><span class="slot-label">Placeholder · Family photo</span><span class="slot-what">A photo of me with my family</span></div>
+</div>
+<ul class="s-hits">
+<li><strong>Mission first.</strong> I like to help people, and I want to see the impact.</li>
+<li><strong>Built for 0 to 1.</strong> Lean Startup roots, and the new products at Alteryx and Klaviyo.</li>
+<li><strong>A teacher at heart.</strong> I trained intelligence analysts and taught Lean Startup at CU Boulder.</li>
+</ul>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Introduction</span><span class="s-num">1 / 26</span></div>
+<aside class="notes"><p>In college I studied cybersecurity and human-computer interaction. I was interested in cryptography and steganography, hiding messages behind images, and in 3D printing.</p><p>I got a job at the NSA as a data scientist. What led me there was cybersecurity and the mission overall of helping people. That's who I am: I like to help people and I want to see an impact.</p><p>At the NSA I trained intelligence analysts, and I took a part-time job teaching Lean Startup at CU Boulder.</p><p>Then I left the government for Alteryx as a product designer. With my Lean Startup background I quickly became one of the main designers creating new features and products, the 0-to-1 work, and I was on the Machine Learning product.</p><p>At Klaviyo I've been on the AI design team since I started, and now I'm the lead designer for Klaviyo's AI.</p></aside>
+</section>
+<section class="slide" id="slide-2" data-at="1" aria-roledescription="slide" aria-label="Slide 2">
 <div class="s-title">
 <p class="s-eyebrow">StackAdapt · Case study</p>
 <h1 class="s-head s-head--xl">Composer: designing Klaviyo's AI assistant, and what I'd sequence differently.</h1>
 <svg class="s-squiggle" viewBox="0 0 200 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 10.5c10-7 20-7 30 0s20 7 30 0 20-7 30 0 20 7 30 0 20-7 30 0 20 7 30 0 10-4.5 14-4.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <div class="s-byline"><strong>Lauren Wynne</strong><span class="dot"></span><div class="slot slot--inline"><span class="slot-label">Placeholder · Confirm title</span><span class="slot-what">Lead Product Designer</span></div><span class="dot"></span><span>November 20, 2026</span></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Introduction</span><span class="s-num">1 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Introduction</span><span class="s-num">2 / 26</span></div>
 <aside class="notes"><p>About 30 minutes on the work, about 10 on how AI shows up in my process, about 5 on outcomes, then 15 minutes of Q&amp;A.</p><p>Tell it as decisions and trade-offs, not as screens.</p></aside>
 </section>
-<section class="slide" id="slide-2" data-at="0.5" aria-roledescription="slide" aria-label="Slide 2">
+<section class="slide" id="slide-3" data-at="1.25" aria-roledescription="slide" aria-label="Slide 3">
 <p class="s-eyebrow">The headline</p>
 <h2 class="s-head s-head--quote">Composer is Klaviyo's AI assistant. I wrote the vision for it in a rush for a board presentation, deliberately left out my bigger idea so we wouldn't overpromise, and then learned over a year and a half that we'd sequenced it backwards.</h2>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Introduction</span><span class="s-num">2 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Introduction</span><span class="s-num">3 / 26</span></div>
 <aside class="notes"><p>This is the whole talk in one line. Everything after it is the evidence.</p></aside>
 </section>
-<section class="slide" id="slide-3" data-at="1.5" aria-roledescription="slide" aria-label="Slide 3">
+<section class="slide" id="slide-4" data-at="1.5" aria-roledescription="slide" aria-label="Slide 4">
 <p class="s-eyebrow">The problem</p>
 <h2 class="s-head">Small shop owners didn't know what a good subject line was, and didn't know Klaviyo already had AI to help.</h2>
 <div class="s-cols">
 <div><p class="s-col-label s-col-label--accent">Cause 1 · Discoverability</p><p>They didn't know AI could help.</p></div>
 <div><p class="s-col-label s-col-label--accent">Cause 2 · Marketing knowledge</p><p>They didn't know weak emails might explain weak numbers.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The problem</span><span class="s-num">3 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The problem</span><span class="s-num">4 / 26</span></div>
 <aside class="notes"><p>Two causes: discoverability, and marketing knowledge.</p><p>They didn't know AI could help, or that weak emails might explain weak numbers.</p></aside>
 </section>
-<section class="slide" id="slide-4" data-at="3" aria-roledescription="slide" aria-label="Slide 4">
+<section class="slide" id="slide-5" data-at="3" aria-roledescription="slide" aria-label="Slide 5">
 <p class="s-eyebrow">The insight</p>
 <h2 class="s-head s-head--xl">The customer doesn't know what they don't know.</h2>
 <p class="s-sub">And people now expect everything in one place, instead of hunting for features. Klaviyo's superpower is data.</p>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The problem</span><span class="s-num">4 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The problem</span><span class="s-num">5 / 26</span></div>
 <aside class="notes"><p>People now expect everything in one place instead of hunting for features.</p><p>The insight: the customer doesn't know what they don't know. Klaviyo's superpower is data.</p></aside>
 </section>
-<section class="slide" id="slide-5" data-at="4.5" aria-roledescription="slide" aria-label="Slide 5">
+<section class="slide" id="slide-6" data-at="4.5" aria-roledescription="slide" aria-label="Slide 6">
 <p class="s-eyebrow">The vision</p>
 <h2 class="s-head">The board needed a vision of where AI was going.</h2>
 <div class="s-body">
 <p>A VP of Design and a senior director of product asked for it, to present to the board. I was introduced as the lead AI designer.</p>
 <p>I produced Klaviyo's version of a Claude-style assistant inside the product, <strong>anchored on data</strong>.</p>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">5 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">6 / 26</span></div>
 <aside class="notes"><p>A VP of Design and a senior director of product needed a vision of where AI was going, to present to the board. I was introduced as the lead AI designer.</p><p>I produced Klaviyo's version of a Claude-style assistant inside the product, anchored on data.</p></aside>
 </section>
-<section class="slide" id="slide-6" data-at="6" aria-roledescription="slide" aria-label="Slide 6">
+<section class="slide" id="slide-7" data-at="6" aria-roledescription="slide" aria-label="Slide 7">
 <p class="s-eyebrow">The restraint</p>
 <div class="s-cols">
 <div><p class="s-col-label">What I presented</p><h3>A sidekick in the product</h3><p>An assistant inside Klaviyo, anchored on the customer's data.</p></div>
 <div><p class="s-col-label s-col-label--accent">What I held back</p><h3>An assistant that comes to you</h3><p>People will always need some kind of interface. Text counts, but many people look rather than read.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">6 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">7 / 26</span></div>
 <aside class="notes"><p>What I left out on purpose: my belief that people will always need some kind of interface (text counts, but many people look rather than read), and that the assistant should come to you instead of being a sidekick you go find.</p></aside>
 </section>
-<section class="slide" id="slide-7" data-at="8" aria-roledescription="slide" aria-label="Slide 7">
+<section class="slide" id="slide-8" data-at="8" aria-roledescription="slide" aria-label="Slide 8">
 <p class="s-eyebrow">Why I held it back</p>
 <h2 class="s-head">Underpromise, overdeliver, and keep room to learn.</h2>
 <div class="s-body">
 <p>The sidekick was the fastest MVP, and getting the plumbing accurate mattered more than a new delivery model.</p>
 <p>In the room, one board member asked when it was coming. Another pushed on transparency. I watched my product partner hold his tongue.</p>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">7 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The vision and the restraint</span><span class="s-num">8 / 26</span></div>
 <aside class="notes"><p>Why: avoid overpromising to the board. The sidekick was the fastest MVP, and getting the plumbing accurate mattered more than a new delivery model.</p><p>The board response: one member asked when it was coming, another pushed on transparency. I watched my product partner hold his tongue, and learned to underpromise, overdeliver, and keep room to learn.</p></aside>
 </section>
-<section class="slide" id="slide-8" data-at="9.5" aria-roledescription="slide" aria-label="Slide 8">
+<section class="slide" id="slide-9" data-at="9.5" aria-roledescription="slide" aria-label="Slide 9">
 <p class="s-eyebrow">The Klaviyo brain</p>
 <h2 class="s-head">How many agents, what does each one do, and how do you know which does it best?</h2>
 <p class="s-sub" style="margin-bottom:48px">My anchor: one source of truth that fact-checks the others.</p>
 <svg class="s-diagram" viewBox="0 0 1600 330" role="img" aria-label="The campaign agent writes a subject line; the Klaviyo brain, one source of truth, has the segments agent check it targets the audience that will move the numbers."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#d9714e"/></marker></defs><rect x="0" y="70" width="440" height="190" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="220.0" y="159.0" text-anchor="middle" font-size="30" font-weight="600" fill="#111110">Campaign agent</text><text x="220.0" y="201.0" text-anchor="middle" font-size="24" fill="#5f5f5a">writes a subject line</text><rect x="580" y="40" width="440" height="250" rx="20" fill="#111110" stroke="#111110" stroke-width="2"/><text x="800.0" y="159.0" text-anchor="middle" font-size="36" font-weight="600" fill="#ffffff">Klaviyo brain</text><text x="800.0" y="201.0" text-anchor="middle" font-size="24" fill="#ffffff">one source of truth</text><rect x="1160" y="70" width="440" height="190" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="1380.0" y="159.0" text-anchor="middle" font-size="30" font-weight="600" fill="#111110">Segments agent</text><text x="1380.0" y="201.0" text-anchor="middle" font-size="24" fill="#5f5f5a">checks the audience</text><line x1="446" y1="165" x2="572" y2="165" stroke="#d9714e" stroke-width="4" marker-end="url(#ah)"/><line x1="1026" y1="165" x2="1152" y2="165" stroke="#d9714e" stroke-width="4" marker-start="url(#ah)" marker-end="url(#ah)"/><text x="1380" y="310" text-anchor="middle" font-size="22" fill="#5f5f5a">Will it move the numbers?</text></svg>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">8 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">9 / 26</span></div>
 <aside class="notes"><p>The team was debating how many agents, what each does, and how you know which does it best.</p><p>My anchor: one source of truth that fact-checks the others. Example: the campaign agent writes a subject line, and the segments agent checks it targets the audience that will move the numbers.</p></aside>
 </section>
-<section class="slide" id="slide-9" data-at="11.5" aria-roledescription="slide" aria-label="Slide 9">
+<section class="slide" id="slide-10" data-at="11.5" aria-roledescription="slide" aria-label="Slide 10">
 <p class="s-eyebrow">The disagreement</p>
 <h2 class="s-head">One big agent was the destination. The platform wasn't built for it yet.</h2>
 <p class="s-sub" style="margin-bottom:40px">Segments were built first, then campaigns, and they were never connected. So: fragmented mini agents, with one brain on top as the bridge.</p>
 <svg class="s-diagram" viewBox="0 0 1600 440" role="img" aria-label="Several small agents, for campaigns, segments, flows, forms, and analytics, each feed one Klaviyo brain on top that bridges and checks them."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#d9714e"/></marker></defs><rect x="530" y="20" width="540" height="150" rx="20" fill="#111110" stroke="#111110" stroke-width="2"/><text x="800.0" y="89.0" text-anchor="middle" font-size="36" font-weight="600" fill="#ffffff">Klaviyo brain</text><text x="800.0" y="131.0" text-anchor="middle" font-size="24" fill="#ffffff">the bridge that checks them</text><rect x="40" y="300" width="272" height="120" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="176.0" y="369.1" text-anchor="middle" font-size="26" font-weight="600" fill="#111110">Campaigns agent</text><line x1="176" y1="294" x2="581.6" y2="182" stroke="#d9714e" stroke-width="3" marker-end="url(#ah)"/><rect x="352" y="300" width="272" height="120" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="488.0" y="369.1" text-anchor="middle" font-size="26" font-weight="600" fill="#111110">Segments agent</text><line x1="488" y1="294" x2="690.8" y2="182" stroke="#d9714e" stroke-width="3" marker-end="url(#ah)"/><rect x="664" y="300" width="272" height="120" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="800.0" y="369.1" text-anchor="middle" font-size="26" font-weight="600" fill="#111110">Flows agent</text><line x1="800" y1="294" x2="800.0" y2="182" stroke="#d9714e" stroke-width="3" marker-end="url(#ah)"/><rect x="976" y="300" width="272" height="120" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="1112.0" y="369.1" text-anchor="middle" font-size="26" font-weight="600" fill="#111110">Forms agent</text><line x1="1112" y1="294" x2="909.2" y2="182" stroke="#d9714e" stroke-width="3" marker-end="url(#ah)"/><rect x="1288" y="300" width="272" height="120" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="1424.0" y="369.1" text-anchor="middle" font-size="26" font-weight="600" fill="#111110">Analytics agent</text><line x1="1424" y1="294" x2="1018.4" y2="182" stroke="#d9714e" stroke-width="3" marker-end="url(#ah)"/></svg>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">9 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">10 / 26</span></div>
 <aside class="notes"><p>The disagreement: product and others wanted one big Klaviyo agent. I agreed it was the destination, but argued the platform wasn't built for it.</p><p>Segments were built first, then campaigns, and they were never connected.</p><p>My call: fragmented mini agents with one brain on top as the bridge.</p></aside>
 </section>
-<section class="slide" id="slide-10" data-at="13.5" aria-roledescription="slide" aria-label="Slide 10">
+<section class="slide" id="slide-11" data-at="13.5" aria-roledescription="slide" aria-label="Slide 11">
 <p class="s-eyebrow">The destination</p>
 <h2 class="s-head">Over time, fewer agents, and one main agent carrying out small tasks.</h2>
 <svg class="s-diagram" viewBox="0 0 1600 450" role="img" aria-label="The destination: one main Klaviyo agent, a chief of staff, carrying out small tasks like drafting a campaign, checking a segment, fixing a flow, and pulling a report."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#d9714e"/></marker></defs><ellipse cx="800" cy="225" rx="250" ry="170" fill="#111110"/><text x="800" y="215" text-anchor="middle" font-size="40" font-weight="600" fill="#fff">One Klaviyo agent</text><text x="800" y="262" text-anchor="middle" font-size="26" fill="#fff">a chief of staff</text><rect x="40" y="40" width="400" height="110" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="240.0" y="104.8" text-anchor="middle" font-size="28" font-weight="600" fill="#111110">Draft a campaign</text><line x1="452" y1="95" x2="560" y2="185" stroke="#d9714e" stroke-width="3" marker-start="url(#ah)"/><rect x="1160" y="40" width="400" height="110" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="1360.0" y="104.8" text-anchor="middle" font-size="28" font-weight="600" fill="#111110">Check a segment</text><line x1="1148" y1="95" x2="1040" y2="185" stroke="#d9714e" stroke-width="3" marker-start="url(#ah)"/><rect x="40" y="300" width="400" height="110" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="240.0" y="364.8" text-anchor="middle" font-size="28" font-weight="600" fill="#111110">Fix a flow</text><line x1="452" y1="355" x2="560" y2="265" stroke="#d9714e" stroke-width="3" marker-start="url(#ah)"/><rect x="1160" y="300" width="400" height="110" rx="20" fill="#ffffff" stroke="rgba(0,0,0,0.28)" stroke-width="2"/><text x="1360.0" y="364.8" text-anchor="middle" font-size="28" font-weight="600" fill="#111110">Pull a report</text><line x1="1148" y1="355" x2="1040" y2="265" stroke="#d9714e" stroke-width="3" marker-start="url(#ah)"/></svg>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">10 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The Klaviyo brain</span><span class="s-num">11 / 26</span></div>
 <aside class="notes"><p>The long-term goal: fewer agents and one main agent, a chief of staff, carrying out small tasks.</p><p>The example tasks on the diagram are illustrative.</p></aside>
 </section>
-<section class="slide" id="slide-11" data-at="15" aria-roledescription="slide" aria-label="Slide 11">
+<section class="slide" id="slide-12" data-at="15" aria-roledescription="slide" aria-label="Slide 12">
 <p class="s-eyebrow">Scaling myself</p>
 <div class="s-split">
 <div>
@@ -107,27 +131,27 @@
 </div>
 <div class="slot"><span class="slot-label">Placeholder · Recreated widget visual</span><div class="wire" aria-hidden="true"><div class="wire-bubble"></div><div class="wire-card"><div class="wire-line wire-line--title"></div><div class="wire-line"></div><div class="wire-line" style="width:80%"></div><div class="wire-btns"><span></span><span></span></div></div></div><span class="slot-what">First iteration · generalized, not real UI</span></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">11 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">12 / 26</span></div>
 <aside class="notes"><p>I designed the first iteration of the campaign, form, and flow widgets that appear in chat when Composer builds something for you.</p><p>I kept the first widgets deliberately minimal, knowing they would get heavy, and asked my co-lead to document how they grew.</p></aside>
 </section>
-<section class="slide" id="slide-12" data-at="17" aria-roledescription="slide" aria-label="Slide 12">
+<section class="slide" id="slide-13" data-at="17" aria-roledescription="slide" aria-label="Slide 13">
 <p class="s-eyebrow">Then every team arrived</p>
 <h2 class="s-head">Forms, campaigns, flows, analytics, and social.</h2>
 <div class="s-cols">
 <div><p class="s-col-label s-col-label--accent">What I kept: the foundation</p><ul class="s-list"><li>Reasoning patterns</li><li>Error messages</li><li>How editing works</li><li>Discoverability, alerts, and notifications</li></ul></div>
 <div><p class="s-col-label">What I delegated</p><p>Widget consistency, to my co-designer. The team later grew by two more designers.</p><p>I asked my co-lead to document how the widgets grew.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">12 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">13 / 26</span></div>
 <aside class="notes"><p>Then the forms, campaigns, flows, analytics, and social teams all arrived.</p><p>I kept the foundation: reasoning patterns, error messages, how editing works, plus discoverability of Composer and alerts and notifications.</p><p>I delegated widget consistency to my co-designer. The team later grew by two more designers.</p></aside>
 </section>
-<section class="slide" id="slide-13" data-at="19" aria-roledescription="slide" aria-label="Slide 13">
+<section class="slide" id="slide-14" data-at="19" aria-roledescription="slide" aria-label="Slide 14">
 <p class="s-eyebrow">The shift</p>
 <h2 class="s-head s-head--quote">"My job shifted from designing the widgets to making sure every team's widgets felt like one product."</h2>
 <p class="s-sub">For about a year and a half, I presented weekly to our CEO, CTO, and VP of AI, and answered their questions live.</p>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">13 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scaling myself</span><span class="s-num">14 / 26</span></div>
 <aside class="notes"><p>State it plainly: I presented weekly for about a year and a half to our CEO, CTO, and VP of AI, and answered questions live.</p></aside>
 </section>
-<section class="slide" id="slide-14" data-at="21" aria-roledescription="slide" aria-label="Slide 14">
+<section class="slide" id="slide-15" data-at="21" aria-roledescription="slide" aria-label="Slide 15">
 <p class="s-eyebrow">What didn't work</p>
 <h2 class="s-head">Did it work? Not fully.</h2>
 <div class="s-body">
@@ -135,40 +159,40 @@
 <p>Content generation was used heavily. It also cost users credits, and cost Klaviyo credits.</p>
 <p><strong>Users kept saying they wanted to see why something was generated before getting another pile of copy.</strong></p>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What didn't work</span><span class="s-num">14 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What didn't work</span><span class="s-num">15 / 26</span></div>
 <aside class="notes"><p>Honest answer to "did it work": not fully.</p><p>We started with content generation because it was visual and the data was ready. Analyzing and connecting customer data wasn't, because the infrastructure didn't exist yet.</p><p>Content generation was used heavily. It also cost users credits, and cost Klaviyo credits. Users kept saying they wanted to see why something was generated before getting another pile of copy.</p></aside>
 </section>
-<section class="slide" id="slide-15" data-at="24" aria-roledescription="slide" aria-label="Slide 15">
+<section class="slide" id="slide-16" data-at="24" aria-roledescription="slide" aria-label="Slide 16">
 <p class="s-eyebrow">What didn't work</p>
 <h2 class="s-head">Cost changed the design.</h2>
 <div class="s-cols">
 <div><p class="s-col-label">Before credits mattered</p><p>We pre-generated ideas and recommendations.</p></div>
 <div><span class="s-tag">Exploration, not shipped</span><p>As cost grew, I explored tiered, paid proactive recommendations, and a mobile app for insights, like a paid chief of staff.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What didn't work</span><span class="s-num">15 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What didn't work</span><span class="s-num">16 / 26</span></div>
 <aside class="notes"><p>Before credits mattered we pre-generated ideas and recommendations.</p><p>As cost grew, I explored tiered, paid proactive recommendations and a mobile app for insights, like a paid chief of staff. This was exploration before I left, not shipped.</p></aside>
 </section>
-<section class="slide" id="slide-16" data-at="27" aria-roledescription="slide" aria-label="Slide 16">
+<section class="slide" id="slide-17" data-at="27" aria-roledescription="slide" aria-label="Slide 17">
 <p class="s-eyebrow">What I'd do differently</p>
 <ol class="s-steps">
 <li>Sequence the data foundation before content generation.</li>
 <li>Show the why before the copy.</li>
 <li>Treat cost per generation as a design constraint from day one.</li>
 </ol>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What I'd do differently</span><span class="s-num">16 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>What I'd do differently</span><span class="s-num">17 / 26</span></div>
 <aside class="notes"><p>Sequence the data foundation before content generation. Show the why before the copy. Treat cost per generation as a design constraint from day one.</p></aside>
 </section>
-<section class="slide" id="slide-17" data-at="31" aria-roledescription="slide" aria-label="Slide 17">
+<section class="slide" id="slide-18" data-at="31" aria-roledescription="slide" aria-label="Slide 18">
 <p class="s-eyebrow">How AI shows up in my process</p>
 <h2 class="s-head">I choose the tool by the job. I don't use AI for everything.</h2>
 <div class="s-cols">
 <div><p class="s-col-label s-col-label--accent">Claude Code first</p><p>When I'm building a vision, or making a quick adjustment for a PR.</p></div>
 <div><p class="s-col-label s-col-label--accent">Pen and paper or Figma first</p><p>When I'm comparing two ideas. Then I move the one I pick into Claude Code to prototype it.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">17 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">18 / 26</span></div>
 <aside class="notes"><p>I reach for Claude Code first when I am building a vision or making a quick adjustment for a PR.</p><p>I use pen and paper or Figma first when I am comparing two ideas, then move the one I pick into Claude Code to prototype it.</p><p>Point: I choose the tool by the job, I do not use AI for everything.</p></aside>
 </section>
-<section class="slide" id="slide-18" data-at="33" aria-roledescription="slide" aria-label="Slide 18">
+<section class="slide" id="slide-19" data-at="33" aria-roledescription="slide" aria-label="Slide 19">
 <p class="s-eyebrow">How AI shows up in my process</p>
 <div class="s-split">
 <div>
@@ -179,20 +203,20 @@
 <div class="slot "><span class="slot-label">Placeholder · AI-process artifact</span><span class="slot-what">A grayscale or pen-and-paper style prototype</span></div>
 </div>
 <p class="s-callout">How finished something looks changes what the room believes, and I control that on purpose.</p>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">18 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">19 / 26</span></div>
 <aside class="notes"><p>For leadership presentations I do not always want a prototype to look like the product, because people then assume it is already built.</p><p>I have Claude Code go grayscale, look like pen and paper, or look deliberately unpolished, especially when I need to fake something.</p></aside>
 </section>
-<section class="slide" id="slide-19" data-at="35" aria-roledescription="slide" aria-label="Slide 19">
+<section class="slide" id="slide-20" data-at="35" aria-roledescription="slide" aria-label="Slide 20">
 <p class="s-eyebrow">When it came back wrong</p>
 <h2 class="s-head">Claude Code couldn't match Klaviyo's nav bar. Better source material beat better wording.</h2>
 <div class="s-cols">
 <div><p class="s-col-label">What I tried</p><p>Blunt prompts, screenshots, and pulling the code for an exact page. The spacing was off, and the icons looked bubbly and vibe-coded next to the real icon bar.</p></div>
 <div><p class="s-col-label s-col-label--accent">What worked</p><p>Pointing it at a colleague's prototype that already had it right. It came back exact, and the fix carried through everywhere. Reuse over rebuild.</p></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">19 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">20 / 26</span></div>
 <aside class="notes"><p>Early on I could not get Claude Code to match Klaviyo's nav bar. Spacing was off and the icons looked bubbly and vibe-coded next to the real icon bar.</p><p>I tried blunt prompts, screenshots, and pulling the code for an exact page. What worked was pointing Claude Code at a colleague's prototype that already had it right; it came back exact and the fix carried through everywhere.</p><p>My read, not a verified fact: it worked because she had her Figma MCP connected, so Claude could read the design exactly. My own MCP was not working that week, so I used hers and connected mine later instead of blocking on setup.</p><p>Lesson: when the model keeps missing, better source material beats better wording. Tie to reuse over rebuild.</p></aside>
 </section>
-<section class="slide" id="slide-20" data-at="37.5" aria-roledescription="slide" aria-label="Slide 20">
+<section class="slide" id="slide-21" data-at="37.5" aria-roledescription="slide" aria-label="Slide 21">
 <p class="s-eyebrow">How AI shows up in my process</p>
 <div class="s-split s-split--wide">
 <div>
@@ -202,18 +226,18 @@
 </div>
 <div class="slot "><span class="slot-label">Placeholder · Prototype demo</span><span class="slot-what">A short live or recorded prototype demo</span></div>
 </div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">20 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">21 / 26</span></div>
 <aside class="notes"><p>Short live or recorded prototype demo goes here.</p><p>The design hub: a shared, code-backed prototyping hub where designers fork an existing prototype, work in their own branch, and publish when ready. I onboarded designers one-on-one and led its migration to a secure, IT-supportable platform.</p></aside>
 </section>
-<section class="slide" id="slide-21" data-at="39.5" aria-roledescription="slide" aria-label="Slide 21">
+<section class="slide" id="slide-22" data-at="39.5" aria-roledescription="slide" aria-label="Slide 22">
 <p class="s-eyebrow">What I keep for myself</p>
 <h2 class="s-head">The ideation, the creativity, and the strategy and business side.</h2>
 <p class="s-sub">I know my customers best, and AI isn't a replacement for talking to people, including the leadership I'm trying to reach goals for.</p>
 <p class="s-callout">AI can help me hit a number, it cannot tell me why the number matters, so I still talk to customers and to leadership myself.</p>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">21 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>How AI shows up in my process</span><span class="s-num">22 / 26</span></div>
 <aside class="notes"><p>You can give an AI agent the numbers you want to hit, but I know my customers best and AI is not a replacement for talking to people, including the leadership I am trying to reach goals for: what are they really after, is it just a number or a more core meaning.</p><p>Tie back to the board story.</p></aside>
 </section>
-<section class="slide" id="slide-22" data-at="41" aria-roledescription="slide" aria-label="Slide 22">
+<section class="slide" id="slide-23" data-at="41" aria-roledescription="slide" aria-label="Slide 23">
 <p class="s-eyebrow">Outcomes</p>
 <h2 class="s-head">The metrics are confidential, so here is the signal.</h2>
 <div class="s-quotes">
@@ -222,27 +246,27 @@
 <figure class="s-quote"><p>"Now I know where to check my data instead of building a whole report."</p><cite>Customer reaction, paraphrased</cite></figure>
 </div>
 <div style="margin-top:36px"><div class="slot slot--short"><span class="slot-label">Placeholder · Optional number</span><span class="slot-what">Any public-safe metric you decide to add (default: none)</span></div></div>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcomes</span><span class="s-num">22 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcomes</span><span class="s-num">23 / 26</span></div>
 <aside class="notes"><p>Metrics were confidential when I left, so no numbers. Describe the signal instead.</p></aside>
 </section>
-<section class="slide" id="slide-23" data-at="43" aria-roledescription="slide" aria-label="Slide 23">
+<section class="slide" id="slide-24" data-at="43" aria-roledescription="slide" aria-label="Slide 24">
 <p class="s-eyebrow">The learning signal</p>
 <h2 class="s-head">Credit usage, and repeated requests for the why, showed we'd sequenced it backwards.</h2>
 <p class="s-callout">Customers who don't know what they don't know need a data foundation, and it should have come first.</p>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcomes</span><span class="s-num">23 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcomes</span><span class="s-num">24 / 26</span></div>
 <aside class="notes"><p>Learning signal: credit usage and repeated user requests for the why showed the sequencing was backwards.</p><p>Close the loop: customers who don't know what they don't know, and a data foundation that should have come first.</p></aside>
 </section>
-<section class="slide" id="slide-24" data-at="44" aria-roledescription="slide" aria-label="Slide 24">
+<section class="slide" id="slide-25" data-at="44" aria-roledescription="slide" aria-label="Slide 25">
 <p class="s-eyebrow">Three lessons</p>
 <ol class="s-steps">
 <li>Sequence the foundation first.</li>
 <li>Show the why.</li>
 <li>Treat cost as a design constraint.</li>
 </ol>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Closing</span><span class="s-num">24 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Closing</span><span class="s-num">25 / 26</span></div>
 <aside class="notes"><p>Restate the three lessons, then open it up.</p></aside>
 </section>
-<section class="slide" id="slide-25" data-at="45" aria-roledescription="slide" aria-label="Slide 25">
+<section class="slide" id="slide-26" data-at="45" aria-roledescription="slide" aria-label="Slide 26">
 <p class="s-eyebrow">Questions I'd love to ask you</p>
 <ul class="s-asks">
 <li>How does Ivy decide when to act versus when to ask?</li>
@@ -250,13 +274,13 @@
 <li>What did the team have to unlearn from the core platform UI?</li>
 <li>What does success look like in the first six months?</li>
 </ul>
-<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Q&amp;A</span><span class="s-num">25 / 25</span></div>
+<div class="s-foot"><span class="s-mark"><svg viewBox="0 0 22 10" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6.5c2.5-4 5-4 7.5 0s5 4 7.5 0c1.5-2.4 3-3 4-2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Q&amp;A</span><span class="s-num">26 / 26</span></div>
 <aside class="notes"><p>15 minutes of Q&amp;A.</p></aside>
 </section>
 </main>
 <div class="tool timer" hidden aria-live="off"></div>
 <div class="tool notes-panel" hidden></div>
 <div class="tool keys">← → move · T timer · N notes · F full screen · Esc leave</div>
-<script src="/assets/js/deck.js?v=5"></script>
+<script src="/assets/js/deck.js?v=6"></script>
 </body>
 </html>
