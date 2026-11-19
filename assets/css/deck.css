@@ -723,3 +723,74 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   font-size: 50px;
   line-height: 1.15;
 }
+
+/* The vision: a playhead that rewinds from "Today" to the start, then plays
+   forward through three stops, each card arriving as the playhead lands.
+   One 5.2s run, the first time the slide shows (data-once). */
+.vt { position: relative; max-width: 1600px; height: 420px; margin-top: 40px; }
+.vt-track { position: absolute; left: 0; right: 0; top: 40px; height: 6px; border-radius: 3px; background: var(--line); }
+.vt-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 84%; border-radius: 3px; background: var(--accent); }
+.vt-head {
+  position: absolute;
+  top: 50%;
+  left: 84%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 6px var(--bg), 0 0 0 8px var(--ink);
+}
+.vt-rewind, .vt-today { position: absolute; top: -10px; font-size: 22px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.vt-rewind { left: 0; color: var(--accent-ink); opacity: 0; }
+.vt-today { right: 0; color: var(--dim); opacity: 0; }
+
+.vt-stop { position: absolute; top: 34px; left: var(--x); width: 440px; transform: translateX(-50%); text-align: center; }
+.vt-dot { display: block; width: 18px; height: 18px; margin: 0 auto 34px; border-radius: 50%; background: var(--bg); border: 4px solid var(--accent); }
+.vt-stop h3 { margin: 0 0 12px; font-family: var(--serif); font-weight: 400; font-size: 46px; line-height: 1.15; }
+.vt-stop p { margin: 0; font-size: 28px; line-height: 1.4; color: var(--body); }
+
+/* Before it plays: playhead parked at "Today", nothing on the stops yet */
+.is-deck .vt .vt-head { left: 100%; }
+.is-deck .vt .vt-fill { width: 100%; }
+.is-deck .vt .vt-today { opacity: 1; }
+.is-deck .vt .vt-stop { opacity: 0; }
+
+.is-deck .vt.is-played .vt-head { animation: vt-head 5.2s cubic-bezier(.45, 0, .25, 1) 0.3s forwards; }
+.is-deck .vt.is-played .vt-fill { animation: vt-fill 5.2s cubic-bezier(.45, 0, .25, 1) 0.3s forwards; }
+.is-deck .vt.is-played .vt-today { animation: vt-fade-out 0.4s ease 0.4s forwards; }
+.is-deck .vt.is-played .vt-rewind { animation: vt-rewind 1.6s steps(1) 0.3s; }
+.is-deck .vt.is-played .vt-stop { animation: vt-stop 0.5s cubic-bezier(.34, 1.56, .64, 1) calc(2.35s + var(--s) * 1.25s) forwards; }
+
+@keyframes vt-head {
+  0%   { left: 100%; }
+  28%  { left: 0%; }    /* rewound to the start */
+  42%  { left: 16%; }
+  52%  { left: 16%; }
+  66%  { left: 50%; }
+  76%  { left: 50%; }
+  90%  { left: 84%; }
+  100% { left: 84%; }
+}
+@keyframes vt-fill {
+  0%   { width: 100%; }
+  28%  { width: 0%; }
+  42%  { width: 16%; }
+  52%  { width: 16%; }
+  66%  { width: 50%; }
+  76%  { width: 50%; }
+  90%  { width: 84%; }
+  100% { width: 84%; }
+}
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-rewind { 0%, 50% { opacity: 1; } 25%, 75% { opacity: 0.35; } 100% { opacity: 0; } }
+@keyframes vt-stop { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .vt .vt-head { left: 84%; animation: none !important; }
+  .is-deck .vt .vt-fill { width: 84%; animation: none !important; }
+  .is-deck .vt .vt-today, .is-deck .vt .vt-rewind { opacity: 0; animation: none !important; }
+  .is-deck .vt .vt-stop { opacity: 1; animation: none !important; }
+}
+.vt-stop { width: 500px; }
+.vt { height: 360px; margin-top: 56px; }
