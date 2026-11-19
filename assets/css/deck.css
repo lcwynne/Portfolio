@@ -708,3 +708,8 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @media (prefers-reduced-motion: reduce) {
   .is-deck .s-option .opt-head, .is-deck .s-option .opt-head-out { opacity: 1; animation: none !important; }
 }
+
+/* Intro without the fun facts: a little more air around name and photo */
+.s-intro .s-sub { margin-bottom: 0; max-width: 900px; }
+.s-intro:has(.s-family) .s-family img { height: 520px; }
+.s-intro + .s-path { margin-top: 64px; }
