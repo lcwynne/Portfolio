@@ -54,8 +54,8 @@
     </div>
     <div class="lwc-messages" role="log" aria-live="polite"></div>
     <div class="lwc-foot"><a class="lwc-restart" href="/">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7a4.5 4.5 0 1 0 1.4-3.3M2.5 1.8v2.4h2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to the start
+      <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 1.5C4.86 1.5 1.5 4.43 1.5 8.03c0 1.95.95 3.7 2.45 4.9L3 16.5l3.8-1.9C7.5 14.87 8.24 15 9 15c4.14 0 7.5-2.93 7.5-6.53S13.14 1.5 9 1.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      Back to chat
     </a></div>`;
 
   document.body.append(tab, panel);
@@ -95,7 +95,7 @@
     }
   }
 
-  // "Back to the start" locks the site again and returns to the welcome chat,
+  // "Back to chat" locks the site again and returns to the welcome chat,
   // where a visitor can enter the password or a keyword like StackAdapt.
   panel.querySelector('.lwc-restart').addEventListener('click', e => {
     e.preventDefault();

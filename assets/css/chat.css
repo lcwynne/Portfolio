@@ -304,7 +304,7 @@
 .lwc-bubble p { margin: 0; }
 .lwc-bubble p + p { margin-top: 8px; }
 
-/* "Back to the start": a quiet way back to the welcome chat, under the notes */
+/* "Back to chat": a quiet way back to the welcome chat, under the notes */
 .lwc-foot {
   flex-shrink: 0;
   padding: 6px 14px calc(10px + env(safe-area-inset-bottom));

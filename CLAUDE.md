@@ -114,7 +114,7 @@ After the gate, every page has a read-only **Notes** panel
 (`assets/js/site-chat.js`, styled by `assets/css/chat.css`). There's no typing
 box: the AI isn't connected yet. Visitors open it with the Notes tab on the
 right edge (a floating button on phones) and close it with the X. A quiet
-"Back to the start" link at the bottom clears the visit's `lw_` session keys
+"Back to chat" link at the bottom clears the visit's `lw_` session keys
 and returns to the welcome chat, so a visitor can enter a different keyword
 (like stackadapt).
 
