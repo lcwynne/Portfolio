@@ -8,7 +8,10 @@
   if (!slides.length || !controls) return;
 
   document.documentElement.classList.add('is-deck');
-  controls.hidden = false;
+  // A single slide needs no controls or progress bar
+  const multi = slides.length > 1;
+  controls.hidden = !multi;
+  document.documentElement.classList.toggle('is-single', !multi);
 
   const prev = controls.querySelector('[data-dir="-1"]');
   const next = controls.querySelector('[data-dir="1"]');

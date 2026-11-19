@@ -50,7 +50,77 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   border-bottom: 1px solid var(--deck-line);
 }
 
-.slide--intro { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; }
+.slide--intro {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-areas: "text photo" "hits hits";
+  align-items: center;
+  column-gap: 64px;
+  row-gap: 48px;
+}
+.slide--intro .slide-text { grid-area: text; }
+.slide--intro .slide-photo { grid-area: photo; }
+
+/* Career path: four stops joined by a line, read left to right */
+.slide-path {
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  counter-reset: stop;
+}
+.slide-path li {
+  position: relative;
+  padding: 22px 12px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #333;
+}
+.slide-path li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--deck-accent);
+  background: var(--deck-bg);
+  z-index: 1;
+}
+.slide-path li:last-child::before { background: var(--deck-accent); }
+.slide-path li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 11px;
+  right: 0;
+  height: 1px;
+  background: var(--deck-line);
+}
+.slide-path li:last-child { font-weight: 600; color: var(--deck-text); }
+
+/* Three things to remember, across the bottom */
+.slide-hits {
+  grid-area: hits;
+  margin: 0;
+  padding: 28px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--deck-line);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.slide-hits li { font-size: 16px; line-height: 1.5; color: #444; }
+.slide-hits strong {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--deck-serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--deck-text);
+}
 
 .slide-text { max-width: 760px; }
 
@@ -232,8 +302,15 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @media screen and (max-width: 767px) {
   .deck-home { top: 12px; left: 16px; }
   .slide { padding: 76px 20px 112px; gap: 28px; align-content: start; }
-  .slide--intro { grid-template-columns: minmax(0, 1fr); }
-  .slide--intro .slide-photo { order: -1; }
+  .slide--intro { grid-template-columns: minmax(0, 1fr); grid-template-areas: "photo" "text" "hits"; row-gap: 28px; }
+  .slide-path { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .slide-path li { padding: 0 0 0 24px; font-size: 15px; }
+  .slide-path li::before { top: 3px; }
+  .slide-path li:not(:last-child)::after { top: 14px; left: 5px; right: auto; bottom: -14px; width: 1px; height: auto; }
+  .slide-hits { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 24px; }
+  .slide-hits strong { font-size: 21px; }
   .slide-title { font-size: 38px; }
   .deck-controls { left: 16px; right: 16px; justify-content: space-between; }
 }
+
+.is-single .deck-progress { display: none; }

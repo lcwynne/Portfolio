@@ -92,9 +92,11 @@ serving the old copy.
 
 ## StackAdapt presentation
 
-`/stackadapt/` is Lauren's interview presentation for StackAdapt: full-screen
-slides (`assets/js/deck.js`, `assets/css/deck.css`) with arrow keys, swipe,
-and Previous/Next. Typing **StackAdapt** exactly (case-sensitive, one word)
+`/stackadapt/` is Lauren's interview presentation for StackAdapt, currently a
+single intro slide: photo, a four-stop career path, and three things to
+remember. It's built as a deck (`assets/js/deck.js`, `assets/css/deck.css`):
+add another `<section class="slide">` and arrow keys, swipe, and
+Previous/Next appear automatically. Typing **StackAdapt** exactly (case-sensitive, one word)
 at the gate unlocks the site and opens it; `gate.js` checks it against a
 hash, like the password. It deliberately has no nav or Notes panel. Without
 JavaScript the slides stack in order.
