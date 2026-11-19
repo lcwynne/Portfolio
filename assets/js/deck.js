@@ -139,6 +139,8 @@
       s.inert = n !== i;
     });
     history.replaceState(null, '', `#slide-${i + 1}`);
+    // One-time flourishes play the first time their slide shows, then stay put
+    slides[i].querySelectorAll('[data-once]:not(.is-played)').forEach(el => el.classList.add('is-played'));
     const beat = beats.findIndex(b => b.slides.includes(i));
     nav.querySelectorAll('.deck-nav-beat').forEach((b, n) => b.classList.toggle('is-current', n === beat));
     nav.querySelector('[data-go="prev"]').disabled = i === 0;

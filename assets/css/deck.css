@@ -502,3 +502,47 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-path li em { font-size: 23px; }
 .s-path li span { font-size: 21px; margin-top: 4px; }
 .s-path li span + strong { margin-top: 14px; }
+
+/* "That's me": a hand-drawn arrow up to the core team, with a note in
+   Lauren's accent. deck.js adds .is-played the first time the slide shows,
+   so the arrow draws in once and then simply stays. */
+.s-annotated { position: relative; }
+.s-hello {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 120px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  color: var(--accent-ink);
+}
+.s-hello-arrow { width: 150px; height: 100px; overflow: visible; }
+.s-hello span {
+  margin-bottom: -6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+  transform-origin: left bottom;
+}
+
+.is-deck .s-hello path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.is-deck .s-hello span { opacity: 0; }
+.is-deck .s-hello.is-played .s-hello-line { animation: hello-draw 0.7s cubic-bezier(.6, 0, .3, 1) 0.6s forwards; }
+.is-deck .s-hello.is-played .s-hello-head { animation: hello-draw 0.25s ease-out 1.25s forwards; }
+.is-deck .s-hello.is-played span { animation: hello-pop 0.5s cubic-bezier(.34, 1.56, .64, 1) 1.35s forwards; }
+
+@keyframes hello-draw { to { stroke-dashoffset: 0; } }
+@keyframes hello-pop {
+  from { opacity: 0; transform: rotate(-3deg) translateY(10px) scale(0.85); }
+  to   { opacity: 1; transform: rotate(-3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-hello path { stroke-dashoffset: 0; animation: none !important; }
+  .is-deck .s-hello span { opacity: 1; animation: none !important; }
+}
+/* Reserve the note's space so the slide centres with it included */
+.s-annotated { margin-bottom: 104px; }
