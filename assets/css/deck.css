@@ -803,3 +803,8 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-cols--foundation > div { display: flex; flex-direction: column; }
 .s-cols--foundation .s-fig { margin-top: auto; }
 .s-cols--foundation .s-fig img { height: 280px; max-height: none; object-fit: cover; object-position: top left; width: 100%; }
+
+/* "Did it work?" as two question-and-answer lines */
+.s-head--qa { margin-bottom: 28px; font-size: 72px; }
+.s-head--qa span { color: var(--accent-ink); }
+.s-split--wide .slot { min-height: 560px; }
