@@ -713,3 +713,13 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-intro .s-sub { margin-bottom: 0; max-width: 900px; }
 .s-intro:has(.s-family) .s-family img { height: 520px; }
 .s-intro + .s-path { margin-top: 64px; }
+
+/* "I was solving for": six short answers in an even grid */
+.s-solves { margin: 8px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 64px; max-width: 1600px; }
+.s-solves li {
+  padding: 30px 0 34px;
+  border-top: 2px solid var(--line);
+  font-family: var(--serif);
+  font-size: 50px;
+  line-height: 1.15;
+}
