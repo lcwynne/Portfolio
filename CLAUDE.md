@@ -98,10 +98,10 @@ window (`assets/css/deck.css`). Typing **stackadapt** at the gate (any
 capitalization) unlocks the site and opens it; `gate.js` checks it against a
 hash, like the password. It's `noindex` and nothing links to it.
 
-Keys: arrows/space to move, **T** timer (elapsed vs. the 45-minute plan; each
+Keys: arrows/space to move, **O** (or G) an overview of every slide by section, a number then Enter to jump, **T** timer (elapsed vs. the 45-minute plan; each
 slide's `data-at` is the minute it should start), **N** speaker notes (each
 slide's `<aside class="notes">`), **F** full screen, **Esc** back to the site.
-Dashed terracotta `.slot` boxes are placeholders for Lauren's material.
+Moving the mouse shows a nav bar with Previous/Next and a chip per section. Dashed terracotta `.slot` boxes are placeholders for Lauren's material.
 
 `stackadapt/sw.js` caches the deck for offline use and serves the CSS and JS
 cache-first, so when you change them, bump their `?v=` in the page **and** in

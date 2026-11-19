@@ -334,3 +334,112 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-fig--wide img { max-height: 540px; }
 .s-head--compact { font-size: 60px; margin-bottom: 32px; }
 .s-split--fig .s-fig img, .s-split--fig .s-fig video { max-height: 560px; width: auto; max-width: 100%; }
+
+/* ── Getting around ── */
+
+/* Nav bar: Previous, a chip per section, Next, and the overview. It wakes
+   when the mouse moves and fades out again, so it stays off the slides. */
+.deck-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100vw - 28px);
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(17, 17, 16, 0.92);
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.deck-nav.is-awake, .deck-nav:hover, .deck-nav:focus-within { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+
+.deck-nav button {
+  font: inherit;
+  border: none;
+  cursor: pointer;
+  color: #f4f4f2;
+  background: transparent;
+}
+.deck-nav-btn { width: 40px; height: 40px; border-radius: 50%; font-size: 26px; line-height: 1; }
+.deck-nav-btn:hover:not(:disabled), .deck-nav-btn:focus-visible { background: rgba(255, 255, 255, 0.14); outline: none; }
+.deck-nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+.deck-nav-beats { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.deck-nav-beats::-webkit-scrollbar { display: none; }
+.deck-nav-beat {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0.72;
+}
+.deck-nav-beat:hover, .deck-nav-beat:focus-visible { opacity: 1; background: rgba(255, 255, 255, 0.12); outline: none; }
+.deck-nav-beat.is-current { opacity: 1; background: var(--accent); color: #111110; font-weight: 600; }
+
+.deck-nav-all {
+  flex-shrink: 0;
+  min-height: 40px;
+  margin-left: 4px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.deck-nav-all:hover, .deck-nav-all:focus-visible { background: rgba(255, 255, 255, 0.12); outline: none; }
+.deck-nav kbd, .deck-overview kbd { font: inherit; font-size: 11px; padding: 1px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.16); }
+
+/* Overview: every slide by section; click one to jump there */
+.deck-overview {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  overflow-y: auto;
+  padding: 40px 48px 56px;
+  background: #161615;
+  color: #f4f4f2;
+  font-family: Generalsans, sans-serif;
+}
+.deck-overview[hidden] { display: none; }
+.deck-overview-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin: 0 auto 28px; max-width: 1400px; }
+.deck-overview-head strong { font-family: var(--serif); font-weight: 400; font-size: 34px; }
+.deck-overview-head span { font-size: 14px; color: #b9b9b3; }
+.deck-overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px 32px; max-width: 1400px; margin: 0 auto; }
+.deck-overview h3 { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.deck-overview ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.deck-overview li button {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #f4f4f2;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+.deck-overview li button span { color: #9a9a94; font-variant-numeric: tabular-nums; }
+.deck-overview li button:hover, .deck-overview li button:focus-visible { background: rgba(255, 255, 255, 0.1); outline: none; }
+.deck-overview li button.is-current { background: rgba(217, 113, 78, 0.22); box-shadow: inset 3px 0 0 var(--accent); }
+
+/* "Go to slide 12" while typing a number */
+.deck-jump { top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 14px 22px; font-size: 20px; z-index: 8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-nav { transition: none; }
+}
+
+/* The key hint sits top left, clear of the nav bar */
+.keys { top: 12px; bottom: auto; }

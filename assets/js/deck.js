@@ -1,8 +1,11 @@
 // StackAdapt interview deck. Scales the 1920x1080 stage to fit the window and
 // steps through the slides.
 //   Arrows, space, Page Up/Down, Home/End: move     F: full screen
+//   O or G: overview of every slide, grouped by section
+//   A number, then Enter: jump to that slide
 //   T: presenter timer (elapsed against the 45-minute plan)
-//   N: speaker notes        Esc: leave full screen, or leave the deck
+//   N: speaker notes        Esc: close the overview, leave full screen, or leave the deck
+// Moving the mouse shows a nav bar with Previous/Next and a chip per section.
 // The URL hash (#slide-N) keeps your place on refresh.
 
 (function () {
@@ -19,11 +22,103 @@
   const keys = document.querySelector('.keys');
   let index = -1;
 
-  // Every slide gets its beat name and number in the footer
+  // Every slide gets its number in the footer
   slides.forEach((s, n) => {
     const num = s.querySelector('.s-num');
     if (num) num.textContent = `${n + 1} / ${slides.length}`;
   });
+
+  // Sections (beats) and a short title per slide, read from the slides themselves
+  const beatOf = s => (s.querySelector('.s-mark')?.textContent || '').trim();
+  const titleOf = s => {
+    const h = s.querySelector('h1, h2');
+    const t = (h || s.querySelector('.s-eyebrow'))?.textContent.trim() || '';
+    return t.length > 90 ? t.slice(0, 88).trimEnd() + '…' : t;
+  };
+  const beats = [];
+  slides.forEach((s, n) => {
+    const name = beatOf(s);
+    if (!beats.length || beats[beats.length - 1].name !== name) beats.push({ name, first: n, slides: [] });
+    beats[beats.length - 1].slides.push(n);
+  });
+  const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  // Shorter section names for the nav bar chips; the overview uses the full ones
+  const SHORT = {
+    'Introduction': 'Intro',
+    'The vision and the restraint': 'Vision',
+    'The Klaviyo brain': 'Brain',
+    'Scaling myself': 'Scaling',
+    "What didn't work": "Didn't work",
+    "What I'd do differently": 'Differently',
+    'How AI shows up in my process': 'AI process',
+    'The problem': 'Problem'
+  };
+
+  // ── Nav bar: shows while the mouse moves ──
+  const nav = document.createElement('nav');
+  nav.className = 'deck-nav';
+  nav.setAttribute('aria-label', 'Slides');
+  nav.innerHTML =
+    `<button type="button" class="deck-nav-btn" data-go="prev" aria-label="Previous slide">‹</button>` +
+    `<div class="deck-nav-beats">${beats.map((b, i) => `<button type="button" class="deck-nav-beat" data-beat="${i}" title="${esc(b.name)}">${esc(SHORT[b.name] || b.name)}</button>`).join('')}</div>` +
+    `<button type="button" class="deck-nav-btn" data-go="next" aria-label="Next slide">›</button>` +
+    `<button type="button" class="deck-nav-all" data-go="overview">All slides <kbd>O</kbd></button>`;
+  document.body.append(nav);
+
+  let navTimer = 0;
+  function wake() {
+    nav.classList.add('is-awake');
+    clearTimeout(navTimer);
+    navTimer = setTimeout(() => { if (!nav.matches(':hover')) nav.classList.remove('is-awake'); }, 2500);
+  }
+  document.addEventListener('mousemove', wake);
+  nav.addEventListener('mouseleave', wake);
+  nav.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.go === 'prev') show(index - 1);
+    else if (b.dataset.go === 'next') show(index + 1);
+    else if (b.dataset.go === 'overview') openOverview();
+    else if (b.dataset.beat) show(beats[Number(b.dataset.beat)].first);
+  });
+
+  // ── Overview (O or G): every slide, grouped by section, click to jump ──
+  const overview = document.createElement('div');
+  overview.className = 'deck-overview';
+  overview.hidden = true;
+  overview.setAttribute('role', 'dialog');
+  overview.setAttribute('aria-label', 'All slides');
+  overview.innerHTML =
+    `<div class="deck-overview-head"><strong>All slides</strong><span>Click a slide, or type its number and press Enter · Esc to close</span></div>` +
+    `<div class="deck-overview-grid">${beats.map(b =>
+      `<section><h3>${esc(b.name)}</h3><ol>${b.slides.map(n =>
+        `<li><button type="button" data-slide="${n}"><span>${n + 1}</span>${esc(titleOf(slides[n]))}</button></li>`).join('')}</ol></section>`).join('')}</div>`;
+  document.body.append(overview);
+  overview.addEventListener('click', e => {
+    const b = e.target.closest('[data-slide]');
+    if (b) { show(Number(b.dataset.slide)); closeOverview(); }
+    else if (e.target === overview) closeOverview();
+  });
+  function openOverview() {
+    overview.hidden = false;
+    overview.querySelector(`[data-slide="${index}"]`)?.focus({ preventScroll: false });
+  }
+  function closeOverview() { overview.hidden = true; }
+
+  // ── Jump: type a slide number, then Enter ──
+  const jump = document.createElement('div');
+  jump.className = 'tool deck-jump';
+  jump.hidden = true;
+  document.body.append(jump);
+  let digits = '', jumpTimer = 0;
+  function typeDigit(d) {
+    digits = (digits + d).slice(-2);
+    jump.textContent = `Go to slide ${digits} · Enter`;
+    jump.hidden = false;
+    clearTimeout(jumpTimer);
+    jumpTimer = setTimeout(clearJump, 2500);
+  }
+  function clearJump() { digits = ''; jump.hidden = true; }
 
   // ── Fit the stage to the window, leaving room for notes when they're open ──
   function fit() {
@@ -44,6 +139,11 @@
       s.inert = n !== i;
     });
     history.replaceState(null, '', `#slide-${i + 1}`);
+    const beat = beats.findIndex(b => b.slides.includes(i));
+    nav.querySelectorAll('.deck-nav-beat').forEach((b, n) => b.classList.toggle('is-current', n === beat));
+    nav.querySelector('[data-go="prev"]').disabled = i === 0;
+    nav.querySelector('[data-go="next"]').disabled = i === slides.length - 1;
+    overview.querySelectorAll('[data-slide]').forEach(b => b.classList.toggle('is-current', Number(b.dataset.slide) === i));
     renderNotes();
     tick();
     if (i > 0 && !startedAt) startedAt = Date.now();
@@ -84,6 +184,13 @@
   document.addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
+    if (/^[0-9]$/.test(k)) { typeDigit(k); return; }
+    if (k === 'Enter' && digits) { e.preventDefault(); show(Number(digits) - 1); clearJump(); closeOverview(); return; }
+    if (k === 'o' || k === 'O' || k === 'g' || k === 'G') { overview.hidden ? openOverview() : closeOverview(); return; }
+    if (!overview.hidden) {
+      if (k === 'Escape') { e.preventDefault(); closeOverview(); }
+      return; // arrows and Tab move through the overview's own buttons
+    }
     if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) { e.preventDefault(); show(index + 1); }
     else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey)) { e.preventDefault(); show(index - 1); }
     else if (k === 'Home') { e.preventDefault(); show(0); }
