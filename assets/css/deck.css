@@ -794,3 +794,12 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 }
 .vt-stop { width: 500px; }
 .vt { height: 360px; margin-top: 56px; }
+
+/* Foundation slide: two short lists, each with a small screenshot under it */
+.s-cols--foundation .s-list { gap: 12px; margin-bottom: 28px; }
+.s-cols--foundation .s-list li { font-size: 30px; }
+.s-cols--foundation .s-fig img { max-height: 300px; width: auto; max-width: 100%; }
+.s-cols--foundation .s-fig figcaption { font-size: 22px; margin-top: 10px; }
+.s-cols--foundation > div { display: flex; flex-direction: column; }
+.s-cols--foundation .s-fig { margin-top: auto; }
+.s-cols--foundation .s-fig img { height: 280px; max-height: none; object-fit: cover; object-position: top left; width: 100%; }
