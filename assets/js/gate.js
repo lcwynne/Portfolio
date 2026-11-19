@@ -6,6 +6,10 @@
 
   const HASH = 'f448260594387705a220d8fa9759c0e5a8ba1781f6c55ef7262d30ac400f7487';
 
+  // Typing "StackAdapt" exactly (case-sensitive) opens Lauren's interview
+  // presentation instead of the homepage.
+  const DECK_HASH = '1713e65663c55c5c845c0023409a82672e806f443de6ff67e51bc0a04a2924da';
+
   const closeResponses = [
     "So close, check your spelling.",
     "Almost, try that again.",
@@ -31,6 +35,13 @@
   function isClose(text) {
     const t = text.toLowerCase();
     return t.includes('build') || t.includes('wynne');
+  }
+
+  async function checkDeck(input) {
+    for (const token of input.trim().split(/\s+/)) {
+      if ((await sha256(token)) === DECK_HASH) return true;
+    }
+    return false;
   }
 
   async function checkPassword(input) {
@@ -94,12 +105,13 @@
 
     const typing = addTypingIndicator();
     await delay(600);
-    const correct = await checkPassword(text);
+    const deck = await checkDeck(text);
+    const correct = deck || await checkPassword(text);
     typing.remove();
 
     if (correct) {
       sessionStorage.setItem('lw_unlocked', '1');
-      await finish();
+      await (deck ? finish('/stackadapt/', 'Hi, StackAdapt! Opening my presentation.') : finish());
       return;
     }
 
@@ -110,17 +122,17 @@
     setInputEnabled(true);
   }
 
-  // Every visitor lands on the homepage, where a note from Lauren is waiting
-  // on the Notes tab.
-  async function finish() {
+  // Visitors land on the homepage, where a note from Lauren is waiting on the
+  // Notes tab. The StackAdapt keyword goes to the presentation instead.
+  async function finish(to = '/home/', message = 'Yes! Welcome to my site.') {
     done = true;
     setInputEnabled(false);
     sessionStorage.setItem('lw_chat_open', '0');
-    addBubble('Yes! Welcome to my site.', 'agent');
+    addBubble(message, 'agent');
     await delay(900);
     document.querySelector('.gate-wrap').classList.add('fade-out');
     await delay(500);
-    location.replace('/home/');
+    location.replace(to);
   }
 
   function escapeHtml(str) {

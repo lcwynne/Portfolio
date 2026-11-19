@@ -90,6 +90,15 @@ Pages that load `gate.css` or the works-page scripts reference them with a
 `?v=N` query string. Bump it when you change those files, or browsers keep
 serving the old copy.
 
+## StackAdapt presentation
+
+`/stackadapt/` is Lauren's interview presentation for StackAdapt: full-screen
+slides (`assets/js/deck.js`, `assets/css/deck.css`) with arrow keys, swipe,
+and Previous/Next. Typing **StackAdapt** exactly (case-sensitive, one word)
+at the gate unlocks the site and opens it; `gate.js` checks it against a
+hash, like the password. It deliberately has no nav or Notes panel. Without
+JavaScript the slides stack in order.
+
 ## Notes panel
 
 After the gate, every page has a read-only **Notes** panel
