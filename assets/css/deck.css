@@ -856,3 +856,25 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   .is-deck .ev .ev-circle path, .is-deck .ev .ev-arrow { stroke-dashoffset: 0; animation: none !important; }
   .is-deck .ev .ev-note span { opacity: 1; animation: none !important; }
 }
+
+/* Interludes: one line, centred, words arriving one by one; an optional
+   second line follows. Plays once (data-once). */
+.slide:has(.s-interlude) { align-items: center; text-align: center; }
+.s-interlude { max-width: 1500px; }
+.il-main { margin: 0; font-family: var(--serif); font-size: 140px; line-height: 1.05; letter-spacing: -0.01em; }
+.il-main--md { font-size: 104px; line-height: 1.12; }
+.il-main span { display: inline-block; }
+.il-next { margin: 56px 0 0; font-size: 36px; font-weight: 500; color: var(--accent-ink); }
+
+.is-deck .s-interlude .il-main span { opacity: 0; transform: translateY(22px); }
+.is-deck .s-interlude .il-next { opacity: 0; transform: translateY(10px); }
+.is-deck .s-interlude.is-played .il-main span { animation: il-word 0.55s cubic-bezier(.2, .8, .2, 1) calc(0.35s + var(--i) * 0.22s) forwards; }
+.is-deck .s-interlude.is-played .il-next { animation: il-word 0.6s ease-out 1.9s forwards; }
+@keyframes il-word { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-interlude .il-main span, .is-deck .s-interlude .il-next { opacity: 1; transform: none; animation: none !important; }
+}
+
+/* A date over the first stop on the vision timeline */
+.vt-date { display: block; margin: -16px 0 8px; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
