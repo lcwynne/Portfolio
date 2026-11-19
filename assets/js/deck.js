@@ -15,6 +15,14 @@
   if (!deck || !slides.length) return;
 
   const root = document.documentElement;
+
+  // On phones (and any window under 900px wide) the slides stack as a
+  // readable scrolling page instead of a shrunken 16:9 stage
+  if (window.innerWidth < 900) {
+    slides.forEach((s, n) => { const num = s.querySelector('.s-num'); if (num) num.textContent = `${n + 1} / ${slides.length}`; });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/stackadapt/sw.js').catch(() => {});
+    return;
+  }
   root.classList.add('is-deck');
 
   const PLAN_MIN = 45;

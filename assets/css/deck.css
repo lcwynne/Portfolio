@@ -270,9 +270,7 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 }
 
 /* Without JavaScript, stacked slides shrink to the window */
-@media screen and (max-width: 1919px) {
-  html:not(.is-deck) .slide { zoom: 0.5; }
-}
+
 
 /* Headlines beside a visual get less room, so they run smaller */
 .s-split .s-head { font-size: 60px; }
@@ -881,3 +879,110 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 
 /* "Did it work?" answers sit on their own line */
 .s-head--qa span { display: block; }
+
+
+/* ── Phones and narrow windows: one readable column ──
+   deck.js leaves .is-deck off below 900px, so slides stack and scroll, and
+   every animation simply shows its finished state. */
+@media screen and (max-width: 899px) {
+  .slide { width: auto; height: auto; min-height: 0; padding: 44px 20px 40px; display: block; border-bottom: 1px solid var(--line); text-align: left; }
+  .slide:has(.s-intro), .slide:has(.s-fig--full), .slide:has(.s-chat-slide) { padding: 44px 20px 40px; }
+  .slide:has(.s-interlude) { padding: 72px 20px; text-align: center; }
+  .s-foot { position: static; margin-top: 28px; font-size: 13px; }
+  .s-foot .s-mark svg { width: 20px; height: 9px; }
+
+  .s-eyebrow { margin-bottom: 14px; font-size: 13px; }
+  .s-head, .s-head--xl, .s-head--compact, .s-split .s-head { font-size: 32px; line-height: 1.15; margin-bottom: 18px; max-width: none; }
+  .s-head--xl { font-size: 40px; }
+  .s-head--statement, .s-head--quote { font-size: 28px; line-height: 1.3; }
+  .s-head--qa { font-size: 32px; margin-bottom: 14px; }
+  .s-sub, .s-intro .s-sub { font-size: 18px; line-height: 1.45; }
+  .s-body p, .s-cols p { font-size: 17px; margin-bottom: 12px; }
+  .s-note, .s-note--lead { font-size: 16px; margin-top: 12px; }
+  .s-squiggle, .s-intro .s-squiggle { width: 130px; height: 12px; margin-bottom: 20px; }
+  .s-callout { font-size: 22px; padding-left: 16px; margin-top: 24px; }
+  .s-byline { flex-wrap: wrap; gap: 10px; font-size: 16px; }
+
+  .s-list { gap: 10px; }
+  .s-list li, .s-cols .s-list li, .s-cols--foundation .s-list li, .s-evals-list li { font-size: 17px; padding-left: 32px; }
+  .s-list li::before { width: 20px; height: 9px; }
+  .s-steps { gap: 18px; }
+  .s-steps li { grid-template-columns: 44px 1fr; font-size: 24px; }
+  .s-steps li::before { font-size: 16px; }
+  .s-col-label, .s-options .s-col-label { font-size: 13px; margin-bottom: 10px; }
+
+  /* Every side-by-side layout becomes one column */
+  .s-cols, .s-split, .s-split--wide, .s-split--fig, .s-split--evals, .s-intro, .s-intro:has(.s-family),
+  .s-chat-slide, .s-options { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .s-cols > div, .s-cols > div + div { padding: 0; border-left: none; }
+  .s-cols > div + div { padding-top: 20px; border-top: 2px solid var(--line); }
+  .s-cols h3, .s-cols--figs h3 { font-size: 24px; margin-bottom: 12px; }
+
+  /* Intro */
+  .s-family img, .s-intro .s-family img, .s-intro:has(.s-family) .s-family img { height: 300px; }
+  .s-intro + .s-path { margin-top: 28px; }
+  .s-path { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 28px; }
+  .s-path li { padding: 0 0 0 30px; }
+  .s-path li::before { top: 2px; width: 14px; height: 14px; border-width: 3px; }
+  .s-path li:not(:last-child)::after { top: 20px; left: 7px; right: auto; bottom: -18px; width: 2px; height: auto; }
+  .s-path li strong { font-size: 18px; }
+  .s-path li em { font-size: 15px; }
+  .s-path li span { font-size: 14px; }
+
+  /* "The problem" answers */
+  .s-solves { grid-template-columns: 1fr 1fr; gap: 0 20px; }
+  .s-solves li { font-size: 22px; padding: 14px 0 16px; }
+
+  /* Interludes */
+  .il-main { font-size: 44px; }
+  .il-main--md { font-size: 34px; }
+  .il-next { margin-top: 24px; font-size: 18px; }
+
+  /* Vision timeline becomes a simple list */
+  .vt { height: auto; margin-top: 20px; }
+  .vt-track, .vt-rewind, .vt-today { display: none; }
+  .vt-stop, .vt-stop:nth-child(n) { position: static; width: auto; transform: none; text-align: left; margin-bottom: 20px; padding-left: 26px; border-left: 3px solid var(--accent); }
+  .vt-dot { display: none; }
+  .vt-date { margin: 0 0 4px; font-size: 12px; }
+  .vt-stop h3 { font-size: 24px; margin-bottom: 4px; }
+  .vt-stop p { font-size: 16px; }
+
+  /* Diagrams and pictures */
+  .s-annotated { margin-bottom: 0; }
+  .s-hello { position: static; margin: 10px 0 0 auto; justify-content: flex-end; }
+  .s-hello-arrow { width: 56px; height: 38px; }
+  .s-hello span { font-size: 20px; }
+  .s-fig figcaption, .s-cols--foundation .s-fig figcaption { font-size: 14px; }
+  .s-fig--full img { height: auto; max-height: none; cursor: default; }
+  .s-eyebrow--row { flex-wrap: wrap; gap: 6px 12px; }
+  .s-cols--foundation .s-fig img { height: 180px; }
+  .slot, .s-intro .slot, .s-split--wide .slot { min-height: 180px; padding: 20px; }
+  .slot-label { font-size: 12px; }
+  .slot-what { font-size: 15px; }
+  .wire { width: 100%; padding: 16px; }
+
+  /* Building the chat */
+  .s-equation { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .eq-chip { padding: 8px 12px; font-size: 14px; }
+  .eq-op { font-size: 24px; }
+  .cb-steps { grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .cb-steps li { font-size: 15px; gap: 8px; }
+  .cb-check { width: 20px; height: 20px; }
+  .chat-build { width: 260px; height: 554px; margin: 0 auto; }
+
+  /* Evals */
+  .ev-chat { padding: 18px 18px 20px; }
+  .ev-msg { font-size: 15px; }
+  .ev-who { font-size: 11px; }
+  .ev-thumbs svg { width: 20px; height: 20px; }
+  .ev-thumbs { margin: 8px 0 18px; }
+  .ev-user { max-width: none; padding: 12px 14px; outline: 3px solid var(--accent); outline-offset: 6px; border-radius: 14px; }
+  .ev-circle, .ev-note svg { display: none; }
+  .ev-note { position: static; margin-top: 18px; }
+  .ev-note span { font-size: 22px; }
+  .ev figcaption { font-size: 13px; }
+}
+@media screen and (max-width: 899px) {
+  .keys { display: none; }
+  .s-intro .s-head--xl { font-size: 40px; white-space: normal; }
+}
