@@ -808,3 +808,51 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-head--qa { margin-bottom: 28px; font-size: 72px; }
 .s-head--qa span { color: var(--accent-ink); }
 .s-split--wide .slot { min-height: 560px; }
+
+/* Evals: a recreated chat where a frustrated, all-caps message gets
+   circled and labelled "Sentiment analysis". Plays once (data-once). */
+.s-split--evals { grid-template-columns: 1fr 760px; gap: 96px; }
+.s-evals-list { gap: 22px; }
+.s-evals-list li { font-size: 30px; }
+
+.ev { margin: 0; }
+.ev-chat {
+  position: relative;
+  padding: 36px 36px 120px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 60px -24px rgba(0, 0, 0, 0.22);
+}
+.ev-msg { font-size: 26px; line-height: 1.4; }
+.ev-ai { color: var(--body); }
+.ev-who { display: block; margin-bottom: 6px; font-size: 18px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); }
+.ev-thumbs { display: flex; gap: 14px; margin: 14px 0 34px; color: #b9b9b3; }
+.ev-thumbs svg { width: 30px; height: 30px; }
+.ev-user {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  max-width: 520px;
+  padding: 18px 24px;
+  border-radius: 20px 20px 6px 20px;
+  background: #ececea;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ev-circle { position: absolute; right: 8px; top: 168px; width: 600px; height: 220px; color: var(--accent); overflow: visible; }
+.ev-note { position: absolute; left: 60px; bottom: 26px; display: flex; align-items: flex-end; gap: 6px; color: var(--accent-ink); }
+.ev-note svg { width: 96px; height: 64px; overflow: visible; transform: scaleX(-1); }
+.ev-note span { font-family: var(--serif); font-style: italic; font-size: 40px; line-height: 1; white-space: nowrap; transform: rotate(-3deg); }
+.ev figcaption { margin-top: 14px; font-size: 22px; color: var(--dim); }
+
+.is-deck .ev .ev-circle path, .is-deck .ev .ev-arrow { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.is-deck .ev .ev-note span { opacity: 0; }
+.is-deck .ev.is-played .ev-circle path { animation: hello-draw 0.9s cubic-bezier(.6, 0, .3, 1) 0.8s forwards; }
+.is-deck .ev.is-played .ev-arrow { animation: hello-draw 0.4s ease-out 1.75s forwards; }
+.is-deck .ev.is-played .ev-note span { animation: hello-pop 0.5s cubic-bezier(.34, 1.56, .64, 1) 2.05s forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .ev .ev-circle path, .is-deck .ev .ev-arrow { stroke-dashoffset: 0; animation: none !important; }
+  .is-deck .ev .ev-note span { opacity: 1; animation: none !important; }
+}
