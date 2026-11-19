@@ -476,3 +476,6 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 .s-path li strong + span { margin-top: 8px; }
 .s-path li em + span { margin-top: 10px; }
 .s-path li:last-child { font-weight: 400; }
+
+/* "What Composer is": one readable statement, upright and smaller than a quote */
+.s-head--statement { font-size: 60px; line-height: 1.25; max-width: 1480px; }
