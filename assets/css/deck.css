@@ -546,3 +546,18 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 }
 /* Reserve the note's space so the slide centres with it included */
 .s-annotated { margin-bottom: 104px; }
+
+/* Design problem slide, in order: each team's dashed link drops down to the
+   core team, then the "that's me" arrow draws in. Plays once (data-once). */
+.is-deck .s-teams .s-link { transform-box: fill-box; transform-origin: top; transform: scaleY(0); }
+.is-deck .s-teams.is-played .s-link { animation: link-drop 0.45s cubic-bezier(.5, 0, .2, 1) calc(0.35s + var(--n) * 0.14s) forwards; }
+@keyframes link-drop { to { transform: scaleY(1); } }
+
+/* The note now waits for the links to land */
+.is-deck .s-hello.is-played .s-hello-line { animation-delay: 1.45s; }
+.is-deck .s-hello.is-played .s-hello-head { animation-delay: 2.1s; }
+.is-deck .s-hello.is-played span { animation-delay: 2.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-teams .s-link { transform: none; animation: none !important; }
+}
