@@ -878,3 +878,6 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 
 /* A date over the first stop on the vision timeline */
 .vt-date { display: block; margin: -16px 0 8px; font-size: 22px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+
+/* "Did it work?" answers sit on their own line */
+.s-head--qa span { display: block; }
