@@ -617,3 +617,94 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 }
 .deck-zoom[hidden] { display: none; }
 .deck-zoom img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); }
+
+/* Building the chat interface: the team equation and a checklist on the
+   left; the real Composer chat assembling on the right, one component per
+   beat, each ticking its checklist item. Plays once (data-once). */
+.slide:has(.s-chat-slide) { padding-top: 80px; padding-bottom: 120px; }
+.s-chat-slide { display: grid; grid-template-columns: 1fr 400px; gap: 120px; align-items: center; }
+
+.s-equation { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin: 0 0 36px; }
+.eq-chip {
+  padding: 18px 28px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  font-size: 30px;
+  font-weight: 600;
+}
+.eq-chip--result { background: var(--ink); border-color: var(--ink); color: #fff; }
+.eq-op { font-family: var(--serif); font-size: 52px; line-height: 1; color: var(--accent-ink); }
+.s-chat-slide .s-sub { max-width: 980px; margin-bottom: 40px; }
+
+.cb-steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 48px; max-width: 900px; }
+.cb-steps li { display: flex; align-items: center; gap: 16px; font-size: 28px; color: var(--body); }
+.cb-check {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 6.5' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 70% no-repeat;
+}
+
+.chat-build {
+  position: relative;
+  width: 400px;
+  height: 852px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 60px -24px rgba(0, 0, 0, 0.28);
+}
+.cb-frame { position: absolute; inset: 0; background: #fff; border: 2px solid var(--line); border-radius: 20px; }
+.cb-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* Before playing: an empty panel and an unchecked list */
+.is-deck .chat-build .cb-layer { opacity: 0; transform: translateY(14px); }
+.is-deck .cb-steps .cb-check { background-color: transparent; background-size: 0; }
+.is-deck .cb-steps li { opacity: 0.45; }
+
+.is-deck .chat-build.is-played .cb-layer { animation: cb-in 0.5s cubic-bezier(.2, .8, .2, 1) calc(0.5s + var(--s) * 0.75s) forwards; }
+.is-deck .cb-steps.is-played li { animation: cb-row 0.3s ease-out calc(0.75s + var(--s) * 0.75s) forwards; }
+.is-deck .cb-steps.is-played .cb-check { animation: cb-tick 0.35s cubic-bezier(.34, 1.56, .64, 1) calc(0.75s + var(--s) * 0.75s) forwards; }
+
+@keyframes cb-in   { to { opacity: 1; transform: none; } }
+@keyframes cb-row  { to { opacity: 1; } }
+@keyframes cb-tick { to { background-color: var(--accent); background-size: 70%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .chat-build .cb-layer { opacity: 1; transform: none; animation: none !important; }
+  .is-deck .cb-steps li { opacity: 1; animation: none !important; }
+  .is-deck .cb-steps .cb-check { background-color: var(--accent); background-size: 70%; animation: none !important; }
+}
+
+/* Team equation fits on one line */
+.s-equation { flex-wrap: nowrap; gap: 14px; }
+.eq-chip { padding: 14px 22px; font-size: 26px; white-space: nowrap; }
+.eq-op { font-size: 44px; }
+
+/* Design problem slide: each team arrives on its own (box, then its link),
+   at uneven times set per team in --d; the note follows once all have landed */
+.s-teams .s-team { transform-box: fill-box; transform-origin: center; }
+.is-deck .s-teams .s-team { opacity: 0; transform: translateY(-10px); }
+.is-deck .s-teams.is-played .s-team { animation: team-in 0.45s cubic-bezier(.2, .8, .2, 1) var(--d) forwards; }
+.is-deck .s-teams.is-played .s-link { animation: link-drop 0.6s cubic-bezier(.5, 0, .2, 1) calc(var(--d) + 0.35s) forwards; }
+@keyframes team-in { to { opacity: 1; transform: none; } }
+
+.is-deck .s-hello.is-played .s-hello-line { animation-delay: 5.5s; }
+.is-deck .s-hello.is-played .s-hello-head { animation-delay: 6.15s; }
+.is-deck .s-hello.is-played span { animation-delay: 6.25s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-teams .s-team { opacity: 1; transform: none; animation: none !important; }
+}
+
+/* Slide 10 arrowheads: in to the brain on the left, out to the tasks on the
+   right, each appearing as its line finishes */
+.is-deck .s-option .opt-head,
+.is-deck .s-option .opt-head-out { opacity: 0; }
+.is-deck .s-option.is-played .opt-head { animation: cb-row 0.2s ease-out calc(1.45s + var(--n) * 0.18s) forwards; }
+.is-deck .s-option--one.is-played .opt-head-out { animation: cb-row 0.2s ease-out calc(3.7s + var(--n) * 0.15s) forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .is-deck .s-option .opt-head, .is-deck .s-option .opt-head-out { opacity: 1; animation: none !important; }
+}

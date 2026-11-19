@@ -1,17 +1,18 @@
 // Keeps the StackAdapt deck working with no connection: everything it needs is
 // cached on first load, and served cache-first afterwards. Bump VERSION when
 // any of these files change.
-const VERSION = 'stackadapt-v27';
+const VERSION = 'stackadapt-v31';
 const FILES = [
   '/stackadapt/',
-  '/assets/css/deck.css?v=22',
-  '/assets/js/deck.js?v=14',
+  '/assets/css/deck.css?v=25',
+  '/assets/js/deck.js?v=15',
   '/assets/659566c3e235c696a2875be2_GeneralSans-Regular.otf',
   '/assets/659566c3e235c696a2875be0_GeneralSans-Medium.otf',
   '/assets/659566c3e235c696a2875be3_GeneralSans-Semibold.otf',
   '/assets/65e89fa0190699d5ae4884bf_lw_logo_1.png',
   '/assets/lauren-family.jpg',
   '/assets/composer-klaviyo-brain.png',
+  '/assets/composer-chat-panel.png',
   '/assets/composer-versioning.png',
   '/assets/composer-sms.png',
   '/assets/composer-changelog.mp4',

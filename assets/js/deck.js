@@ -52,7 +52,8 @@
     "What didn't work": "Didn't work",
     "What I'd do differently": 'Differently',
     'How AI shows up in my process': 'AI process',
-    'The problem': 'Problem'
+    'The problem': 'Problem',
+    'Building the chat': 'Chat UI'
   };
 
   // ── Nav bar: shows while the mouse moves ──
