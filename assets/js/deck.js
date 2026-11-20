@@ -4,7 +4,7 @@
 //   O or G: overview of every slide, grouped by section
 //   A number, then Enter: jump to that slide
 //   T: presenter timer (elapsed against the 45-minute plan)    R: restart the timer
-//   N: speaker notes        Z: zoom the slide's diagram to fill the window
+//   (speaker notes live in a private doc)   Z: zoom the slide's diagram to fill the window
 //   Esc: close the zoom or overview, leave full screen, or leave the deck
 // Moving the mouse shows a nav bar with Previous/Next and a chip per section.
 // The URL hash (#slide-N) keeps your place on refresh.
@@ -124,9 +124,22 @@
   zoom.setAttribute('aria-label', 'Zoomed image');
   document.body.append(zoom);
   function openZoom(img) {
-    zoom.innerHTML = `<img src="${img.getAttribute('src')}" alt="${img.getAttribute('alt') || ''}"/>`;
+    zoom.innerHTML = img.dataset.video
+      ? `<video src="${img.dataset.video}" autoplay muted loop playsinline aria-label="Composer demo"></video>`
+      : `<img src="${img.getAttribute('src')}" alt="${img.getAttribute('alt') || ''}"/>`;
     zoom.hidden = false;
   }
+
+  // A demo recording that only exists on Lauren's laptop (git-ignored assets/local/).
+  // If it's there, the slide shows its first frame with a play button that opens
+  // it full screen; if not, as on the live site, the placeholder stays.
+  document.querySelectorAll('.s-demo').forEach(box => {
+    fetch(box.dataset.video, { method: 'HEAD' }).then(r => {
+      if (!r.ok) return;
+      box.innerHTML = `<button type="button" class="s-demo-play s-zoom" data-video="${box.dataset.video}" aria-label="Play the Composer demo full screen">` +
+        `<img src="${box.dataset.poster}" alt=""/><span class="s-demo-btn">▶ Play the demo</span></button>`;
+    }).catch(() => {});
+  });
   function closeZoom() { zoom.hidden = true; zoom.innerHTML = ''; }
   zoom.addEventListener('click', closeZoom);
   deck.addEventListener('click', e => { const img = e.target.closest('.s-zoom'); if (img) openZoom(img); });
@@ -236,7 +249,6 @@
     else if (k === 'End') { e.preventDefault(); show(slides.length - 1); }
     else if (k === 't' || k === 'T') toggle(timer);
     else if (k === 'r' || k === 'R') restartTimer();
-    else if (k === 'n' || k === 'N') toggle(notesPanel);
     else if (k === 'f' || k === 'F') {
       if (document.fullscreenElement) document.exitFullscreen();
       else root.requestFullscreen?.().catch(() => {});

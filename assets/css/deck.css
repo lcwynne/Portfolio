@@ -1094,3 +1094,13 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   .s-steps--ivy { gap: 18px; }
   .s-steps--ivy li { font-size: 22px; }
 }
+
+/* Demo recording (local only): first frame with a play button; opens full screen */
+.s-demo-play { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 60px -24px rgba(0, 0, 0, 0.28); }
+.s-demo-play img { display: block; width: 100%; height: auto; filter: brightness(0.92); }
+.s-demo-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 22px 40px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 30px; font-weight: 600; white-space: nowrap; }
+.s-demo-play:hover .s-demo-btn, .s-demo-play:focus-visible .s-demo-btn { background: var(--accent-ink); }
+.deck-zoom video { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); }
+@media screen and (max-width: 899px) {
+  .s-demo-btn { padding: 10px 18px; font-size: 15px; }
+}
