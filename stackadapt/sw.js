@@ -1,7 +1,7 @@
 // Keeps the StackAdapt deck working with no connection: everything it needs is
 // cached on first load, and served cache-first afterwards. Bump VERSION when
 // any of these files change.
-const VERSION = 'stackadapt-v50';
+const VERSION = 'stackadapt-v51';
 const FILES = [
   '/stackadapt/',
   '/assets/css/deck.css?v=41',
@@ -19,7 +19,7 @@ const FILES = [
   '/assets/composer-agent-in-campaign.webp',
   '/assets/composer-prompt-home.png',
   '/assets/composer-widget-email.png',
-  '/assets/design-hub.webp',
+  '/assets/design-hub.png',
   '/assets/composer-changelog.mp4',
   '/assets/composer-changelog-poster.jpg'
 ];
