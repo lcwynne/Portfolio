@@ -1031,3 +1031,16 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @media screen and (max-width: 899px) {
   .s-widget img { width: 100%; max-width: 360px; }
 }
+
+/* How I scaled AI: the design hub */
+.s-split--hub { grid-template-columns: 1fr 1000px; gap: 80px; align-items: center; }
+.s-split--hub .s-sub { margin-bottom: 36px; }
+.s-steps--hub { gap: 20px; margin-bottom: 36px; }
+.s-steps--hub li { font-size: 32px; }
+.s-split--hub .s-fig img { max-height: 600px; width: 100%; object-fit: contain; }
+.s-split--hub .slot { min-height: 520px; }
+@media screen and (max-width: 899px) {
+  .s-split--hub { grid-template-columns: 1fr; gap: 24px; }
+  .s-steps--hub li { font-size: 18px; }
+  .s-split--hub .slot { min-height: 200px; }
+}
