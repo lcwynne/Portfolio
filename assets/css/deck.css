@@ -1044,3 +1044,53 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   .s-steps--hub li { font-size: 18px; }
   .s-split--hub .slot { min-height: 200px; }
 }
+
+/* What happened, and what I learned: denser text beside a placeholder */
+.s-learned { grid-template-columns: 1fr 640px; gap: 72px; }
+.s-learned .s-head { margin-bottom: 24px; }
+.s-learned .s-list { gap: 10px; }
+.s-learned .s-list li { font-size: 26px; line-height: 1.35; }
+.s-learned .s-col-label { margin: 22px 0 10px; }
+.s-learned .s-note { margin-top: 18px; font-size: 22px; }
+.s-learned .slot { min-height: 520px; }
+
+/* Tools slide: one extra line under the three tools */
+.s-tools-extra { margin: 22px 0 0; font-size: 26px; line-height: 1.4; color: var(--body); }
+
+/* When it came back wrong: text beside before and after slots */
+.s-split--wrong { grid-template-columns: 1fr 640px; gap: 72px; }
+.s-split--wrong .s-list li { font-size: 28px; line-height: 1.38; }
+.s-slots-stack { display: grid; gap: 20px; }
+.s-slots-stack .slot { min-height: 230px; }
+.s-split--wrong + .s-callout { margin-top: 32px; }
+
+/* An inline tag inside a numbered step */
+.s-tag--inline { margin: 12px 0 0; display: table; font-family: Generalsans, sans-serif; font-size: 18px; padding: 6px 16px; }
+
+@media screen and (max-width: 899px) {
+  .s-learned, .s-split--wrong { grid-template-columns: 1fr; gap: 20px; }
+  .s-learned .s-list li, .s-split--wrong .s-list li { font-size: 16px; }
+  .s-learned .s-note { font-size: 14px; }
+  .s-learned .slot, .s-slots-stack .slot { min-height: 140px; }
+  .s-tools-extra { font-size: 16px; }
+  .s-tag--inline { font-size: 11px; padding: 4px 10px; }
+}
+
+/* The restraint: both screenshots cropped to the same frame */
+.s-cols--match .s-fig img { width: 100%; height: 440px; max-height: none; object-fit: cover; object-position: top center; border-radius: 12px; }
+
+/* Short, airy bullet lists on minimal slides */
+.s-list--roomy { gap: 36px; max-width: 1400px; }
+.s-list--roomy li { font-size: 40px; line-height: 1.35; }
+
+/* What I'd bring to Ivy: three short points, no headline */
+.s-steps--ivy { gap: 48px; margin-top: 12px; }
+.s-steps--ivy li { font-size: 56px; line-height: 1.2; }
+
+@media screen and (max-width: 899px) {
+  .s-cols--match .s-fig img { height: auto; aspect-ratio: 16 / 10; }
+  .s-list--roomy { gap: 16px; }
+  .s-list--roomy li { font-size: 18px; }
+  .s-steps--ivy { gap: 18px; }
+  .s-steps--ivy li { font-size: 22px; }
+}

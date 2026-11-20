@@ -57,6 +57,8 @@
     'The vision and the restraint': 'Vision',
     'The Klaviyo brain': 'Brain',
     'Laying the groundwork': 'Groundwork',
+    'How I operated': 'Operated',
+    "What I'd bring to Ivy": 'Ivy',
     "What I'd do differently": 'Differently',
     'How AI shows up in my process': 'AI process',
     'The problem': 'Problem',
