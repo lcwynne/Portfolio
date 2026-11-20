@@ -1023,3 +1023,11 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   .s-end .s-head--xl { font-size: 48px; }
   .slide:has(.s-end) { padding: 72px 20px; }
 }
+
+/* First widget: a small screenshot shown larger, on a card */
+.s-widget { justify-self: center; align-self: center; }
+.s-widget img { width: 604px; height: auto; border-radius: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 60px -24px rgba(0, 0, 0, 0.28); }
+.s-widget figcaption { max-width: 604px; }
+@media screen and (max-width: 899px) {
+  .s-widget img { width: 100%; max-width: 360px; }
+}
