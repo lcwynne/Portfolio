@@ -659,9 +659,11 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 
 /* Before playing: an empty panel and an unchecked list */
 .is-deck .chat-build .cb-layer { opacity: 0; transform: translateY(14px); }
+.is-deck .chat-build .cb-prompt { opacity: 0; transform: translateY(-10px); }
 .is-deck .cb-steps .cb-check { background-color: transparent; background-size: 0; }
 .is-deck .cb-steps li { opacity: 0.45; }
 
+.is-deck .chat-build.is-played .cb-prompt { animation: cb-in 0.5s cubic-bezier(.2, .8, .2, 1) calc(0.5s + var(--s) * 0.75s) forwards; }
 .is-deck .chat-build.is-played .cb-layer { animation: cb-in 0.5s cubic-bezier(.2, .8, .2, 1) calc(0.5s + var(--s) * 0.75s) forwards; }
 .is-deck .cb-steps.is-played li { animation: cb-row 0.3s ease-out calc(0.75s + var(--s) * 0.75s) forwards; }
 .is-deck .cb-steps.is-played .cb-check { animation: cb-tick 0.35s cubic-bezier(.34, 1.56, .64, 1) calc(0.75s + var(--s) * 0.75s) forwards; }
@@ -671,7 +673,7 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @keyframes cb-tick { to { background-color: var(--accent); background-size: 70%; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .is-deck .chat-build .cb-layer { opacity: 1; transform: none; animation: none !important; }
+  .is-deck .chat-build .cb-layer, .is-deck .chat-build .cb-prompt { opacity: 1; transform: none; animation: none !important; }
   .is-deck .cb-steps li { opacity: 1; animation: none !important; }
   .is-deck .cb-steps .cb-check { background-color: var(--accent); background-size: 70%; animation: none !important; }
 }
@@ -838,7 +840,7 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
   font-weight: 600;
   color: var(--ink);
 }
-.ev-circle { position: absolute; right: 8px; top: 168px; width: 600px; height: 220px; color: var(--accent); overflow: visible; }
+.ev-circle { position: absolute; z-index: 2; right: 8px; top: 168px; width: 600px; height: 220px; color: var(--accent); overflow: visible; pointer-events: none; }
 .ev-note { position: absolute; left: 60px; bottom: 26px; display: flex; align-items: flex-end; gap: 6px; color: var(--accent-ink); }
 .ev-note svg { width: 96px; height: 64px; overflow: visible; transform: scaleX(-1); }
 .ev-note span { font-family: var(--serif); font-style: italic; font-size: 40px; line-height: 1; white-space: nowrap; transform: rotate(-3deg); }
@@ -985,4 +987,39 @@ body { font-family: Generalsans, sans-serif; -webkit-font-smoothing: antialiased
 @media screen and (max-width: 899px) {
   .keys { display: none; }
   .s-intro .s-head--xl { font-size: 40px; white-space: normal; }
+}
+
+/* Building the chat: the prompt box, drawn to match the real Composer input */
+.cb-prompt { position: absolute; left: 0; bottom: 0; width: 400px; padding: 12px 12px 16px; background: #fff; transform-origin: bottom left; font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif; }
+.cb-input { display: flex; align-items: center; gap: 14px; height: 46px; padding: 0 6px 0 14px; border: 1.5px solid #8e8e8e; border-radius: 14px; background: #fff; }
+.cb-plus { flex: none; width: 20px; height: 20px; color: #2b2b2b; }
+.cb-placeholder { flex: 1; min-width: 0; font-size: 16px; color: #6f6f6f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cb-send { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: #eef1f1; color: #a2a8a8; }
+.cb-send svg { width: 18px; height: 18px; }
+.cb-disclaimer { margin: 8px 0 0; font-size: 11.5px; line-height: 1.3; color: #5f6363; }
+
+/* A transition slide that just sits there, no word-by-word reveal */
+.is-deck .s-interlude--still .il-main span { opacity: 1; transform: none; animation: none !important; }
+
+/* How AI shows up: three tools, pen and paper first */
+.s-tools { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 30px; }
+.s-tools li { padding-left: 28px; border-left: 4px solid var(--line); }
+.s-tools li:first-child { border-left-color: var(--accent); }
+.s-tool-when { margin: 0 0 4px; font-size: 20px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+.s-tools h3 { margin: 0 0 6px; font-size: 40px; line-height: 1.15; }
+.s-tools li > p:last-child { margin: 0; font-size: 26px; line-height: 1.4; color: var(--body); }
+
+/* Questions */
+.slide:has(.s-end) { align-items: center; justify-content: center; text-align: center; }
+.s-end .s-head--xl { margin: 0; font-size: 160px; }
+
+@media screen and (max-width: 899px) {
+  .chat-build .cb-prompt { transform: scale(0.65); }
+  .s-tools { gap: 16px; }
+  .s-tools li { padding-left: 14px; border-left-width: 3px; }
+  .s-tool-when { font-size: 12px; }
+  .s-tools h3 { font-size: 22px; }
+  .s-tools li > p:last-child { font-size: 16px; }
+  .s-end .s-head--xl { font-size: 48px; }
+  .slide:has(.s-end) { padding: 72px 20px; }
 }

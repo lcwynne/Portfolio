@@ -1,11 +1,11 @@
 // Keeps the StackAdapt deck working with no connection: everything it needs is
 // cached on first load, and served cache-first afterwards. Bump VERSION when
 // any of these files change.
-const VERSION = 'stackadapt-v45';
+const VERSION = 'stackadapt-v46';
 const FILES = [
   '/stackadapt/',
-  '/assets/css/deck.css?v=38',
-  '/assets/js/deck.js?v=16',
+  '/assets/css/deck.css?v=39',
+  '/assets/js/deck.js?v=17',
   '/assets/659566c3e235c696a2875be2_GeneralSans-Regular.otf',
   '/assets/659566c3e235c696a2875be0_GeneralSans-Medium.otf',
   '/assets/659566c3e235c696a2875be3_GeneralSans-Semibold.otf',
